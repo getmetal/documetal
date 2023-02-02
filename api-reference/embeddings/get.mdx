@@ -1,0 +1,40 @@
+---
+title: "Get Embeddings"
+api: "GET https://api.getmetal.io/v1/apps/{appId}/embeddings"
+description: "This endpoint gets a list of embeddings for an app."
+---
+
+### Cookie Header
+
+<ParamField header="token"  type="string">
+  This is the users auth token.
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="object">
+  Contains the object response.
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/embeddings' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": [{
+    id: '1',
+    name: 'My Embedding'
+  }]
+}
+```
+
+</ResponseExample>

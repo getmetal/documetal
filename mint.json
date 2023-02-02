@@ -17,8 +17,8 @@
   },
   "topbarLinks": [
     {
-      "name": "Learn More",
-      "url": "https://www.getmetal.io"
+      "name": "Dashboard",
+      "url": "https://app.getmetal.io"
     }
   ],
   "anchors": [
@@ -28,11 +28,6 @@
       "url": "api-reference"
     },
     {
-      "name": "Changelog",
-      "icon": "list",
-      "url": "https://mintlify.com"
-    },
-    {
       "name": "Community",
       "icon": "comments",
       "url": "https://www.getmetal.io/"
@@ -40,24 +35,23 @@
   ],
   "navigation": [
     {
-      "group": "Home",
-      "pages": ["introduction", "development"]
-    },
-    {
-      "group": "Learn More",
-      "pages": ["features", "resources"]
+      "group": "Pages",
+      "pages": ["introduction", "quick-start", "resources"]
     },
     {
       "group": "API Documentation",
       "pages": ["api-reference/authentication"]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Apps",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "api-reference/apps/get"
+      ]
+    },
+    {
+      "group": "Embeddings",
+      "pages": [
+        "api-reference/embeddings/get"
       ]
     }
   ],
