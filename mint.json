@@ -1,0 +1,68 @@
+{
+  "name": "Metal",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#008000",
+    "light": "#1BBD1B",
+    "dark": "#008000",
+    "anchors": { "from": "#1BBD1B", "to": "#008000" }
+  },
+  "topbarCtaButton": {
+    "name": "Join the Waitlist",
+    "url": "https://www.getmetal.io"
+  },
+  "topbarLinks": [
+    {
+      "name": "Learn More",
+      "url": "https://www.getmetal.io"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "API Reference",
+      "icon": "rectangle-terminal",
+      "url": "api-reference"
+    },
+    {
+      "name": "Changelog",
+      "icon": "list",
+      "url": "https://mintlify.com"
+    },
+    {
+      "name": "Community",
+      "icon": "comments",
+      "url": "https://www.getmetal.io/"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Home",
+      "pages": ["introduction", "development"]
+    },
+    {
+      "group": "Learn More",
+      "pages": ["features", "resources"]
+    },
+    {
+      "group": "API Documentation",
+      "pages": ["api-reference/authentication"]
+    },
+    {
+      "group": "Endpoint Examples",
+      "pages": [
+        "api-reference/endpoint/get",
+        "api-reference/endpoint/create",
+        "api-reference/endpoint/update",
+        "api-reference/endpoint/delete"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/getmetal_",
+    "linkedin": "https://www.linkedin.com/company/getmetal/about/"
+  }
+}
