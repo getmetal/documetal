@@ -1,0 +1,49 @@
+---
+title: "Post Embeddings"
+api: "POST https://api.getmetal.io/v1/apps/{appId}/embeddings"
+description: "This endpoint generates and stores an embedding for the inputted data."
+---
+
+### Header
+
+<ParamField required header="token"  type="string">
+  The users auth token.
+</ParamField>
+
+### Body
+
+<ParamField body="input" type="string" placeholder="text that will be embedded">
+  The inputted text string
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="object">
+  Contains the object response.
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/embeddings' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+--data-raw '{
+    "input": "text that will be embedded"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": [{
+    id: '1',
+    input: 'text that will be embedded'
+  }]
+}
+```
+
+</ResponseExample>
