@@ -40,7 +40,7 @@
     },
     {
       "group": "Metal SDK",
-      "pages": ["sdk-install"]
+      "pages": ["sdk-install", "sdk-initiate", "sdk-index", "sdk-search"]
     },
     {
       "group": "API Documentation",

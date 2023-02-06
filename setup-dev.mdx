@@ -1,5 +1,5 @@
 ---
-title: "Environment Setup"
+title: "Dev Setup"
 description: "Using Metal's Typescript SDK."
 ---
 
@@ -16,7 +16,7 @@ npm i --save @getmetal/metal-sdk
 yarn add @getmetal/metal-sdk
 ```
 
-## Instantiating
+## SDK Usage
 
 ```
 import MetalSDK from '@getmetal/metal-sdk';
@@ -26,15 +26,13 @@ const metal = new MetalSDK(
   'client-id',
   'app-id',
 );
-```
 
 
-## Indexing Data
-```javascript
-const ingestedData = await metal.index('Text data to ingest');
-```
+await metal.index('Tree');
+await metal.index('Lam');
+await metal.index('Truck');
 
-## Searching Data
-```javascript
-const searchResults = await metal.search('Term to search');
+const result = await metal.search('car');
+console.log(result) // 'Truck'
+
 ```
