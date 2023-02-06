@@ -36,11 +36,11 @@
   "navigation": [
     {
       "group": "Getting Started",
-      "pages": ["introduction", "quick-start"]
+      "pages": ["introduction", "create-app", "setup-dev"]
     },
     {
       "group": "Metal SDK",
-      "pages": ["sdk"]
+      "pages": ["sdk-install"]
     },
     {
       "group": "API Documentation",
