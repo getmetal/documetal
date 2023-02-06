@@ -39,6 +39,10 @@
       "pages": ["introduction", "quick-start"]
     },
     {
+      "group": "Metal SDK",
+      "pages": ["sdk"]
+    },
+    {
       "group": "API Documentation",
       "pages": ["api-reference/authentication"]
     },
