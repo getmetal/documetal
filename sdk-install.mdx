@@ -15,26 +15,3 @@ npm i --save @getmetal/metal-sdk
 ```bash
 yarn add @getmetal/metal-sdk
 ```
-
-## Instantiating
-
-```
-import MetalSDK from '@getmetal/metal-sdk';
-
-const metal = new MetalSDK(
-  'api-key',
-  'client-id',
-  'app-id',
-);
-```
-
-
-## Indexing Data
-```javascript
-const ingestedData = await metal.index('Text data to ingest');
-```
-
-## Searching Data
-```javascript
-const searchResults = await metal.search('Term to search');
-```
