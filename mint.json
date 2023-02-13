@@ -49,14 +49,24 @@
     {
       "group": "Apps",
       "pages": [
-        "api-reference/apps/get"
+        "api-reference/apps/get",
+        "api-reference/apps/get-one",
+        "api-reference/apps/post"
+      ]
+    },
+    {
+      "group": "Indexes",
+      "pages": [
+        "api-reference/indexes/get-one",
+        "api-reference/indexes/get",
+        "api-reference/indexes/post"
       ]
     },
     {
       "group": "Embeddings",
       "pages": [
-        "api-reference/embeddings/get",
-        "api-reference/embeddings/post"
+        "api-reference/embeddings/post",
+        "api-reference/embeddings/search"
       ]
     }
   ],

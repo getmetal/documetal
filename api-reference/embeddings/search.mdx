@@ -1,0 +1,72 @@
+---
+title: "Search Embeddings"
+api: "POST https://api.getmetal.io/v1/indexes/{indexId}/embeddings/search"
+description: "This endpoint searches for the closest embeddings"
+---
+
+### Cookie Header
+
+<ParamField required header="token"  type="string">
+  This is the users auth token.
+</ParamField>
+
+### Params
+
+<ParamField required path="indexId" type="string">
+  The Index ID
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Results Array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the embedding
+    </ResponseField>
+
+    <ResponseField name="dist" type="string">
+      Distance to the vector queried
+    </ResponseField>
+
+    <ResponseField name="metatada" type="object">
+      Metadata of the embedding
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/indexes/{indexId}/embeddings/search' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+--data-raw '{
+    "text": "Generals gathered in their masses"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": [{
+    "id": "1",
+    "dist": "0.666",
+    "metadata": {
+      "name": "Helloween",
+      "year": 1984
+    }
+  }, {
+    "id": "2",
+    "dist": "0.999",
+    "metadata": {
+      "name": "Iron Maiden",
+      "year": 1975
+    }
+  }]
+}
+```
+
+</ResponseExample>

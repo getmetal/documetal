@@ -1,0 +1,89 @@
+---
+title: "Create Index"
+api: "POST https://api.getmetal.io/v1/apps/{appId}/indexes"
+description: "This endpoint creates an index for an app."
+---
+
+### Cookie Header
+
+<ParamField required header="token"  type="string">
+  This is the users auth token.
+</ParamField>
+
+### Params
+
+<ParamField required path="appId" type="string">
+  The App ID
+</ParamField>
+
+### Body
+
+<ParamField body="model" type="string" placeholder="model used for generating embeddings" required>
+  Model used to generate the embeddings
+</ParamField>
+
+<ParamField body="name" type="string" placeholder="name of the index" required>
+  Name of the Index
+</ParamField>
+
+<ParamField body="dimensions" type="integer" min="3" placeholder="number of dimensions that the embeddings will have">
+  Number of dimensions for the stored vectors
+</ParamField>
+
+
+### Response
+
+<ResponseField name="data" type="Index Object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the index
+    </ResponseField>
+
+    <ResponseField name="app" type="string">
+      Id of the app of the index
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Name of the index
+    </ResponseField>
+
+    <ResponseField name="model" type="string">
+      Model used to generate the embeddings
+    </ResponseField>
+
+    <ResponseField name="dimensions" type="number">
+      Dimensions of the embeddings
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/indexes' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+--data-raw '{
+    "model": "custom",
+    "name": "Ozzy Osbourne",
+    "dimensions": 666
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "id": "1",
+    "name": "Ozzy Osbourne",
+    "app": "<APP_ID>",
+    "model": "text-embedding-ada-002",
+    "dimensions": 1536
+  }
+}
+```
+
+</ResponseExample>

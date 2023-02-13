@@ -1,0 +1,67 @@
+---
+title: "Get Index"
+api: "GET https://api.getmetal.io/v1/indexes/{indexId}"
+description: "This endpoint gets a single index."
+---
+
+### Cookie Header
+
+<ParamField required header="token"  type="string">
+  This is the users auth token.
+</ParamField>
+
+<ParamField required path="indexId" type="string">
+  The Index ID
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Index Object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the index
+    </ResponseField>
+
+    <ResponseField name="app" type="string">
+      Id of the app of the index
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Name of the index
+    </ResponseField>
+
+    <ResponseField name="model" type="string">
+      Model used to generate the embeddings
+    </ResponseField>
+
+    <ResponseField name="dimensions" type="number">
+      Dimensions of the embeddings
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://api.getmetal.io/v1/indexes/{indexId}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "id": "1",
+    "name": "Danzig's Index",
+    "app": "<APP_ID>",
+    "model": "clip",
+    "dimensions": 512
+  }
+}
+```
+
+</ResponseExample>

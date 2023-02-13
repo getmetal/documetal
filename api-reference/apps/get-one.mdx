@@ -1,7 +1,7 @@
 ---
-title: "Get Apps"
-api: "GET https://api.getmetal.io/v1/apps"
-description: "This endpoint gets a list of apps."
+title: "Get App"
+api: "GET https://api.getmetal.io/v1/apps/{appId}"
+description: "This endpoint gets a single index."
 ---
 
 ### Cookie Header
@@ -10,9 +10,13 @@ description: "This endpoint gets a list of apps."
   This is the users auth token.
 </ParamField>
 
+<ParamField required path="appId" type="string">
+  The App ID
+</ParamField>
+
 ### Response
 
-<ResponseField name="data" type="App Array">
+<ResponseField name="data" type="App Object">
   <Expandable title="properties">
     <ResponseField name="id" type="string">
       Id of the app
@@ -31,7 +35,7 @@ description: "This endpoint gets a list of apps."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api.getmetal.io/v1/apps' \
+curl --location --request GET 'https://api.getmetal.io/v1/indexes/{indexId}' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 ```
@@ -42,13 +46,10 @@ curl --location --request POST 'https://api.getmetal.io/v1/apps' \
 
 ```json Response
 {
-  "data": [{
+  "data": {
     "id": "1",
-    "name": "My first App"
-  }, {
-    "id": "2",
-    "name": "My second App"
-  }]
+    "name": "Ozzy's App"
+  }
 }
 ```
 
