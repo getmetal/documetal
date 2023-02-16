@@ -43,10 +43,6 @@
       "pages": ["sdk-install", "sdk-initiate", "sdk-index", "sdk-search"]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
-    },
-    {
       "group": "Apps",
       "pages": [
         "api-reference/apps/get",
