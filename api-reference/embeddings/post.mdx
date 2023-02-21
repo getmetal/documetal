@@ -1,6 +1,6 @@
 ---
 title: "Post Embeddings"
-api: "POST https://api.getmetal.io/v1/apps/{appId}/embeddings"
+api: "POST https://api.getmetal.io/v1/indexes/{indexId}/embeddings"
 description: "This endpoint generates and stores an embedding for the inputted data."
 ---
 
@@ -12,30 +12,28 @@ description: "This endpoint generates and stores an embedding for the inputted d
 
 ### Params
 
-<ParamField required path="appId" type="string">
-  The App ID
+<ParamField required path="indexId" type="string">
+  The Index ID
 </ParamField>
 
 ### Body
 
-<ParamField body="input" type="string" placeholder="text that will be embedded">
+<ParamField body="text" type="string" placeholder="text that will be embedded">
   The inputted text string
 </ParamField>
 
-### Response
-
-<ResponseField name="data" type="object">
-  Contains the object response.
-</ResponseField>
+<ParamField body="imageUrl" type="string" placeholder="image url">
+  URL for an image
+</ParamField>
 
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/embeddings' \
+curl --location --request POST 'https://api.getmetal.io/v1/indexes/{indexId}/embeddings' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --data-raw '{
-    "input": "text that will be embedded"
+    "text": "text that will be embedded"
 }'
 ```
 
@@ -44,12 +42,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/embeddin
 <ResponseExample>
 
 ```json Response
-{
-  "data": [{
-    id: '1',
-    input: 'text that will be embedded'
-  }]
-}
+{}
 ```
 
 </ResponseExample>

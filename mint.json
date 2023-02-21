@@ -43,16 +43,28 @@
       "pages": ["sdk-install", "sdk-initiate", "sdk-index", "sdk-search"]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
-    },
-    {
       "group": "Apps",
-      "pages": ["api-reference/apps/get"]
+      "pages": [
+        "api-reference/apps/get",
+        "api-reference/apps/get-one",
+        "api-reference/apps/post"
+      ]
     },
     {
       "group": "Embeddings",
-      "pages": ["api-reference/embeddings/get", "api-reference/embeddings/post"]
+      "pages": [
+        "api-reference/embeddings/get",
+        "api-reference/embeddings/post",
+        "api-reference/embeddings/search"
+      ]
+    },
+    {
+      "group": "Indexes",
+      "pages": [
+        "api-reference/indexes/get-one",
+        "api-reference/indexes/get",
+        "api-reference/indexes/post"
+      ]
     }
   ],
   "footerSocials": {
