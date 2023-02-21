@@ -12,7 +12,7 @@
     "anchors": { "from": "#1BBD1B", "to": "#008000" }
   },
   "topbarCtaButton": {
-    "name": "Join the Waitlist",
+    "name": "getmetal.io",
     "url": "https://www.getmetal.io"
   },
   "topbarLinks": [
