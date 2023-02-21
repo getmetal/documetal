@@ -48,20 +48,15 @@
     },
     {
       "group": "Apps",
-      "pages": [
-        "api-reference/apps/get"
-      ]
+      "pages": ["api-reference/apps/get"]
     },
     {
       "group": "Embeddings",
-      "pages": [
-        "api-reference/embeddings/get",
-        "api-reference/embeddings/post"
-      ]
+      "pages": ["api-reference/embeddings/get", "api-reference/embeddings/post"]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/getmetal_",
+    "twitter": "https://twitter.com/Metal_io",
     "linkedin": "https://www.linkedin.com/company/getmetal/about/"
   }
 }
