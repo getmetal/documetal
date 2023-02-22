@@ -23,14 +23,9 @@
   ],
   "anchors": [
     {
-      "name": "API Reference",
+      "name": "API Endpoints",
       "icon": "rectangle-terminal",
       "url": "api-reference"
-    },
-    {
-      "name": "Community",
-      "icon": "comments",
-      "url": "https://www.getmetal.io/"
     }
   ],
   "navigation": [
