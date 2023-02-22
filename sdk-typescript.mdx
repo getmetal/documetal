@@ -20,3 +20,15 @@ import MetalSDK from "@getmetal/metal-sdk";
 
 const metal = new MetalSDK("apiKey", "clientId", "appId");
 ```
+
+## Indexing
+
+```typescript
+await metal.index("text-to-index");
+```
+
+## Searching
+
+```typescript
+const results = await metal.index("term-to-search");
+```
