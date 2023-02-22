@@ -38,6 +38,10 @@
       "pages": ["get-started-typescript"]
     },
     {
+      "group": "Libraries",
+      "pages": ["sdk-typescript"]
+    },
+    {
       "group": "Miscellaneous",
       "pages": ["create-app"]
     },
