@@ -3,8 +3,32 @@ title: "Concepts"
 description: "Core concepts of the Metal Platform."
 ---
 
-| Concept | Description                                           |
-| ------- | ----------------------------------------------------- |
-| App     | A resource that represents your specific ML use-case. |
-| Index   | An indexed vector database of your _Embeddings_       |
-| Tuning  | A mechanism to fine-tune your _App_ programatically.  |
+| Concept   | Description                                                      |
+| --------- | ---------------------------------------------------------------- |
+| Indexing  | Pushing data (raw text, documents, images, etc) into our system. |
+| Searching | An operation to run semantic searches on your index.             |
+| Tuning    | A mechanism to fine-tune your _App_ programatically.             |
+
+## Indexing
+
+You can index various types of data into our system. We support the following data types:
+
+- Documents (.pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx, .odt, .ods, .odp, .rtf, .txt)
+- Images (.jpg, .png, .gif, .bmp, .tiff)
+- Raw Text (plain text)
+- Videos (.mp4)
+
+Checkout our [Indexing Embeddings](/api-reference/embeddings/post) endpoint for more details.
+
+## Searching
+
+You can run semantic searches on your embedded data in a number of ways. We support the following search term types:
+
+- Images (.jpg, .png, .gif, .bmp, .tiff)
+- Raw Text (plain text)
+
+Checkout our [Search](/api-reference/embeddings/search) endpoint for more details.
+
+## Tuning
+
+We offer a tuning mechanism to programatically improve the quality of your search results.
