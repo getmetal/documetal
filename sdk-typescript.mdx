@@ -1,4 +1,22 @@
 ---
-title: "@getmetal/metal-sdk"
+title: "TypeScript SDK"
 description: "Overview of the TypeScript Metal SDK."
 ---
+
+## Installation
+
+```bash
+npm install --save @getmetal/metal-sdk
+```
+
+## App Setup
+
+- `apiKey` - The API Key for your Org. [Create here](https://app.getmetal.io/settings/organization).
+- `clientId` - The Client ID for your Org. [Create here](https://app.getmetal.io/settings/organization).
+- `appId` - The ID of the app you want to connect to.
+
+```typescript
+import MetalSDK from "@getmetal/metal-sdk";
+
+const metal = new MetalSDK("apiKey", "clientId", "appId");
+```
