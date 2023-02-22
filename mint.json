@@ -36,11 +36,15 @@
   "navigation": [
     {
       "group": "Overview",
-      "pages": ["introduction", "concepts", "create-app"]
+      "pages": ["introduction", "concepts"]
     },
     {
       "group": "Get Started",
       "pages": ["get-started-typescript"]
+    },
+    {
+      "group": "Miscellaneous",
+      "pages": ["create-app"]
     },
     {
       "group": "Apps",
