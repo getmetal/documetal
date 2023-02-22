@@ -17,8 +17,8 @@
   },
   "topbarLinks": [
     {
-      "name": "Sign in",
-      "url": "https://app.getmetal.io"
+      "name": "Github",
+      "url": "https://github.com/getmetal/developers"
     }
   ],
   "anchors": [
