@@ -17,7 +17,7 @@
   },
   "topbarLinks": [
     {
-      "name": "Dashboard",
+      "name": "Sign in",
       "url": "https://app.getmetal.io"
     }
   ],
@@ -35,12 +35,12 @@
   ],
   "navigation": [
     {
-      "group": "Getting Started",
-      "pages": ["introduction", "create-app", "setup-dev"]
+      "group": "Overview",
+      "pages": ["introduction", "concepts", "create-app"]
     },
     {
-      "group": "Metal SDK",
-      "pages": ["sdk-install", "sdk-initiate", "sdk-index", "sdk-search"]
+      "group": "Get Started",
+      "pages": ["get-started-typescript"]
     },
     {
       "group": "Apps",

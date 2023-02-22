@@ -1,9 +1,10 @@
 ---
-title: "Dev Setup"
-description: "Using Metal's Typescript SDK."
+title: "With TypeScript"
+description: "In this guide, you'll learn how to use our Typescript SDK to implement Metal into your application. Although, we love TypeScript, you can of course utilize this library in JavaScript."
 ---
 
 ## Installing
+
 ### npm
 
 ```bash
@@ -16,23 +17,24 @@ npm i --save @getmetal/metal-sdk
 yarn add @getmetal/metal-sdk
 ```
 
-## SDK Usage
+### Simple Example
 
-```
+```TypeScript
 import MetalSDK from '@getmetal/metal-sdk';
 
+// Instantiate your Metal App
 const metal = new MetalSDK(
   'api-key',
   'client-id',
   'app-id',
 );
 
-
+// Index text into your App
 await metal.index('Tree');
 await metal.index('Food');
 await metal.index('Truck');
 
+// Run Search operations on your index
 const result = await metal.search('car');
 console.log(result) // 'Truck'
-
 ```
