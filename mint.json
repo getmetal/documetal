@@ -31,7 +31,7 @@
   "navigation": [
     {
       "group": "Overview",
-      "pages": ["introduction", "concepts"]
+      "pages": ["introduction", "concepts", "platform"]
     },
     {
       "group": "Get Started",
