@@ -72,9 +72,17 @@
     {
       "group": "Indexes",
       "pages": [
-        "api-reference/indexes/get-one",
         "api-reference/indexes/get",
+        "api-reference/indexes/get-one",
         "api-reference/indexes/post"
+      ]
+    },
+    {
+      "group": "Tunings",
+      "pages": [
+        "api-reference/tunings/get",
+        "api-reference/tunings/get-one",
+        "api-reference/tunings/post"
       ]
     }
   ],
