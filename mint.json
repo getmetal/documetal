@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Github",
-      "url": "https://github.com/getmetal/developers"
+      "url": "https://github.com/getmetal/metal"
     }
   ],
   "anchors": [
@@ -71,7 +71,7 @@
     }
   ],
   "footerSocials": {
-    "github": "https://www.github.com/getmetal/developers/",
+    "github": "https://www.github.com/getmetal/metal/",
     "twitter": "https://twitter.com/Metal_io",
     "linkedin": "https://www.linkedin.com/company/getmetal/about/"
   }
