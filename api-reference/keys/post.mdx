@@ -1,0 +1,60 @@
+---
+title: "Create Key"
+api: "POST https://api.getmetal.io/v1/keys"
+description: "This endpoint creates a Key."
+---
+
+### Cookie Header
+
+<ParamField required header="token" type="string">
+  This is the users auth token.
+</ParamField>
+
+### Body
+
+<ParamField body="name" type="string" placeholder="name of the Key" required>
+  Name of the Key
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Key Object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the key
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Name of the Key
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/keys' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+--data-raw '{
+    "name": "My API Key"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "id": "1",
+    "name": "My API Key",
+    "keyLastFour": "1234",
+    "clientId": "1234567890"
+  }
+}
+```
+
+</ResponseExample>

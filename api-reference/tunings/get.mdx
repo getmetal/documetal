@@ -1,0 +1,79 @@
+---
+title: "Get Tunings"
+api: "GET https://api.getmetal.io/v1/apps/{appId}/tunings"
+description: "This endpoint gets a list of tunings for an app."
+---
+
+### Cookie Header
+
+<ParamField required header="token" type="string">
+  This is the users auth token.
+</ParamField>
+
+### Params
+
+<ParamField required path="appId" type="string">
+  The App ID
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Tuning Array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the Tuning
+    </ResponseField>
+
+    <ResponseField name="app" type="string">
+      Id of the app for the Tuning
+    </ResponseField>
+
+    <ResponseField name="idA" type="string">
+     Embedding ID A
+    </ResponseField>
+
+    <ResponseField name="idB" type="string">
+      Embedding ID B
+    </ResponseField>
+
+    <ResponseField name="result" type="string">
+      The score result. Either `-1` or `1`
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://api.getmetal.io/v1/apps/{appId}/tunings' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": [
+    {
+      "id": "1",
+      "app": "app-123",
+      "idA": "embedding-1",
+      "idB": "embedding-2",
+      "result": "-1"
+    },
+    {
+      "id": "2",
+      "app": "app-123",
+      "idA": "embedding-3",
+      "idB": "embedding-4",
+      "result": "1"
+    }
+  ]
+}
+```
+
+</ResponseExample>

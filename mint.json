@@ -62,6 +62,14 @@
       ]
     },
     {
+      "group": "Keys",
+      "pages": [
+        "api-reference/keys/get",
+        "api-reference/keys/get-one",
+        "api-reference/keys/post"
+      ]
+    },
+    {
       "group": "Indexes",
       "pages": [
         "api-reference/indexes/get-one",

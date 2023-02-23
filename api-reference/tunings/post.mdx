@@ -1,0 +1,94 @@
+---
+title: "Create Index"
+api: "POST https://api.getmetal.io/v1/apps/{appId}/tunings"
+description: "This endpoint creates an index for an app."
+---
+
+### Cookie Header
+
+<ParamField required header="token" type="string">
+  This is the users auth token.
+</ParamField>
+
+### Params
+
+<ParamField required path="appId" type="string">
+  The App ID
+</ParamField>
+
+### Body
+
+<ParamField body="idA" type="string" placeholder="Embedding ID A" required>
+  Embedding ID A
+</ParamField>
+
+<ParamField body="idB" type="string" placeholder="Embedding ID B" required>
+  Embedding ID B
+</ParamField>
+
+<ParamField
+  body="result"
+  type="string"
+  placeholder="Score result. Either -1 or 1"
+  required
+>
+  Score result. Either -1 or 1
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Tuning Object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the Tuning
+    </ResponseField>
+
+    <ResponseField name="app" type="string">
+      Id of the app for the Tuning
+    </ResponseField>
+
+    <ResponseField name="idA" type="string">
+     Embedding ID A
+    </ResponseField>
+
+    <ResponseField name="idB" type="string">
+      Embedding ID B
+    </ResponseField>
+
+    <ResponseField name="result" type="string">
+      The score result. Either `-1` or `1`
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/tunings' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+--data-raw '{
+    "idA": "embedding-1",
+    "idB": "embedding-2",
+    "results": '-1'
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "id": "1",
+    "app": "app-123",
+    "idA": "embedding-1",
+    "idB": "embedding-2",
+    "result": "-1"
+  }
+}
+```
+
+</ResponseExample>

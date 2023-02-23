@@ -1,0 +1,67 @@
+---
+title: "Get Keys"
+api: "GET https://api.getmetal.io/v1/keys"
+description: "This endpoint gets a list of key."
+---
+
+### Cookie Header
+
+<ParamField required header="token" type="string">
+  This is the users auth token.
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Key Array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      ID of the key
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Name of the key
+    </ResponseField>
+
+    <ResponseField name="keyLastFour" type="string">
+     Last 4 digits of the key
+    </ResponseField>
+
+    <ResponseField name="clientId" type="string">
+     Client ID of the key
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/keys' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": [
+    {
+      "id": "1",
+      "name": "My first key"
+      "keyLastFour": "1234",
+      "clientId": "1234567890"
+    },
+    {
+      "id": "2",
+      "name": "My second key"
+      "keyLastFour": "5679",
+      "clientId": "9876543210"
+    },
+  ]
+}
+```
+
+</ResponseExample>
