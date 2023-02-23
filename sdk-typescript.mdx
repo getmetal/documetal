@@ -15,9 +15,11 @@ npm install --save @getmetal/metal-sdk
 
 ## App Setup
 
-- `apiKey` - The API Key for your Org. [Create here](https://app.getmetal.io/settings/organization).
-- `clientId` - The Client ID for your Org. [Create here](https://app.getmetal.io/settings/organization).
-- `appId` - The ID of the app you want to connect to.
+| Param      | Type   | Description                                                                               |
+| ---------- | ------ | ----------------------------------------------------------------------------------------- |
+| `apiKey`   | string | The API Key for your Org. [Create here](https://app.getmetal.io/settings/organization).   |
+| `clientId` | string | The Client ID for your Org. [Create here](https://app.getmetal.io/settings/organization). |
+| `appId`    | string | The ID of the app you want to connect to.                                                 |
 
 ```typescript
 import MetalSDK from "@getmetal/metal-sdk";
@@ -27,11 +29,19 @@ const metal = new MetalSDK("apiKey", "clientId", "appId");
 
 ## Indexing
 
+| Param  | Type   | Description                            |
+| ------ | ------ | -------------------------------------- |
+| `text` | string | The text to be vectorized and indexed. |
+
 ```typescript
 await metal.index("text-to-index");
 ```
 
 ## Searching
+
+| Param  | Type   | Description                        |
+| ------ | ------ | ---------------------------------- |
+| `term` | string | The term for the search operation. |
 
 ```typescript
 const results = await metal.index("term-to-search");
@@ -39,9 +49,11 @@ const results = await metal.index("term-to-search");
 
 ## Tuning
 
-- `idA` - The ID of the first embedding.
-- `idB` - The ID of the second embedding.
-- `score` ('-1' | '1') - The score of the similarity between the two embeddings.
+| Param   | Type   | Description                                                |
+| ------- | ------ | ---------------------------------------------------------- |
+| `idA`   | string | The ID of the first embedding..                            |
+| `idB`   | string | The ID of the second embedding.                            |
+| `score` | string | The "closeness score" of the two items. Either '-1' or '1' |
 
 ```typescript
 await metal.tune(idA, idB, score);
