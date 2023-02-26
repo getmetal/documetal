@@ -1,0 +1,60 @@
+---
+title: "Python SDK"
+description: "Overview of the Python Metal SDK."
+---
+
+<Note>
+  You'll need an [API Key](https://app.getmetal.io/settings/organization) to use
+  the SDK.
+</Note>
+## Installation
+
+```bash
+pip install metal-sdk
+```
+
+## App Setup
+
+| Param       | Type   | Description                                                                               |
+| ----------- | ------ | ----------------------------------------------------------------------------------------- |
+| `api_key`   | string | The API Key for your Org. [Create here](https://app.getmetal.io/settings/organization).   |
+| `client_id` | string | The Client ID for your Org. [Create here](https://app.getmetal.io/settings/organization). |
+| `app_id`    | string | The ID of the app you want to connect to.                                                 |
+
+```python
+import MetalSDK
+
+metal = new MetalSDK("api_key", "client_id", "app_id");
+```
+
+## Indexing
+
+| Param  | Type   | Description                            |
+| ------ | ------ | -------------------------------------- |
+| `text` | string | The text to be vectorized and indexed. |
+
+```python
+metal.index({ text: "text-to-index" });
+```
+
+## Searching
+
+| Param  | Type   | Description                        |
+| ------ | ------ | ---------------------------------- |
+| `text` | string | The text for the search operation. |
+
+```python
+const results = metal.search({ text: "term-to-search" });
+```
+
+## Tuning
+
+| Param   | Type             | Description                                                |
+| ------- | ---------------- | ---------------------------------------------------------- |
+| `id_a`  | string           | The ID of the first embedding..                            |
+| `id_b`  | string           | The ID of the second embedding.                            |
+| `label` | number[-1, 0, 1] | The "closeness score" of the two items. Either -1, 0, or 1 |
+
+```python
+metal.tune(idA, idB, label);
+```
