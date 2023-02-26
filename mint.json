@@ -43,7 +43,7 @@
     },
     {
       "group": "Miscellaneous",
-      "pages": ["create-app"]
+      "pages": ["misc-get-keys", "misc-create-app"]
     },
     {
       "group": "Apps",
