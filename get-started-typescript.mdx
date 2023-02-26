@@ -30,11 +30,11 @@ const metal = new MetalSDK(
 );
 
 // Index text into your App
-await metal.index('Tree');
-await metal.index('Food');
-await metal.index('Truck');
+await metal.index({ text: 'Tree' });
+await metal.index({ text: 'Food' });
+await metal.index({ text: 'Truck' });
 
 // Run Search operations on your index
-const result = await metal.search('car');
+const result = await metal.search({ text: 'car' });
 console.log(result) // 'Truck'
 ```
