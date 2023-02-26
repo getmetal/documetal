@@ -39,7 +39,7 @@
     },
     {
       "group": "Libraries",
-      "pages": ["sdk-typescript"]
+      "pages": ["sdk-python", "sdk-typescript"]
     },
     {
       "group": "Miscellaneous",
