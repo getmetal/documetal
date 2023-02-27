@@ -57,8 +57,8 @@
       "group": "Embeddings",
       "pages": [
         "api-reference/embeddings/get",
-        "api-reference/embeddings/post",
-        "api-reference/embeddings/search"
+        "api-reference/embeddings/search",
+        "api-reference/embeddings/post"
       ]
     },
     {
