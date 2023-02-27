@@ -4,10 +4,14 @@ api: "POST https://api.getmetal.io/v1/indexes/{indexId}/embeddings"
 description: "This endpoint generates and stores an embedding for the inputted data."
 ---
 
-### Header
+### Auth Headers
 
-<ParamField required header="token"  type="string">
-  The users auth token.
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  An Client ID for your org.
 </ParamField>
 
 ### Params
@@ -31,7 +35,8 @@ description: "This endpoint generates and stores an embedding for the inputted d
 ```bash Example Request
 curl --location --request POST 'https://api.getmetal.io/v1/indexes/{indexId}/embeddings' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
 --data-raw '{
     "text": "text that will be embedded"
 }'

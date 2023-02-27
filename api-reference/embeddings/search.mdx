@@ -4,10 +4,14 @@ api: "POST https://api.getmetal.io/v1/indexes/{indexId}/embeddings/search"
 description: "This endpoint searches for the closest embeddings"
 ---
 
-### Cookie Header
+### Auth Headers
 
-<ParamField required header="token"  type="string">
-  This is the users auth token.
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  An Client ID for your org.
 </ParamField>
 
 ### Params
@@ -31,6 +35,7 @@ description: "This endpoint searches for the closest embeddings"
     <ResponseField name="metatada" type="object">
       Metadata of the embedding
     </ResponseField>
+
   </Expandable>
 </ResponseField>
 
@@ -39,7 +44,8 @@ description: "This endpoint searches for the closest embeddings"
 ```bash Example Request
 curl --location --request POST 'https://api.getmetal.io/v1/indexes/{indexId}/embeddings/search' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
 --data-raw '{
     "text": "Generals gathered in their masses"
 }'
@@ -51,21 +57,24 @@ curl --location --request POST 'https://api.getmetal.io/v1/indexes/{indexId}/emb
 
 ```json Response
 {
-  "data": [{
-    "id": "1",
-    "dist": "0.666",
-    "metadata": {
-      "name": "Helloween",
-      "year": 1984
+  "data": [
+    {
+      "id": "1",
+      "dist": "0.666",
+      "metadata": {
+        "name": "Helloween",
+        "year": 1984
+      }
+    },
+    {
+      "id": "2",
+      "dist": "0.999",
+      "metadata": {
+        "name": "Iron Maiden",
+        "year": 1975
+      }
     }
-  }, {
-    "id": "2",
-    "dist": "0.999",
-    "metadata": {
-      "name": "Iron Maiden",
-      "year": 1975
-    }
-  }]
+  ]
 }
 ```
 

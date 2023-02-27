@@ -4,10 +4,14 @@ api: "POST https://api.getmetal.io/v1/apps/{appId}/indexes"
 description: "This endpoint creates an index for an app."
 ---
 
-### Cookie Header
+### Auth Headers
 
-<ParamField required header="token"  type="string">
-  This is the users auth token.
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  An Client ID for your org.
 </ParamField>
 
 ### Params
@@ -18,7 +22,12 @@ description: "This endpoint creates an index for an app."
 
 ### Body
 
-<ParamField body="model" type="string" placeholder="model used for generating embeddings" required>
+<ParamField
+  body="model"
+  type="string"
+  placeholder="model used for generating embeddings"
+  required
+>
   Model used to generate the embeddings
 </ParamField>
 
@@ -26,10 +35,14 @@ description: "This endpoint creates an index for an app."
   Name of the Index
 </ParamField>
 
-<ParamField body="dimensions" type="integer" min="3" placeholder="number of dimensions that the embeddings will have">
+<ParamField
+  body="dimensions"
+  type="integer"
+  min="3"
+  placeholder="number of dimensions that the embeddings will have"
+>
   Number of dimensions for the stored vectors
 </ParamField>
-
 
 ### Response
 
@@ -54,6 +67,7 @@ description: "This endpoint creates an index for an app."
     <ResponseField name="dimensions" type="number">
       Dimensions of the embeddings
     </ResponseField>
+
   </Expandable>
 </ResponseField>
 
@@ -62,7 +76,8 @@ description: "This endpoint creates an index for an app."
 ```bash Example Request
 curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/indexes' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
 --data-raw '{
     "model": "custom",
     "name": "Ozzy Osbourne",

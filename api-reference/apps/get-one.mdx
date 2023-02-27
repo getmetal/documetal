@@ -4,11 +4,17 @@ api: "GET https://api.getmetal.io/v1/apps/{appId}"
 description: "This endpoint gets a single index."
 ---
 
-### Cookie Header
+### Auth Headers
 
-<ParamField required header="token"  type="string">
-  This is the users auth token.
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
 </ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  An Client ID for your org.
+</ParamField>
+
+### Params
 
 <ParamField required path="appId" type="string">
   The App ID
@@ -29,6 +35,7 @@ description: "This endpoint gets a single index."
     <ResponseField name="activeIndexId" type="string">
       Id of the active index
     </ResponseField>
+
   </Expandable>
 </ResponseField>
 
@@ -37,7 +44,8 @@ description: "This endpoint gets a single index."
 ```bash Example Request
 curl --location --request GET 'https://api.getmetal.io/v1/indexes/{indexId}' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
 ```
 
 </RequestExample>

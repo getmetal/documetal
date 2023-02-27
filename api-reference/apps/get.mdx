@@ -4,10 +4,14 @@ api: "GET https://api.getmetal.io/v1/apps"
 description: "This endpoint gets a list of apps."
 ---
 
-### Cookie Header
+### Auth Headers
 
-<ParamField required header="token"  type="string">
-  This is the users auth token.
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  An Client ID for your org.
 </ParamField>
 
 ### Response
@@ -25,6 +29,7 @@ description: "This endpoint gets a list of apps."
     <ResponseField name="activeIndexId" type="string">
       Id of the active index
     </ResponseField>
+
   </Expandable>
 </ResponseField>
 
@@ -33,7 +38,8 @@ description: "This endpoint gets a list of apps."
 ```bash Example Request
 curl --location --request POST 'https://api.getmetal.io/v1/apps' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
 ```
 
 </RequestExample>
@@ -42,13 +48,16 @@ curl --location --request POST 'https://api.getmetal.io/v1/apps' \
 
 ```json Response
 {
-  "data": [{
-    "id": "1",
-    "name": "My first App"
-  }, {
-    "id": "2",
-    "name": "My second App"
-  }]
+  "data": [
+    {
+      "id": "1",
+      "name": "My first App"
+    },
+    {
+      "id": "2",
+      "name": "My second App"
+    }
+  ]
 }
 ```
 

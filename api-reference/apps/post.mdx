@@ -4,10 +4,14 @@ api: "POST https://api.getmetal.io/v1/apps"
 description: "This endpoint creates an app."
 ---
 
-### Cookie Header
+### Auth Headers
 
-<ParamField required header="token"  type="string">
-  This is the users auth token.
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  An Client ID for your org.
 </ParamField>
 
 ### Body
@@ -15,7 +19,6 @@ description: "This endpoint creates an app."
 <ParamField body="name" type="string" placeholder="name of the index" required>
   Name of the App
 </ParamField>
-
 
 ### Response
 
@@ -32,6 +35,7 @@ description: "This endpoint creates an app."
     <ResponseField name="activeIndexId" type="string">
       Id of the active index
     </ResponseField>
+
   </Expandable>
 </ResponseField>
 
@@ -40,7 +44,8 @@ description: "This endpoint creates an app."
 ```bash Example Request
 curl --location --request POST 'https://api.getmetal.io/v1/apps' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
 --data-raw '{
     "name": "Dave Mustaine's App"
 }'

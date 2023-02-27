@@ -4,10 +4,14 @@ api: "POST https://api.getmetal.io/v1/keys"
 description: "This endpoint creates a Key."
 ---
 
-### Cookie Header
+### Auth Headers
 
-<ParamField required header="token" type="string">
-  This is the users auth token.
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  An Client ID for your org.
 </ParamField>
 
 ### Body
@@ -36,7 +40,8 @@ description: "This endpoint creates a Key."
 ```bash Example Request
 curl --location --request POST 'https://api.getmetal.io/v1/keys' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
 --data-raw '{
     "name": "My API Key"
 }'
