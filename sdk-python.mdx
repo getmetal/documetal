@@ -21,7 +21,7 @@ pip install metal-sdk
 ```python
 from metal_sdk.Metal import Metal
 
-metal = Metal("api_key", "client_id", "app_id");
+metal = Metal("api_key", "client_id", "app_id")
 ```
 
 ## Indexing
@@ -34,7 +34,7 @@ metal = Metal("api_key", "client_id", "app_id");
 | `text`        | string   | The text to be vectorized and indexed.           |
 
 ```python
-metal.index({ text: "text-to-index" });
+metal.index({ text: "text-to-index" })
 ```
 
 ## Searching
@@ -47,7 +47,7 @@ metal.index({ text: "text-to-index" });
 | `text`        | string   | The text to be vectorized and searched.           |
 
 ```python
-results = metal.search({ text: "term-to-search" });
+results = metal.search({ text: "term-to-search" })
 ```
 
 ## Tuning
@@ -59,5 +59,5 @@ results = metal.search({ text: "term-to-search" });
 | `label` | number[-1, 0, 1] | The "closeness score" of the two items. Either -1, 0, or 1 |
 
 ```python
-metal.tune('id_a', 'id_b', 1);
+metal.tune('id_a', 'id_b', 1)
 ```
