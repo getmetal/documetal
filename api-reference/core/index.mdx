@@ -1,6 +1,6 @@
 ---
-title: "Create Embedding"
-api: "POST https://api.getmetal.io/v1/indexes/{indexId}/embeddings"
+title: "/index"
+api: "POST https://api.getmetal.io/v1/index"
 description: "This endpoint generates and stores an embedding for the inputted data."
 ---
 
@@ -14,30 +14,33 @@ description: "This endpoint generates and stores an embedding for the inputted d
   A Client ID for your org.
 </ParamField>
 
-### Params
-
-<ParamField required path="indexId" type="string">
-  The Index ID
-</ParamField>
-
 ### Body
 
-<ParamField body="text" type="string" placeholder="text that will be embedded">
-  The inputted text string
+<ParamField body="app" type="string" placeholder="App ID" required>
+  App ID
 </ParamField>
 
-<ParamField body="imageUrl" type="string" placeholder="image url">
-  URL for an image
+<ParamField body="text" type="string">
+  Text
+</ParamField>
+
+<ParamField body="imageUrl" type="string">
+  Image URL
+</ParamField>
+
+<ParamField body="embedding" type="array">
+  Custom Embeddings
 </ParamField>
 
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api.getmetal.io/v1/indexes/{indexId}/embeddings' \
+curl --location --request POST 'https://api.getmetal.io/v1/index' \
 --header 'Content-Type: application/json' \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \
 --data-raw '{
+    "app": "app-id",
     "text": "text that will be embedded"
 }'
 ```
