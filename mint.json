@@ -46,36 +46,33 @@
       "pages": ["misc-get-keys", "misc-create-app"]
     },
     {
+      "group": "Core",
+      "pages": [
+        "api-reference/core/index",
+        "api-reference/core/search",
+        "api-reference/core/tune"
+      ]
+    },
+    {
       "group": "Apps",
       "pages": [
-        "api-reference/apps/get",
         "api-reference/apps/get-one",
+        "api-reference/apps/get",
         "api-reference/apps/post"
       ]
     },
-    {
-      "group": "Embeddings",
-      "pages": [
-        "api-reference/embeddings/get",
-        "api-reference/embeddings/search",
-        "api-reference/embeddings/post"
-      ]
-    },
+
     {
       "group": "Indexes",
       "pages": [
-        "api-reference/indexes/get",
         "api-reference/indexes/get-one",
+        "api-reference/indexes/get",
         "api-reference/indexes/post"
       ]
     },
     {
       "group": "Tunings",
-      "pages": [
-        "api-reference/tunings/get",
-        "api-reference/tunings/get-one",
-        "api-reference/tunings/post"
-      ]
+      "pages": ["api-reference/tunings/get-one", "api-reference/tunings/get"]
     }
   ],
   "footerSocials": {

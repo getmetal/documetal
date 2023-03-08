@@ -1,6 +1,6 @@
 ---
-title: "Search Embeddings"
-api: "POST https://api.getmetal.io/v1/indexes/{indexId}/embeddings/search"
+title: "/search"
+api: "POST https://api.getmetal.io/v1/search"
 description: "This endpoint searches for the closest embeddings"
 ---
 
@@ -14,10 +14,22 @@ description: "This endpoint searches for the closest embeddings"
   A Client ID for your org.
 </ParamField>
 
-### Params
+### Body
 
-<ParamField required path="indexId" type="string">
-  The Index ID
+<ParamField body="app" type="string" placeholder="App ID" required>
+  App ID
+</ParamField>
+
+<ParamField body="text" type="string">
+  Text
+</ParamField>
+
+<ParamField body="imageUrl" type="string">
+  Image URL
+</ParamField>
+
+<ParamField body="embedding" type="array">
+  Custom Embeddings
 </ParamField>
 
 ### Response
@@ -42,11 +54,12 @@ description: "This endpoint searches for the closest embeddings"
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api.getmetal.io/v1/indexes/{indexId}/embeddings/search' \
+curl --location --request POST 'https://api.getmetal.io/v1/search' \
 --header 'Content-Type: application/json' \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \
 --data-raw '{
+    "app": "app-id",
     "text": "Generals gathered in their masses"
 }'
 ```
