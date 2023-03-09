@@ -13,22 +13,25 @@ description: "Core concepts of the Metal Platform."
 
 You can index various types of data into our system. We support the following data types:
 
-- Images (.jpg, .png, .gif, .bmp, .tiff)
-- Raw Text (plain text)
+- Image URLs (.jpg, .png, .gif, .bmp, .tiff)
+- Text (string)
+- Embeddings (number[])
 
-Checkout our [Indexing Embeddings](/api-reference/embeddings/post) endpoint for more details.
+Checkout our [Index](/api-reference/core/index) endpoint for more details.
 
 ## Searching
 
 You can run semantic searches on your embedded data in a number of ways. We support the following search term types:
 
 - Images (.jpg, .png, .gif, .bmp, .tiff)
-- Raw Text (plain text)
+- Text (string)
 
-Checkout our [Search](/api-reference/embeddings/search) endpoint for more details.
+Checkout our [Search](/api-reference/core/search) endpoint for more details.
 
 ## Tuning
 
 We offer a tuning mechanism to programatically improve the quality of your search results.
 By labeling your data with the tune endpoint, you can improve the accuracy of your data by
 generated custom embeddings for your specific use case.
+
+Checkout our [Tune](/api-reference/core/tune) endpoint for more details.
