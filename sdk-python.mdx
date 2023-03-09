@@ -26,12 +26,11 @@ metal = Metal("api_key", "client_id", "app_id")
 
 ## Indexing
 
-| Param         | Type     | Description                                      |
-| ------------- | -------- | ------------------------------------------------ |
-| `embedding`   | number[] | Raw embeddings to be indexed.                    |
-| `imageBase64` | string   | A Base64 image to be vectorized and indexed.     |
-| `imageUrl`    | string   | A URL for an image to be vectorized and indexed. |
-| `text`        | string   | The text to be vectorized and indexed.           |
+| Param       | Type     | Description                                      |
+| ----------- | -------- | ------------------------------------------------ |
+| `embedding` | number[] | Raw embeddings to be indexed.                    |
+| `imageUrl`  | string   | A URL for an image to be vectorized and indexed. |
+| `text`      | string   | The text to be vectorized and indexed.           |
 
 ```python
 metal.index({ text: "text-to-index" })
@@ -39,12 +38,11 @@ metal.index({ text: "text-to-index" })
 
 ## Searching
 
-| Param         | Type     | Description                                       |
-| ------------- | -------- | ------------------------------------------------- |
-| `embedding`   | number[] | Raw embeddings to be searched.                    |
-| `imageBase64` | string   | A Base64 image to be vectorized and searched.     |
-| `imageUrl`    | string   | A URL for an image to be vectorized and searched. |
-| `text`        | string   | The text to be vectorized and searched.           |
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `embedding` | number[] | Raw embeddings to be searched.                    |
+| `imageUrl`  | string   | A URL for an image to be vectorized and searched. |
+| `text`      | string   | The text to be vectorized and searched.           |
 
 ```python
 results = metal.search({ text: "term-to-search" })
@@ -52,11 +50,11 @@ results = metal.search({ text: "term-to-search" })
 
 ## Tuning
 
-| Param   | Type             | Description                                                |
-| ------- | ---------------- | ---------------------------------------------------------- |
-| `id_a`  | string           | The ID of the first embedding..                            |
-| `id_b`  | string           | The ID of the second embedding.                            |
-| `label` | number[-1, 0, 1] | The "closeness score" of the two items. Either -1, 0, or 1 |
+| Param   | Type             | Description                                                      |
+| ------- | ---------------- | ---------------------------------------------------------------- |
+| `id_a`  | string           | The ID of the first embedding                                    |
+| `id_b`  | string           | The ID of the second embedding                                   |
+| `label` | number[-1, 0, 1] | The "closeness score" of the two items. Either `-1`, `0`, or `1` |
 
 ```python
 metal.tune('id_a', 'id_b', 1)

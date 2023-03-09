@@ -31,12 +31,12 @@ description: "This endpoint creates an index for an app."
 </ParamField>
 
 <ParamField
-  body="result"
-  type="string"
-  placeholder="Score result. Either -1 or 1"
+  body="label"
+  type="number"
+  placeholder="Score result. Either -1, 0, or 1"
   required
 >
-  Score result. Either -1 or 1
+  Closeness score. Either `-1`, `0`, or `1`
 </ParamField>
 
 ### Response
@@ -59,8 +59,8 @@ description: "This endpoint creates an index for an app."
       Embedding ID B
     </ResponseField>
 
-    <ResponseField name="result" type="string">
-      The score result. Either `-1` or `1`
+    <ResponseField name="label" type="string">
+      The score label. Either `-1`, `0`, or `1`
     </ResponseField>
 
   </Expandable>
@@ -76,7 +76,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/tunings'
 --data-raw '{
     "idA": "embedding-1",
     "idB": "embedding-2",
-    "results": '-1'
+    "label": -1
 }'
 ```
 
@@ -91,7 +91,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/tunings'
     "app": "app-123",
     "idA": "embedding-1",
     "idB": "embedding-2",
-    "result": "-1"
+    "label": -1
   }
 }
 ```
