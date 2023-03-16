@@ -58,5 +58,5 @@ results = metal.search({ text: "term-to-search" })
 | `label` | number[-1, 0, 1] | The "closeness score" of the two items. Either `-1`, `0`, or `1` |
 
 ```python
-metal.tune('id_a', 'id_b', 1)
+metal.tune({ idA: 'id_a', idB: 'id_b', label: 1 })
 ```
