@@ -33,8 +33,12 @@ description: "This endpoint searches for the closest embeddings"
 </ParamField>
 
 ### Query
+<ParamField query="idsOnly" type="boolean" default="false">
+  Return only a list of ids without any metadata.
+</ParamField>
+
 <ParamField query="limit" type="number" default="5">
-  Limit
+  The limit of possible reponses from your search.
 </ParamField>
 
 ### Response
