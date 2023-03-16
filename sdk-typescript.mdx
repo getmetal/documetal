@@ -58,5 +58,5 @@ const results = await metal.search({ text: "term-to-search" });
 | `label` | number[-1, 0, 1] | The "closeness score" of the two items. Either `-1`, `0` or `1` |
 
 ```typescript
-await metal.tune(idA, idB, score);
+await metal.tune({ idA, idB, label });
 ```
