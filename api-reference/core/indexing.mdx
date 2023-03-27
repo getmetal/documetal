@@ -36,6 +36,10 @@ description: "This endpoint generates and stores an embedding with the inputted 
   Custom Embeddings
 </ParamField>
 
+<ParamField body="metadata" type="object">
+  Metadata object.
+</ParamField>
+
 <RequestExample>
 
 ```bash Example Request
@@ -47,6 +51,9 @@ curl --location --request POST 'https://api.getmetal.io/v1/index' \
     "app": "app-id",
     "text": "text that will be embedded",
     "id": "my-unique-id",
+    "metadata": {
+        "fieldA": "my custom value"
+    }
 }'
 ```
 
@@ -59,7 +66,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/index' \
   "createdAt": "2023-03-17T17:21:13.163Z",
   "id": "my-unique-id",
   "metadata": {
-    "text": "text that will be embedded"
+      "fieldA": "my custom value"
   },
   "text": "text that will be embedded"
 }
