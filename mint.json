@@ -22,6 +22,10 @@
         {
             "name": "Github",
             "url": "https://github.com/getmetal/metal"
+        },
+        {
+            "name": "Discord",
+            "url": "https://discord.gg/PZuczkfR"
         }
     ],
     "anchors": [
