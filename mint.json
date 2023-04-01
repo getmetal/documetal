@@ -1,105 +1,89 @@
 {
-    "name": "Metal",
-    "logo": {
-        "light": "/logo/light.svg",
-        "dark": "/logo/dark.svg"
-    },
-    "favicon": "/favicon.png",
-    "colors": {
-        "primary": "#008000",
-        "light": "#1BBD1B",
-        "dark": "#008000",
-        "anchors": {
-            "from": "#1BBD1B",
-            "to": "#008000"
-        }
-    },
-    "topbarCtaButton": {
-        "name": "getmetal.io",
-        "url": "https://www.getmetal.io"
-    },
-    "topbarLinks": [
-        {
-            "name": "Github",
-            "url": "https://github.com/getmetal/metal"
-        },
-        {
-            "name": "Discord",
-            "url": "https://discord.gg/PZuczkfR"
-        }
-    ],
-    "anchors": [
-        {
-            "name": "API Endpoints",
-            "icon": "rectangle-terminal",
-            "url": "api-reference"
-        }
-    ],
-    "navigation": [
-        {
-            "group": "Overview",
-            "pages": [
-                "introduction",
-                "platform",
-                "concepts",
-                "authentication"
-            ]
-        },
-        {
-            "group": "Get Started",
-            "pages": [
-                "get-started-typescript"
-            ]
-        },
-        {
-            "group": "Libraries",
-            "pages": [
-                "sdk-python",
-                "sdk-typescript"
-            ]
-        },
-        {
-            "group": "Miscellaneous",
-            "pages": [
-                "misc-get-keys",
-                "misc-create-app"
-            ]
-        },
-        {
-            "group": "Core",
-            "pages": [
-                "api-reference/core/indexing",
-                "api-reference/core/search",
-                "api-reference/core/tune"
-            ]
-        },
-        {
-            "group": "Apps",
-            "pages": [
-                "api-reference/apps/get-one",
-                "api-reference/apps/get",
-                "api-reference/apps/post"
-            ]
-        },
-        {
-            "group": "Indexes",
-            "pages": [
-                "api-reference/indexes/get-one",
-                "api-reference/indexes/get",
-                "api-reference/indexes/post"
-            ]
-        },
-        {
-            "group": "Tunings",
-            "pages": [
-                "api-reference/tunings/get-one",
-                "api-reference/tunings/get"
-            ]
-        }
-    ],
-    "footerSocials": {
-        "github": "https://www.github.com/getmetal/metal/",
-        "twitter": "https://twitter.com/Metal_io",
-        "linkedin": "https://www.linkedin.com/company/getmetal/about/"
+  "name": "Metal",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#008000",
+    "light": "#1BBD1B",
+    "dark": "#008000",
+    "anchors": {
+      "from": "#1BBD1B",
+      "to": "#008000"
     }
+  },
+  "topbarCtaButton": {
+    "name": "getmetal.io",
+    "url": "https://www.getmetal.io"
+  },
+  "topbarLinks": [
+    {
+      "name": "Github",
+      "url": "https://github.com/getmetal/metal"
+    },
+    {
+      "name": "Discord",
+      "url": "https://discord.gg/GHY3Y8tU3J"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "API Endpoints",
+      "icon": "rectangle-terminal",
+      "url": "api-reference"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Overview",
+      "pages": ["introduction", "platform", "concepts", "authentication"]
+    },
+    {
+      "group": "Get Started",
+      "pages": ["get-started-typescript"]
+    },
+    {
+      "group": "Libraries",
+      "pages": ["sdk-python", "sdk-typescript"]
+    },
+    {
+      "group": "Miscellaneous",
+      "pages": ["misc-get-keys", "misc-create-app"]
+    },
+    {
+      "group": "Core",
+      "pages": [
+        "api-reference/core/indexing",
+        "api-reference/core/search",
+        "api-reference/core/tune"
+      ]
+    },
+    {
+      "group": "Apps",
+      "pages": [
+        "api-reference/apps/get-one",
+        "api-reference/apps/get",
+        "api-reference/apps/post"
+      ]
+    },
+    {
+      "group": "Indexes",
+      "pages": [
+        "api-reference/indexes/get-one",
+        "api-reference/indexes/get",
+        "api-reference/indexes/post"
+      ]
+    },
+    {
+      "group": "Tunings",
+      "pages": ["api-reference/tunings/get-one", "api-reference/tunings/get"]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://www.github.com/getmetal/metal/",
+    "twitter": "https://twitter.com/Metal_io",
+    "linkedin": "https://www.linkedin.com/company/getmetal/about/"
+  }
 }
