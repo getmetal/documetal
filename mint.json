@@ -84,6 +84,14 @@
     {
       "group": "Tunings",
       "pages": ["api-reference/tunings/get-one", "api-reference/tunings/get"]
+    },
+    {
+      "group": "API",
+      "pages": [
+        "motorhead/api/get-memory",
+        "motorhead/api/post-memory",
+        "motorhead/api/del-memory"
+      ]
     }
   ],
   "footerSocials": {
