@@ -30,12 +30,12 @@
   ],
   "anchors": [
     {
-      "name": "API Endpoints",
+      "name": "Metal API",
       "icon": "rectangle-terminal",
       "url": "api-reference"
     },
     {
-      "name": "Motörhead",
+      "name": "Motörhead (os)",
       "icon": "brain",
       "url": "motorhead"
     }
