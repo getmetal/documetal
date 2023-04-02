@@ -33,6 +33,11 @@
       "name": "API Endpoints",
       "icon": "rectangle-terminal",
       "url": "api-reference"
+    },
+    {
+      "name": "Motörhead",
+      "icon": "rectangle-brain",
+      "url": "motorhead"
     }
   ],
   "navigation": [
