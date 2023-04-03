@@ -35,7 +35,7 @@
       "url": "api-reference"
     },
     {
-      "name": "Motörhead (os)",
+      "name": "Motörhead",
       "icon": "brain",
       "url": "motorhead"
     }
@@ -86,11 +86,15 @@
       "pages": ["api-reference/tunings/get-one", "api-reference/tunings/get"]
     },
     {
-      "group": "API",
+      "group": "Overview",
+      "pages": ["motorhead/introduction"]
+    },
+    {
+      "group": "Memory",
       "pages": [
-        "motorhead/api/get-memory",
-        "motorhead/api/post-memory",
-        "motorhead/api/del-memory"
+        "motorhead/memory/get-memory",
+        "motorhead/memory/post-memory",
+        "motorhead/memory/del-memory"
       ]
     }
   ],
