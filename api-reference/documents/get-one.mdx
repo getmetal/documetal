@@ -1,7 +1,7 @@
 ---
-title: "Get App"
-api: "GET https://api.getmetal.io/v1/apps/{appId}"
-description: "This endpoint gets a single index."
+title: "Get Document"
+api: "GET https://api.getmetal.io/v1/documents/{documentId}"
+description: "This endpoint gets an embedding document."
 ---
 
 ### Auth Headers
@@ -16,24 +16,24 @@ description: "This endpoint gets a single index."
 
 ### Params
 
-<ParamField required path="appId" type="string">
-  The App ID
+<ParamField required path="documentId" type="string">
+  The Document ID
 </ParamField>
 
 ### Response
 
-<ResponseField name="data" type="object">
+<ResponseField name="data" type="App Object">
   <Expandable title="properties">
     <ResponseField name="id" type="string">
-      Id of the app
+      Id of the document
     </ResponseField>
 
-    <ResponseField name="name" type="string">
-      Name of the app
+    <ResponseField name="text" type="string">
+      The embedded text
     </ResponseField>
 
-    <ResponseField name="activeIndexId" type="string">
-      Id of the active index
+    <ResponseField name="metadata" type="object">
+     The metadata of your embedding
     </ResponseField>
 
   </Expandable>
@@ -42,7 +42,7 @@ description: "This endpoint gets a single index."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request GET 'https://api.getmetal.io/v1/indexes/{indexId}' \
+curl --location --request GET 'https://api.getmetal.io/v1/documents/{documentId}' \
 --header 'Content-Type: application/json' \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \
@@ -55,8 +55,10 @@ curl --location --request GET 'https://api.getmetal.io/v1/indexes/{indexId}' \
 ```json Response
 {
   "data": {
-    "id": "1",
-    "name": "Ozzy's App"
+    "id": "642b6f4za4b817d11769ae15",
+    "text": "my embedded text",
+    "createdAt": "2023-04-04T00:28:58.425Z",
+    "metadata": {}
   }
 }
 ```

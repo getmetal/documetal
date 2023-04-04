@@ -74,6 +74,13 @@
       ]
     },
     {
+      "group": "Documents",
+      "pages": [
+        "api-reference/documents/get-one",
+        "api-reference/documents/delete"
+      ]
+    },
+    {
       "group": "Indexes",
       "pages": [
         "api-reference/indexes/get-one",
