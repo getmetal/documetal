@@ -1,7 +1,7 @@
 ---
 title: "/index"
 api: "POST https://api.getmetal.io/v1/index"
-description: "This endpoint generates and stores an embedding with the inputted data."
+description: "This endpoint generates and stores a Document(embedding) with the inputted data."
 ---
 
 ### Auth Headers
@@ -21,7 +21,8 @@ description: "This endpoint generates and stores an embedding with the inputted 
 </ParamField>
 
 <ParamField body="id" type="string">
-  Identifier for your embedding. Must be between 3 - 256 chars and consist of numbers, letters, or `-`. If not provided, a random ID will be generated.
+  Identifier for your embedding. Must be between 3 - 256 chars and consist of
+  numbers, letters, or `-`. If not provided, a random ID will be generated.
 </ParamField>
 
 <ParamField body="text" type="string">
@@ -66,7 +67,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/index' \
   "createdAt": "2023-03-17T17:21:13.163Z",
   "id": "my-unique-id",
   "metadata": {
-      "fieldA": "my custom value"
+    "fieldA": "my custom value"
   },
   "text": "text that will be embedded"
 }
