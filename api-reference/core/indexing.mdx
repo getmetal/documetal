@@ -16,8 +16,8 @@ description: "This endpoint generates and stores a Document(embedding) with the 
 
 ### Body
 
-<ParamField body="app" type="string" placeholder="App ID" required>
-  App ID
+<ParamField body="index" type="string" placeholder="Index ID" required>
+  Index ID
 </ParamField>
 
 <ParamField body="id" type="string">
@@ -49,7 +49,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/index' \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \
 --data-raw '{
-    "app": "app-id",
+    "index": "index-id",
     "text": "text that will be embedded",
     "id": "my-unique-id",
     "metadata": {
