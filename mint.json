@@ -66,14 +66,6 @@
       ]
     },
     {
-      "group": "Apps",
-      "pages": [
-        "api-reference/apps/get-one",
-        "api-reference/apps/get",
-        "api-reference/apps/post"
-      ]
-    },
-    {
       "group": "Documents",
       "pages": [
         "api-reference/documents/get-one",
