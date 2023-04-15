@@ -16,12 +16,12 @@ npm install --save @getmetal/metal-sdk
 | ---------- | ------ | ------------------------------------------------------- |
 | `apiKey`   | string | The API Key for your Org. [details](/authentication).   |
 | `clientId` | string | The Client ID for your Org. [details](/authentication). |
-| `appId`    | string | The ID of the app you want to connect to.               |
+| `indexId`  | string | The ID of the index you want to connect to.             |
 
 ```typescript
 import Metal from "@getmetal/metal-sdk";
 
-const metal = new Metal("apiKey", "clientId", "appId");
+const metal = new Metal("apiKey", "clientId", "indexId");
 ```
 
 ## Indexing
