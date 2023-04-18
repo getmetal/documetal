@@ -28,6 +28,13 @@ metal = Metal("api_key", "client_id", "index_id")
 
 | Param       | Type     | Description                                              |
 | ----------- | -------- | -------------------------------------------------------- |
+| `payload`  | dict   | Dictionary with index parameters |
+| `index_id` | string | Optional index id where record will get indexed.|
+
+#### Payload
+
+| Param       | Type     | Description                                              |
+| ----------- | -------- | -------------------------------------------------------- |
 | `id`        | string   | Optional identifier for your embedding.                  |
 | `embedding` | number[] | Raw embeddings to be indexed.                            |
 | `imageUrl`  | string   | A URL for an image to be vectorized and indexed.         |
@@ -35,10 +42,21 @@ metal = Metal("api_key", "client_id", "index_id")
 | `metadata`  | object   | A flexible metdata object to be stored w/ the embedding. |
 
 ```python
-metal.index({ "text": "text-to-index" })
+metal.index({ "text": "text-to-index" }, "index_id")
 ```
 
 ## Searching
+
+self, payload: SearchPayload = {}, index_id=None, ids_only=False, limit=1
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `payload`   | dict     | search payload.                    |
+| `index_id`  | string   | Id of index to search. |
+| `ids_only`  | boolean  | Optional return only the ids       |
+| `limit`     | number   | Number of documents returned by the API (default=1).      |
+
+#### Payload
 
 | Param       | Type     | Description                                       |
 | ----------- | -------- | ------------------------------------------------- |
@@ -47,7 +65,7 @@ metal.index({ "text": "text-to-index" })
 | `text`      | string   | The text to be vectorized and searched.           |
 
 ```python
-results = metal.search({ "text": "term-to-search" })
+results = metal.search({ "text": "term-to-search" }, index_id="index1", limit=10)
 ```
 
 ## Tuning
