@@ -32,6 +32,19 @@ description: "This endpoint searches for the closest Documents(embeddings)"
   Custom Embeddings
 </ParamField>
 
+<ParamField body="filters" type="object[]">
+  <Expandable title="properties">
+    <ParamField body="field" type="string">
+      The name of the filtereable field
+    </ParamField>
+
+    <ParamField body="value" type="string or number" >
+      The field value to search for.
+    </ParamField>
+
+  </Expandable>
+</ParamField>
+
 ### Query
 
 <ParamField query="idsOnly" type="boolean" default="false">
