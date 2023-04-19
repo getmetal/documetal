@@ -44,6 +44,19 @@ description: "This endpoint creates an index for an app."
   Number of dimensions for the stored vectors
 </ParamField>
 
+<ParamField body="filters" type="object[]" placeholder="Filters that the index can support">
+<Expandable title="properties">
+    <ParamField body="field" type="string">
+      The name of the filtereable field
+    </ParamField>
+
+    <ParamField body="type" type="string" >
+      The field type. `string` or `number`.
+    </ParamField>
+
+  </Expandable>
+</ParamField>
+
 ### Response
 
 <ResponseField name="data" type="Index Object">
