@@ -44,7 +44,7 @@ description: "This endpoint creates an index for an app."
   Number of dimensions for the stored vectors
 </ParamField>
 
-<ParamField body="filters" type="object[]" placeholder="Filters that the index can support">
+<ParamField body="filters" type="object[]" placeholder="Metadata filters that the index can support for /search.">
 <Expandable title="properties">
     <ParamField body="field" type="string">
       The name of the filtereable field
@@ -94,7 +94,17 @@ curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/indexes'
 --data-raw '{
     "model": "custom",
     "name": "Ozzy Osbourne",
-    "dimensions": 666
+    "dimensions": 666,
+    "filters: [
+      {
+        "field": "name",
+        "type": "string"
+      },
+      {
+        "field": "age",
+        "type": "number"
+      }
+    ]
 }'
 ```
 
