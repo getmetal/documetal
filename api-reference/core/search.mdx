@@ -83,7 +83,11 @@ curl --location --request POST 'https://api.getmetal.io/v1/search' \
 --header 'x-metal-client-id: <client-id>' \
 --data-raw '{
     "index": "index-id",
-    "text": "Generals gathered in their masses"
+    "text": "Generals gathered in their masses",
+    "filters": {
+        "field": "year",
+        "value": 1984
+    }
 }'
 ```
 
@@ -107,7 +111,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/search' \
       "dist": "0.999",
       "metadata": {
         "name": "Iron Maiden",
-        "year": 1975
+        "year": 1984
       }
     }
   ]
