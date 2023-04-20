@@ -28,6 +28,13 @@ const metal = new Metal("apiKey", "clientId", "indexId");
 
 | Param       | Type     | Description                                              |
 | ----------- | -------- | -------------------------------------------------------- |
+| `payload` | object   | Object with index input.                         |
+| `indexId`    | string   | Optional index id where record will get indexed. |
+
+#### payload
+
+| Param       | Type     | Description                                              |
+| ----------- | -------- | -------------------------------------------------------- |
 | `id`        | string   | Optional identifier for your embedding.                  |
 | `embedding` | number[] | Raw embeddings to be indexed.                            |
 | `imageUrl`  | string   | A URL for an image to be vectorized and indexed.         |
@@ -35,10 +42,19 @@ const metal = new Metal("apiKey", "clientId", "indexId");
 | `metadata`  | object   | A flexible metdata object to be stored w/ the embedding. |
 
 ```typescript
-await metal.index({ text: "text-to-index" });
+await metal.index({ text: "text-to-index" }, 'indexId');
 ```
 
 ## Searching
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `payload`   | object   | Object with search input.                       |
+| `indexId`   | string   | Optional index id where record will get indexed.|
+| `idsOnly`   | boolean  | Return only the ids of the documents.           |
+| `limit`     | number   | Number of documents returned by the API (default=1).   |
+
+#### payload
 
 | Param       | Type     | Description                                       |
 | ----------- | -------- | ------------------------------------------------- |
@@ -47,7 +63,7 @@ await metal.index({ text: "text-to-index" });
 | `text`      | string   | The text to be vectorized and searched.           |
 
 ```typescript
-const results = await metal.search({ text: "term-to-search" });
+const results = await metal.search({ text: "term-to-search" }, 'indexId', false, 100);
 ```
 
 ## Tuning
