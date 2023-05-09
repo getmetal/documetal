@@ -1,126 +1,108 @@
 {
-    "name": "Metal",
-    "logo": {
-        "light": "/logo/light.svg",
-        "dark": "/logo/dark.svg"
-    },
-    "favicon": "/favicon.png",
-    "colors": {
-        "primary": "#008000",
-        "light": "#1BBD1B",
-        "dark": "#008000",
-        "anchors": {
-            "from": "#1BBD1B",
-            "to": "#008000"
-        }
-    },
-    "topbarCtaButton": {
-        "name": "getmetal.io",
-        "url": "https://www.getmetal.io"
-    },
-    "topbarLinks": [
-        {
-            "name": "Github",
-            "url": "https://github.com/getmetal/metal"
-        },
-        {
-            "name": "Discord",
-            "url": "https://discord.gg/GHY3Y8tU3J"
-        }
-    ],
-    "anchors": [
-        {
-            "name": "Metal API",
-            "icon": "rectangle-terminal",
-            "url": "api-reference"
-        },
-        {
-            "name": "Motörhead",
-            "icon": "brain",
-            "url": "motorhead"
-        }
-    ],
-    "navigation": [
-        {
-            "group": "Overview",
-            "pages": [
-                "introduction",
-                "platform",
-                "concepts",
-                "authentication"
-            ]
-        },
-        {
-            "group": "Get Started",
-            "pages": [
-                "get-started-typescript"
-            ]
-        },
-        {
-            "group": "Libraries",
-            "pages": [
-                "sdk-python",
-                "sdk-typescript"
-            ]
-        },
-        {
-            "group": "Miscellaneous",
-            "pages": [
-                "misc-get-keys",
-                "misc-create-app"
-            ]
-        },
-        {
-            "group": "Core",
-            "pages": [
-                "api-reference/core/indexing",
-                "api-reference/core/search",
-                "api-reference/core/tune"
-            ]
-        },
-        {
-            "group": "Documents",
-            "pages": [
-                "api-reference/documents/get-one",
-                "api-reference/documents/get",
-                "api-reference/documents/delete"
-            ]
-        },
-        {
-            "group": "Indexes",
-            "pages": [
-                "api-reference/indexes/get-one",
-                "api-reference/indexes/get",
-                "api-reference/indexes/post",
-                "api-reference/indexes/delete"
-            ]
-        },
-        {
-            "group": "Tunings",
-            "pages": [
-                "api-reference/tunings/get-one",
-                "api-reference/tunings/get"
-            ]
-        },
-        {
-            "group": "Overview",
-            "pages": [
-                "motorhead/introduction"
-            ]
-        },
-        {
-            "group": "Memory",
-            "pages": [
-                "motorhead/memory/get-memory",
-                "motorhead/memory/post-memory",
-                "motorhead/memory/del-memory"
-            ]
-        }
-    ],
-    "footerSocials": {
-        "discord": "https://discord.gg/GHY3Y8tU3J",
-        "github": "https://www.github.com/getmetal/metal/",
-        "twitter": "https://twitter.com/Metal_io",
-        "linkedin": "https://www.linkedin.com/company/getmetal/about/"
+  "name": "Metal",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#008000",
+    "light": "#1BBD1B",
+    "dark": "#008000",
+    "anchors": {
+      "from": "#1BBD1B",
+      "to": "#008000"
     }
+  },
+  "topbarCtaButton": {
+    "name": "getmetal.io",
+    "url": "https://www.getmetal.io"
+  },
+  "topbarLinks": [
+    {
+      "name": "Github",
+      "url": "https://github.com/getmetal/metal"
+    },
+    {
+      "name": "Discord",
+      "url": "https://discord.gg/GHY3Y8tU3J"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Metal API",
+      "icon": "rectangle-terminal",
+      "url": "api-reference"
+    },
+    {
+      "name": "Motörhead",
+      "icon": "brain",
+      "url": "motorhead"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Overview",
+      "pages": ["introduction", "platform", "concepts", "authentication"]
+    },
+    {
+      "group": "Get Started",
+      "pages": ["get-started-typescript"]
+    },
+    {
+      "group": "Libraries",
+      "pages": ["sdk-python", "sdk-typescript"]
+    },
+    {
+      "group": "Miscellaneous",
+      "pages": ["misc-get-keys", "misc-create-index"]
+    },
+    {
+      "group": "Core",
+      "pages": [
+        "api-reference/core/indexing",
+        "api-reference/core/search",
+        "api-reference/core/tune"
+      ]
+    },
+    {
+      "group": "Documents",
+      "pages": [
+        "api-reference/documents/get-one",
+        "api-reference/documents/get",
+        "api-reference/documents/delete"
+      ]
+    },
+    {
+      "group": "Indexes",
+      "pages": [
+        "api-reference/indexes/get-one",
+        "api-reference/indexes/get",
+        "api-reference/indexes/post",
+        "api-reference/indexes/delete"
+      ]
+    },
+    {
+      "group": "Tunings",
+      "pages": ["api-reference/tunings/get-one", "api-reference/tunings/get"]
+    },
+    {
+      "group": "Overview",
+      "pages": ["motorhead/introduction"]
+    },
+    {
+      "group": "Memory",
+      "pages": [
+        "motorhead/memory/get-memory",
+        "motorhead/memory/post-memory",
+        "motorhead/memory/del-memory"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "discord": "https://discord.gg/GHY3Y8tU3J",
+    "github": "https://www.github.com/getmetal/metal/",
+    "twitter": "https://twitter.com/Metal_io",
+    "linkedin": "https://www.linkedin.com/company/getmetal/about/"
+  }
 }
