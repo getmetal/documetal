@@ -43,32 +43,19 @@
   "navigation": [
     {
       "group": "Overview",
-      "pages": [
-        "introduction",
-        "platform",
-        "concepts",
-        "authentication"
-      ]
+      "pages": ["introduction", "platform", "concepts", "authentication"]
     },
     {
       "group": "Get Started",
-      "pages": [
-        "get-started-typescript"
-      ]
+      "pages": ["get-started-typescript"]
     },
     {
       "group": "Libraries",
-      "pages": [
-        "sdk-python",
-        "sdk-typescript"
-      ]
+      "pages": ["sdk-python", "sdk-typescript"]
     },
     {
       "group": "Miscellaneous",
-      "pages": [
-        "misc-get-keys",
-        "misc-create-app"
-      ]
+      "pages": ["misc-get-keys", "misc-create-index"]
     },
     {
       "group": "Core",
@@ -98,16 +85,11 @@
     },
     {
       "group": "Tunings",
-      "pages": [
-        "api-reference/tunings/get-one",
-        "api-reference/tunings/get"
-      ]
+      "pages": ["api-reference/tunings/get-one", "api-reference/tunings/get"]
     },
     {
       "group": "Overview",
-      "pages": [
-        "motorhead/introduction"
-      ]
+      "pages": ["motorhead/introduction"]
     },
     {
       "group": "Memory",
