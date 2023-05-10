@@ -70,7 +70,8 @@
       "pages": [
         "api-reference/documents/get-one",
         "api-reference/documents/get",
-        "api-reference/documents/delete"
+        "api-reference/documents/delete-one",
+        "api-reference/documents/delete-many"
       ]
     },
     {
