@@ -1,0 +1,87 @@
+---
+title: "/index/bulk"
+api: "POST https://api.getmetal.io/v1/index/bulk"
+description: "This endpoint generates and stores a Document(embedding) with the inputted data in bulk."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Body
+
+<ParamField body="data" type="array" placeholder="Data" required>
+  data
+</ParamField>
+
+#### Data Object
+
+<ParamField body="index" type="string" placeholder="Index ID" required>
+  Index ID
+</ParamField>
+
+<ParamField body="id" type="string">
+  Identifier for your embedding. Must be between 3 - 256 chars and consist of
+  numbers, letters, or `-`. If not provided, a random ID will be generated.
+</ParamField>
+
+<ParamField body="text" type="string">
+  Text to be embedded. Must be between 3 - 10,000 chars.
+</ParamField>
+
+<ParamField body="imageUrl" type="string">
+  Image URL
+</ParamField>
+
+<ParamField body="embedding" type="number[]">
+  Custom Embeddings
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Metadata object.
+</ParamField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/index/bulk' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+--data-raw '{
+    "data": [
+        {
+            "index": "index-id",
+            "text": "Ozzy is the best vocalist of all time",
+            "id": "my-unique-id1",
+            "metadata": {
+                "band": "Black Sabbath"
+            }
+        },
+        {
+            "index": "index-id",
+            "text": "Dave Mustain disagrees",
+            "id": "my-unique-id2",
+            "metadata": {
+                "band": "Megadeth"
+            }
+        }
+    ]
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{}
+```
+
+</ResponseExample>

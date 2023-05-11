@@ -1,6 +1,6 @@
 ---
 title: "Delete Memory"
-api: "DELETE /sessions/{sessionId}/memory"
+api: "DELETE https://api.getmetal.io/v1/motorhead/sessions/{sessionId}/memory"
 description: "This endpoint deletes a single memory."
 ---
 
@@ -10,39 +10,12 @@ description: "This endpoint deletes a single memory."
   The Session ID
 </ParamField>
 
-### Response
-
-<ResponseField name="data" type="App Object">
-  <Expandable title="properties">
-    <ResponseField name="id" type="string">
-      Id of the memory
-    </ResponseField>
-
-    <ResponseField name="name" type="string">
-      Name of the memory
-    </ResponseField>
-
-  </Expandable>
-</ResponseField>
 
 <RequestExample>
 
 ```bash Example Request
-curl --location --request DELETE '/sessions/{sessionId}/memory"' \
+curl --location --request DELETE 'https://api.getmetal.io/v1/motorhead/sessions/{sessionId}/memory' \
 --header 'Content-Type: application/json' \
 ```
 
 </RequestExample>
-
-<ResponseExample>
-
-```json Response
-{
-  "data": {
-    "id": "1",
-    "name": "Ozzy's memory"
-  }
-}
-```
-
-</ResponseExample>
