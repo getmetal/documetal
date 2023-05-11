@@ -35,7 +35,7 @@
       "url": "api-reference"
     },
     {
-      "name": "Motörhead",
+      "name": "Motorhead",
       "icon": "brain",
       "url": "motorhead"
     }
@@ -43,24 +43,38 @@
   "navigation": [
     {
       "group": "Overview",
-      "pages": ["introduction", "platform", "concepts", "authentication"]
+      "pages": [
+        "introduction",
+        "platform",
+        "concepts",
+        "authentication"
+      ]
     },
     {
       "group": "Get Started",
-      "pages": ["get-started-typescript"]
+      "pages": [
+        "get-started-typescript"
+      ]
     },
     {
       "group": "Libraries",
-      "pages": ["sdk-python", "sdk-typescript"]
+      "pages": [
+        "sdk-python",
+        "sdk-typescript"
+      ]
     },
     {
       "group": "Miscellaneous",
-      "pages": ["misc-get-keys", "misc-create-index"]
+      "pages": [
+        "misc-get-keys",
+        "misc-create-index"
+      ]
     },
     {
       "group": "Core",
       "pages": [
         "api-reference/core/indexing",
+        "api-reference/core/bulk",
         "api-reference/core/search",
         "api-reference/core/tune"
       ]
@@ -85,11 +99,16 @@
     },
     {
       "group": "Tunings",
-      "pages": ["api-reference/tunings/get-one", "api-reference/tunings/get"]
+      "pages": [
+        "api-reference/tunings/get-one",
+        "api-reference/tunings/get"
+      ]
     },
     {
       "group": "Overview",
-      "pages": ["motorhead/introduction"]
+      "pages": [
+        "motorhead/introduction"
+      ]
     },
     {
       "group": "Memory",

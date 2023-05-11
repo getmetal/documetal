@@ -3,9 +3,14 @@ title: "Introduction"
 description: "An open-source memory and information retrieval server for LLMs."
 ---
 
-## Motörhead
+## Motorhead
 
-Motörhead is a memory and information retrieval server for LLMs. Written in Rust.
+Motorhead is an open source memory and information retrieval server for LLMs. Written in Rust.
+
+`session` ids can be provided to the server to keep track of the chat history (short-term memory) of a user. This is useful for chatbots, where the user's chat history is important for context management. Once a certain amount of messages have been created, the Motorhead will automatically summarize older messages into an incremental context. This context can be used to retrieve information from the user's long-term memory.
+
+Additionally, messages are vectorized and indexed for retrieval.
+
 
 <CardGroup>
   <Card
@@ -15,7 +20,7 @@ Motörhead is a memory and information retrieval server for LLMs. Written in Rus
   >
     Github repository
   </Card>
-  <Card title="Memory API" icon="brain" href="/motorhead/memory">
+  <Card title="Hosted Memory API" icon="brain" href="/motorhead/memory">
     Explore the server api
   </Card>
 </CardGroup>

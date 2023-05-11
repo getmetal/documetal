@@ -1,6 +1,6 @@
 ---
 title: "Get Memory"
-api: "GET /sessions/{sessionId}/memory"
+api: "GET https://api.getmetal.io/v1/motorhead/sessions/{sessionId}/memory"
 description: "This endpoint gets a single memory."
 ---
 
@@ -12,14 +12,21 @@ description: "This endpoint gets a single memory."
 
 ### Response
 
-<ResponseField name="data" type="App Object">
+<ResponseField name="data" type="Memory Object">
   <Expandable title="properties">
-    <ResponseField name="id" type="string">
-      Id of the memory
+    <ResponseField name="messages" type="array">
+        <Expandable title="message-properties">
+            <ResponseField name="role" type="string">
+                Role of the message author
+            </ResponseField>
+            <ResponseField name="content" type="string">
+                Content of the message
+            </ResponseField>
+      </Expandable>
     </ResponseField>
 
-    <ResponseField name="name" type="string">
-      Name of the memory
+    <ResponseField name="context" type="string">
+      Incremental summarization of the conversation
     </ResponseField>
 
   </Expandable>
@@ -28,7 +35,7 @@ description: "This endpoint gets a single memory."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request GET '/sessions/{sessionId}/memory"' \
+curl --location --request GET 'https://api.getmetal.io/v1/motorhead/sessions/{sessionId}/memory' \
 --header 'Content-Type: application/json' \
 ```
 
@@ -39,8 +46,11 @@ curl --location --request GET '/sessions/{sessionId}/memory"' \
 ```json Response
 {
   "data": {
-    "id": "1",
-    "name": "Ozzy's memory"
+    "messages": [
+      { "role": "Human", "content": "Who is the best vocalist of all time?" },
+      { "role": "AI", "content": "Ozzy!" }
+    ],
+    "context": "User ask what can he eat in Colombia. The AI responds arepas are really nice"
   }
 }
 ```
