@@ -45,6 +45,29 @@ metal = Metal("api_key", "client_id", "index_id")
 metal.index({ "text": "text-to-index" }, "index_id")
 ```
 
+## Multi(Bulk) Indexing
+
+You can index up to `100` records in a single request.
+
+| Param       | Type     | Description                                              |
+| ----------- | -------- | -------------------------------------------------------- |
+| `payload`  | BulkIndexItem[]   | Array of bulk items |
+
+#### BulkIndexItem
+
+| Param       | Type     | Description                                              |
+| ----------- | -------- | -------------------------------------------------------- |
+| `id`        | string   | Optional identifier for your embedding.                  |
+| `index`     | string   | Required - index id.   |
+| `embedding` | number[] | Raw embeddings to be indexed.                            |
+| `imageUrl`  | string   | A URL for an image to be vectorized and indexed.         |
+| `text`      | string   | The text to be vectorized and indexed.                   |
+| `metadata`  | object   | A flexible metdata object to be stored w/ the embedding. |
+
+```python
+metal.index_many([{ "text": "blacksabbath", "index": "index-id" }, { "text": "ironmaiden", "index": "index-id" }])
+```
+
 ## Searching
 
 self, payload: SearchPayload = {}, index_id=None, ids_only=False, limit=1
