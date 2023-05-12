@@ -41,6 +41,24 @@ const metal = new Metal("apiKey", "clientId", "indexId");
 await metal.index({ text: "text-to-index" });
 ```
 
+## Multi(Bulk) Indexing
+
+#### Payload Object:
+
+| Param       | Type     | Description                                              |
+| ----------- | -------- | -------------------------------------------------------- |
+| `id`        | string   | Optional identifier for your embedding.                  |
+| `index`     | string   | Required index id.                  |
+| `embedding` | number[] | Raw embeddings to be indexed.                            |
+| `imageUrl`  | string   | A URL for an image to be vectorized and indexed.         |
+| `text`      | string   | The text to be vectorized and indexed.                   |
+| `metadata`  | object   | A flexible metdata object to be stored w/ the embedding. |
+| `indexId`  | string   | Optional index id. If none provided the initialized index will be used |
+
+```typescript
+await metal.indexMany([{ text: "Megadeth", index: 'index-id' }, { text: "Metallica", index: 'index-id' }]);
+```
+
 ## Searching
 
 #### Payload Object:
