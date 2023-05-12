@@ -10,6 +10,23 @@ description: "This endpoint creates a single memory."
   The Session ID
 </ParamField>
 
+### Body
+
+<ResponseField body="messages" type="Messages Array" required>
+  <Expandable title="message-properties">
+    <ResponseField name="role" type="string">
+      Role of the message author
+    </ResponseField>
+    <ResponseField name="content" type="string">
+      Content of the message
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ParamField body="context" type="string">
+  Incremental summarization of the conversation
+</ParamField>
+
 ### Response
 
 <ResponseField name="data" type="Memory Object">
@@ -37,6 +54,13 @@ description: "This endpoint creates a single memory."
 ```bash Example Request
 curl --location --request POST 'https://api.getmetal.io/v1/motorhead/sessions/{sessionId}/memory' \
 --header 'Content-Type: application/json' \
+--data-raw '{
+    "messages": [
+      { "role": "Human", "content": "Who is the best vocalist of all time?" },
+      { "role": "AI", "content": "Ozzy!" }
+    ],
+    "context": "User ask what can he eat in Colombia. The AI responds arepas are really nice"
+}'
 ```
 
 </RequestExample>
