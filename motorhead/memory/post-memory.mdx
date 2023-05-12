@@ -12,7 +12,7 @@ description: "This endpoint creates a single memory."
 
 ### Body
 
-<ParamField body="messages" type="object[]" required>
+<ResponseField body="messages" type="Messages Array" required>
   <Expandable title="message-properties">
     <ResponseField name="role" type="string">
       Role of the message author
@@ -20,8 +20,8 @@ description: "This endpoint creates a single memory."
     <ResponseField name="content" type="string">
       Content of the message
     </ResponseField>
-  Index ID
-</ParamField>
+  </Expandable>
+</ResponseField>
 
 <ParamField body="context" type="string">
   Incremental summarization of the conversation
