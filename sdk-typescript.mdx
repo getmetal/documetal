@@ -112,16 +112,25 @@ await metal.tune({ idA, idB, label, indexId: "indexId" });
 
 ## App Setup
 
-| Param      | Type   | Description                                             |
-| ---------- | ------ | ------------------------------------------------------- |
-| `apiKey`   | string | The API Key for your Org. [details](/authentication).   |
-| `clientId` | string | The Client ID for your Org. [details](/authentication). |
+| Param      | Type   | Description                                                         |
+| ---------- | ------ | ------------------------------------------------------------------- |
+| `apiKey`   | string | For Managed. The API Key for your Org. [details](/authentication).  |
+| `clientId` | string | For Managed.The Client ID for your Org. [details](/authentication). |
+| `baseUrl`  | string | For Self-hosted. The URL path to your motorhead instance            |
 
 ```typescript
 import { Motorhead } from "@getmetal/metal-sdk";
 
-const motorhead = new Motorhead("apiKey", "clientId");
+// Managed
+const motorhead = new Motorhead({ apiKey: "apiKey", clientId: "clientId" });
+
+// Self-hosted
+const motorhead = new Motorhead({
+  baseUrl: "https://motorhead.yourdomain.com",
+});
 ```
+
+````
 
 ## Get Memory
 
@@ -133,7 +142,7 @@ const motorhead = new Motorhead("apiKey", "clientId");
 
 ```typescript
 await motorhead.getMemory("session-id");
-```
+````
 
 ## Create Memory
 
