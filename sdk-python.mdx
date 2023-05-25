@@ -10,6 +10,8 @@ description: "Overview of the Python Metal SDK."
 pip3 install metal-sdk
 ```
 
+# Retrieval (Semantic Search)
+
 ## App Setup
 
 | Param       | Type   | Description                                             |
@@ -26,10 +28,10 @@ metal = Metal("api_key", "client_id", "index_id")
 
 ## Indexing
 
-| Param       | Type     | Description                                              |
-| ----------- | -------- | -------------------------------------------------------- |
-| `payload`  | dict   | Dictionary with index parameters |
-| `index_id` | string | Optional index id where record will get indexed.|
+| Param      | Type   | Description                                      |
+| ---------- | ------ | ------------------------------------------------ |
+| `payload`  | dict   | Dictionary with index parameters                 |
+| `index_id` | string | Optional index id where record will get indexed. |
 
 #### Payload
 
@@ -49,16 +51,16 @@ metal.index({ "text": "text-to-index" }, "index_id")
 
 You can index up to `100` records in a single request.
 
-| Param       | Type     | Description                                              |
-| ----------- | -------- | -------------------------------------------------------- |
-| `payload`  | BulkIndexItem[]   | Array of bulk items |
+| Param     | Type            | Description         |
+| --------- | --------------- | ------------------- |
+| `payload` | BulkIndexItem[] | Array of bulk items |
 
 #### BulkIndexItem
 
 | Param       | Type     | Description                                              |
 | ----------- | -------- | -------------------------------------------------------- |
 | `id`        | string   | Optional identifier for your embedding.                  |
-| `index`     | string   | Required - index id.   |
+| `index`     | string   | Required - index id.                                     |
 | `embedding` | number[] | Raw embeddings to be indexed.                            |
 | `imageUrl`  | string   | A URL for an image to be vectorized and indexed.         |
 | `text`      | string   | The text to be vectorized and indexed.                   |
@@ -72,12 +74,12 @@ metal.index_many([{ "text": "blacksabbath", "index": "index-id" }, { "text": "ir
 
 self, payload: SearchPayload = {}, index_id=None, ids_only=False, limit=1
 
-| Param       | Type     | Description                                       |
-| ----------- | -------- | ------------------------------------------------- |
-| `payload`   | dict     | search payload.                    |
-| `index_id`  | string   | Id of index to search. |
-| `ids_only`  | boolean  | Optional return only the ids       |
-| `limit`     | number   | Number of documents returned by the API (default=1).      |
+| Param      | Type    | Description                                          |
+| ---------- | ------- | ---------------------------------------------------- |
+| `payload`  | dict    | search payload.                                      |
+| `index_id` | string  | Id of index to search.                               |
+| `ids_only` | boolean | Optional return only the ids                         |
+| `limit`    | number  | Number of documents returned by the API (default=1). |
 
 #### Payload
 
@@ -101,4 +103,85 @@ results = metal.search({ "text": "term-to-search" }, index_id="index1", limit=10
 
 ```python
 metal.tune({ "idA": "id_a", "idB": "id_b", "label": 1 })
+```
+
+# Memory (Motorhead)
+
+## App Setup
+
+| Param       | Type   | Description                                             |
+| ----------- | ------ | ------------------------------------------------------- |
+| `api_key`   | string | The API Key for your Org. [details](/authentication).   |
+| `client_id` | string | The Client ID for your Org. [details](/authentication). |
+
+```python
+from metal_sdk.motorhead import Motorhead
+
+
+motorhead = Motorhead("api_key", "clientId");
+```
+
+## Get Memory
+
+#### Payload Object:
+
+| Param        | Type   | Description                                  |
+| ------------ | ------ | -------------------------------------------- |
+| `session_id` | string | The ID of the session to retrieve memory for |
+
+```python
+motorhead.get_memory("session-id");
+```
+
+## Create Memory
+
+### Parameters
+
+```python
+interface Memory {
+  messages: {
+    content: string;
+    role: "AI" | "Human";
+  };
+  context: string;
+}
+
+class Message:
+    content: str
+    role: str  # "AI" or "Human"
+
+class Memory:
+    messages: list  # List of Message instances
+    context: str
+```
+
+| Param        | Type     | Description                                                              |
+| ------------ | -------- | ------------------------------------------------------------------------ |
+| `session_id` | string   | The ID of the session. If the session does not exist, it will create one |
+| `memory`     | Memory[] | A memory payload to update the session memory                            |
+
+```python
+memory_payload = {
+  "messages": [
+    {"role": "Human", "content": "Who is the best vocalist of all time?"},
+    {"role": "AI", "content": "Ozzy!"},
+  ],
+  "context":
+    "User ask what can he eat in Colombia. The AI responds arepas are really nice",
+}
+
+
+motorhead.create_memory("session-id", memory_payload);
+```
+
+## Delete Memory
+
+#### Payload Object:
+
+| Param        | Type   | Description                                |
+| ------------ | ------ | ------------------------------------------ |
+| `session_id` | string | The ID of the session to delete memory for |
+
+```python
+motorhead.delete_memory("session-id");
 ```
