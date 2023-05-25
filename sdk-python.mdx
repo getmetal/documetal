@@ -118,7 +118,7 @@ metal.tune({ "idA": "id_a", "idB": "id_b", "label": 1 })
 from metal_sdk.motorhead import Motorhead
 
 
-motorhead = Motorhead("api_key", "clientId");
+motorhead = Motorhead("api_key", "client-id");
 ```
 
 ## Get Memory
@@ -171,7 +171,7 @@ memory_payload = {
 }
 
 
-motorhead.create_memory("session-id", memory_payload);
+motorhead.add_memory("session-id", memory_payload);
 ```
 
 ## Delete Memory
