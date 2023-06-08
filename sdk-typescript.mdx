@@ -95,6 +95,25 @@ const results = await metal.search({
 });
 ```
 
+## Uploading File
+
+Only `.csv`, `.docx` and `.pdf` are accepted.
+
+#### Payload Object:
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `indexId`   | string   | Optional index id where record will get indexed.  |
+| `file`      | string \| File   | File path (NodeJs) or File Object (Browser).             |
+
+
+```typescript
+const results = await metal.uploadFile({
+  indexId: "indexId",
+  file: './path/to/file.csv',
+});
+```
+
 ## Tuning
 
 | Param     | Type             | Description                                                     |

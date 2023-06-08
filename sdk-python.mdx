@@ -93,6 +93,20 @@ self, payload: SearchPayload = {}, index_id=None, ids_only=False, limit=1
 results = metal.search({ "text": "term-to-search" }, index_id="index1", limit=10)
 ```
 
+## Uploading File
+
+Only `.csv`, `.docx` and `.pdf` are accepted.
+
+| Param      | Type    | Description                                          |
+| ---------- | ------- | ---------------------------------------------------- |
+| `index_id` | string  | Id of index to search.                               |
+| `file_path`| string  | file path to upload. |
+
+
+```python
+results = metal.upload_file("index1", "./file_path.csv")
+```
+
 ## Tuning
 
 | Param   | Type             | Description                                                      |
