@@ -15,16 +15,12 @@
     }
   },
   "topbarCtaButton": {
-    "name": "getmetal.io",
-    "url": "https://www.getmetal.io"
+    "type": "github",
+    "url": "https://github.com/getmetal/motorhead"
   },
   "topbarLinks": [
     {
-      "name": "Github",
-      "url": "https://github.com/getmetal/metal"
-    },
-    {
-      "name": "Discord",
+      "name": "⛺️ Discord",
       "url": "https://discord.gg/GHY3Y8tU3J"
     }
   ],
