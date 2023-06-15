@@ -33,42 +33,44 @@
       "name": "Metal API",
       "icon": "rectangle-terminal",
       "url": "api-reference"
-    },
-    {
-      "name": "Motorhead",
-      "icon": "brain",
-      "url": "motorhead"
     }
   ],
   "navigation": [
     {
       "group": "Overview",
-      "pages": ["introduction", "platform", "concepts", "authentication"]
-    },
-    {
-      "group": "Get Started",
-      "pages": ["get-started-typescript"]
-    },
-    {
-      "group": "Libraries",
-      "pages": ["sdk-python", "sdk-typescript"]
-    },
-    {
-      "group": "Miscellaneous",
-      "pages": ["misc-get-keys", "misc-create-index"]
-    },
-    {
-      "group": "Core",
       "pages": [
-        "api-reference/core/indexing",
-        "api-reference/core/bulk",
-        "api-reference/core/search",
-        "api-reference/core/tune"
+        "introduction",
+        "platform",
+        "concepts",
+        "authentication"
       ]
     },
     {
-      "group": "Documents",
+      "group": "Get Started",
       "pages": [
+        "get-started-typescript"
+      ]
+    },
+    {
+      "group": "Libraries",
+      "pages": [
+        "sdk-python",
+        "sdk-typescript"
+      ]
+    },
+    {
+      "group": "Miscellaneous",
+      "pages": [
+        "misc-get-keys",
+        "misc-create-index"
+      ]
+    },
+    {
+      "group": "Embedding Documents",
+      "pages": [
+        "api-reference/documents/indexing",
+        "api-reference/documents/bulk",
+        "api-reference/documents/search",
         "api-reference/documents/get-one",
         "api-reference/documents/get",
         "api-reference/documents/delete-one",
@@ -78,26 +80,33 @@
     {
       "group": "Indexes",
       "pages": [
+        "api-reference/indexes/post",
         "api-reference/indexes/get-one",
         "api-reference/indexes/get",
-        "api-reference/indexes/post",
         "api-reference/indexes/delete"
       ]
     },
     {
-      "group": "Tunings",
-      "pages": ["api-reference/tunings/get-one", "api-reference/tunings/get"]
-    },
-    {
-      "group": "Overview",
-      "pages": ["motorhead/introduction", "sdk-python", "sdk-typescript"]
-    },
-    {
       "group": "Memory",
       "pages": [
-        "motorhead/memory/get-memory",
-        "motorhead/memory/post-memory",
-        "motorhead/memory/del-memory"
+        "api-reference/memory/post-memory",
+        "api-reference/memory/get-memory",
+        "api-reference/memory/del-memory"
+      ]
+    },
+    {
+      "group": "Tunings",
+      "pages": [
+        "api-reference/tunings/tune",
+        "api-reference/tunings/get-one",
+        "api-reference/tunings/get"
+      ]
+    },
+    {
+      "group": "SDK Libraries",
+      "pages": [
+        "sdk-python",
+        "sdk-typescript"
       ]
     }
   ],
