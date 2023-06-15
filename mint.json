@@ -30,7 +30,7 @@
   ],
   "anchors": [
     {
-      "name": "Metal API",
+      "name": "API Reference",
       "icon": "rectangle-terminal",
       "url": "api-reference"
     }
@@ -63,6 +63,12 @@
       "pages": [
         "misc-get-keys",
         "misc-create-index"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        "api-reference/introduction"
       ]
     },
     {
