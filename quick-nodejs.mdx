@@ -35,8 +35,7 @@ const metal = new Metal(
   'index_1234567890', // index-id
 );
 
-
-(async () => {
+async function embedAndIndexRawText() {
   const embeddingDocument = await metal.index({
     text: 'A rocket flying towards mars.',
     metadata: {
@@ -45,8 +44,19 @@ const metal = new Metal(
   });
 
   console.log(embeddingDocument);
+}
 
-})();
+async function embedAndIndexAFile() {
+  const embeddingDocument = await metal.index({
+    text: 'A rocket flying towards mars.',
+    metadata: {
+      category: 'space',
+    },
+  });
+
+  console.log(embeddingDocument);
+}
+
 
 ```
 

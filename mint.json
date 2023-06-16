@@ -59,6 +59,14 @@
       ]
     },
     {
+      "group": "The Platform",
+      "pages": [
+        "learn-introduction",
+        "learn-retrieval",
+        "learn-memory"
+      ]
+    },
+    {
       "group": "Resources",
       "pages": [
         "sdks",
@@ -67,17 +75,10 @@
       ]
     },
     {
-      "group": "Learn",
-      "pages": [
-        "platform",
-        "concepts"
-      ]
-    },
-    {
       "group": "Basic Flows",
       "pages": [
-        "misc-get-keys",
-        "misc-create-index"
+        "misc-create-index",
+        "misc-get-keys"
       ]
     },
     {
