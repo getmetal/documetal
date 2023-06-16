@@ -46,6 +46,12 @@
           "pages": [
             "quick-nodejs"
           ]
+        },
+        {
+          "group": "Python",
+          "pages": [
+            "quick-python"
+          ]
         }
       ]
     },
