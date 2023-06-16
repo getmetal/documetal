@@ -11,7 +11,24 @@ https://api.getmetal.io
 ```
 
 ## Authentication
-Metal uses API keys to authenticate requests. You can view and manage your API keys in the [Metal Application](https://app.getmetal.io/settings/organization). There are two headers that you'll retrieve from each Key:
+Metal uses API keys to authenticate requests. You can view and manage your API keys in the [Metal Application](https://app.getmetal.io/settings/organization). There are two headers that you'll retrieve from each Key.
+
+### API Key Headers
+| Title | Header | Example Key
+| :--- | :--- | :--- |
+| API Key | `x-metal-api-key` | `pk_1234567890` |
+| Client ID | `x-metal-client-id` | `ci_1234567890` |
+
+
+### Example Authenticated Request
+```bash
+curl --location --request GET 'https://api.getmetal.io \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: pk_1234567890' \
+--header 'x-metal-client-id: ci_1234567890' \
+```
+
+
 
 ### API Key
 ```
@@ -22,6 +39,7 @@ x-metal-api-key: pk_1234567890
 ```
 x-metal-client-id: ci_1234567890
 ```
+
 
 ## Rate Limits
 Metal has rate limits in place to ensure the stability of the API. These limits are applied on a per-minute basis. If you exceed the rate limit, you'll receive a `429 Too Many Requests` response with the following body:
