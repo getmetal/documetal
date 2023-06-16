@@ -168,7 +168,6 @@ import { Motorhead } from '@getmetal/metal-sdk'
 const motor = new Motorhead({
   apiKey: 'pk_1234567890',  // api-key
   clientId: 'ci_1234567890',  // client-id
-  indexId: 'index_1234567890', // index-id
 });
 
 
@@ -200,9 +199,7 @@ import { Motorhead } from '@getmetal/metal-sdk'
 const motor = new Motorhead({
   apiKey: 'pk_1234567890',  // api-key
   clientId: 'ci_1234567890',  // client-id
-  indexId: 'index_1234567890', // index-id
 });
-
 
 (async () => {
   const session = await motor.getMemory('my-session-id');
