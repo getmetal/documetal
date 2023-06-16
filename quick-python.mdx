@@ -6,9 +6,9 @@ description: "Learn how to build with Metal in your Python project."
 ## Prerequisites
 Before you begin, you'll need to:
 - [Create an Index](/misc-create-index)
-- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication)
+- [Create an API Key](/misc-get-keys) for [authentication](/api-reference/introduction#authentication)
 
-## 1. Install
+## Install
 
 <CodeGroup>
 
@@ -17,58 +17,185 @@ pip install metal-sdk
 ```
 
 ```bash poetry
-poetry add metal-sdk
+poetry add @getmetal/metal-sdk
 ```
 
 </CodeGroup>
 
-## 2. Embed text into Metal
-The first step is to embed your text into Metal. This will allow you to compare your text to other text in the index.
+## Retrieval
 
-```python
+### 1. Embed & Index
 
+The first step is to embed your data into Metal. This will allow you to compare your text to other text in the index.
+
+<CodeGroup>
+```python Text
 from metal_sdk.metal import Metal
 
+
+# Note: Index must be embeddings-ada-02
 metal = Metal(
-  'pk_1234567890',  # api-key
-  'ci_1234567890',  # client-id
-  'index_1234567890', # index-id
+  "pk_1234567890",  # api-key
+  "ci_1234567890",  # client-id
+  "index_1234567890", # index-id
 );
 
-
-
-embedding_document = metal.index({
+embedded_document = metal.index({
   "text": "A rocket flying towards mars.",
   "metadata": {
     "category": "space",
   },
 });
 
-print(embedding_document);
+print(embedded_document);
 
 ```
 
-## 3.Run a Semantic Search
-Next, we'll want to run a semantic search against the index. This will allow us to find similar text to the text we just embedded.
-
-```python
-
+```python File
 from metal_sdk.metal import Metal
 
+
+# Note: Index must be embeddings-ada-02
 metal = Metal(
-  'pk_1234567890',  # api-key
-  'ci_1234567890',  # client-id
-  'index_1234567890', # index-id
+  "pk_1234567890",  # api-key
+  "ci_1234567890",  # client-id
 );
 
+  embedded_file = metal.upload_file(
+    "index_1234567890", # index-id
+    "path/to/file.(txt|pdf|csv)", # file path
+  )
+
+  print(embedded_file);
+```
+
+```python Image
+from metal_sdk.metal import Metal
+
+
+# Note: Index must be embeddings-ada-02
+metal = Metal(
+  "pk_1234567890",  # api-key
+  "ci_1234567890",  # client-id
+  "index_1234567890", # index-id
+);
+
+embedded_image = metal.index({
+  "imageUrl": "https://path-to-image.jpg",
+
+});
+
+print(embedded_image);
+
+```
+
+```python Web UI
+
+# 1. Go to https://app.getmetal.io
+# 2. Navigate to your index dashboard
+# 3. Click "+ Import"
+```
+
+</CodeGroup>
+
+### 2.Semantic Search
+Next, we'll want to run a semantic search against the index. This will allow us to find similar text to the text we just embedded.
+
+<CodeGroup>
+```python Text
+from metal_sdk.metal import Metal
+
+
+# Note: Index must be embeddings-ada-02
+metal = Metal(
+  "pk_1234567890",  # api-key
+  "ci_1234567890",  # client-id
+  "index_1234567890", # index-id
+);
 
 results = metal.search({
   "text": "space travel",
 });
 
 print(results);
-
 ```
+
+```python Image
+from metal_sdk.metal import Metal
+
+
+# Note: Index must be embeddings-ada-02
+metal = Metal(
+  "pk_1234567890",  # api-key
+  "ci_1234567890",  # client-id
+  "index_1234567890", # index-id
+);
+
+results = metal.search({
+  "imageUrl": "https://path-to-image.jpg",
+
+});
+
+print(results);
+```
+
+```python Web UI
+# 1. Go to https://app.getmetal.io
+# 2. Navigate to your index browse page
+# 3. Search for a term in the input box
+```
+
+</CodeGroup>
+
+## Memory
+
+### 1. Add a Memory
+First we'll want to add a Memory Session so that you can track LLM sessions for your users.
+
+```python
+from metal_sdk.motorhead import Motorhead
+
+
+motor = Motorhead({
+  "api_key": "pk_1234567890",  # api-key
+  "client_id": "ci_1234567890", # client-id
+  "index_id": "index_1234567890", # index-id
+});
+
+mem = motor.add_memory(
+  "my-session-id",
+  {
+    "messages": [
+      { "role": "Human", "content": "hello, ai" },
+      { "role": "AI", "content": "hello, human" },
+    ],
+  },
+);
+
+print(mem);
+
+````
+
+
+### 2. Get a Memory
+We'll then want to allow you to fetch your memory session so that you can provide the LLM with historical context.
+
+
+```python
+from metal_sdk.motorhead import Motorhead
+
+
+motor = Motorhead({
+  "api_key": "pk_1234567890",  # api-key
+  "client_id": "ci_1234567890", # client-id
+  "index_id": "index_1234567890", # index-id
+});
+
+mem = motor.get_memory("my-session-id");
+
+print(mem);
+
+````
 
 ## Check out the library
 
