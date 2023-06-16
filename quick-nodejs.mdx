@@ -22,20 +22,22 @@ yarn add @getmetal/metal
 
 </CodeGroup>
 
-## 2. Embed text into Metal
-The first step is to embed your text into Metal. This will allow you to compare your text to other text in the index.
+## 2. Embed & Index
+The first step is to embed your data into Metal. This will allow you to compare your text to other text in the index.
 
-```typescript
+<CodeGroup>
+```typescript Text
 
 import { Metal } from '@getmetal/metal';
 
+// Note: Index must be embeddings-ada-02
 const metal = new Metal(
   'pk_1234567890',  // api-key
   'ci_1234567890',  // client-id
   'index_1234567890', // index-id
 );
 
-async function embedAndIndexRawText() {
+(async () => {
   const embeddingDocument = await metal.index({
     text: 'A rocket flying towards mars.',
     metadata: {
@@ -44,29 +46,60 @@ async function embedAndIndexRawText() {
   });
 
   console.log(embeddingDocument);
-}
-
-async function embedAndIndexAFile() {
-  const embeddingDocument = await metal.index({
-    text: 'A rocket flying towards mars.',
-    metadata: {
-      category: 'space',
-    },
-  });
-
-  console.log(embeddingDocument);
-}
-
+})();
 
 ```
 
-## 3.Run a Semantic Search
-Next, we'll want to run a semantic search against the index. This will allow us to find similar text to the text we just embedded.
-
-```typescript
+```typescript File
 
 import { Metal } from '@getmetal/metal';
 
+// Note: Index must be embeddings-ada-02
+const metal = new Metal(
+  'pk_1234567890',  // api-key
+  'ci_1234567890',  // client-id
+  'index_1234567890', // index-id
+);
+
+(async () => {
+  const embeddedFile = await metal.uploadFile({
+    file: 'path/to/file.(txt|pdf|csv)',
+  })
+
+  console.log(embeddedFile);
+})();
+```
+
+```typescript Image
+
+import { Metal } from '@getmetal/metal';
+
+// Note: Index must be CLIP
+const metal = new Metal(
+  'pk_1234567890',  // api-key
+  'ci_1234567890',  // client-id
+  'index_1234567890', // index-id
+);
+
+(async () => {
+  const embeddedImg = await metal.index({
+    imageUrl: 'https://path-to-image.jpg',
+  })
+
+  console.log(embeddedImg);
+})();
+```
+</CodeGroup>
+
+## 3.Semantic Search
+Next, we'll want to run a semantic search against the index. This will allow us to find similar text to the text we just embedded.
+
+<CodeGroup>
+```typescript Text
+
+import { Metal } from '@getmetal/metal';
+
+// Note: Index must be embeddings-ada-02
 const metal = new Metal(
   'pk_1234567890',  // api-key
   'ci_1234567890',  // client-id
@@ -82,8 +115,30 @@ const metal = new Metal(
   console.log(results);
 
 })();
-
 ```
+
+```typescript Image
+
+import { Metal } from '@getmetal/metal';
+
+// Note: Index must be CLIP
+const metal = new Metal(
+  'pk_1234567890',  // api-key
+  'ci_1234567890',  // client-id
+  'index_1234567890', // index-id
+);
+
+
+(async () => {
+  const results = await metal.search({
+    imageUrl: 'https://path-to-image.jpg',
+  });
+
+  console.log(results);
+
+})();
+```
+</CodeGroup>
 
 ## Check out the library
 
