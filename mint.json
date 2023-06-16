@@ -1,5 +1,8 @@
 {
   "name": "Metal",
+  "api": {
+    "baseUrl": "https://api.getmetal.io"
+  },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
@@ -67,8 +70,7 @@
       "group": "Learn",
       "pages": [
         "platform",
-        "concepts",
-        "authentication"
+        "concepts"
       ]
     },
     {

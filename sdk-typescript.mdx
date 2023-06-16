@@ -3,7 +3,7 @@ title: "Node.js SDK"
 description: "Overview of the TypeScript Metal SDK."
 ---
 
-<Note>You'll need an [API Key](/authentication) to use the SDK.</Note>
+<Note>You'll need an [API Key](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication) to use the SDK.</Note>
 ## Installation
 
 ```bash
@@ -16,8 +16,8 @@ npm i @getmetal/metal-sdk
 
 | Param      | Type   | Description                                             |
 | ---------- | ------ | ------------------------------------------------------- |
-| `apiKey`   | string | The API Key for your Org. [details](/authentication).   |
-| `clientId` | string | The Client ID for your Org. [details](/authentication). |
+| `apiKey`   | string | The API Key for your Org. [details](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication).   |
+| `clientId` | string | The Client ID for your Org. [details](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication). |
 | `indexId`  | string | The ID of the index you want to connect to.             |
 
 ```typescript
@@ -133,8 +133,8 @@ await metal.tune({ idA, idB, label, indexId: "indexId" });
 
 | Param      | Type   | Description                                                         |
 | ---------- | ------ | ------------------------------------------------------------------- |
-| `apiKey`   | string | For Managed. The API Key for your Org. [details](/authentication).  |
-| `clientId` | string | For Managed.The Client ID for your Org. [details](/authentication). |
+| `apiKey`   | string | For Managed. The API Key for your Org. [details](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication).  |
+| `clientId` | string | For Managed.The Client ID for your Org. [details](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication). |
 | `baseUrl`  | string | For Self-hosted. The URL path to your motorhead instance            |
 
 ```typescript
