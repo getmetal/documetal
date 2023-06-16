@@ -50,13 +50,26 @@
       ]
     },
     {
-      "group": "Miscellaneous",
+      "group": "Resources",
       "pages": [
-        "misc-get-keys",
-        "misc-create-index",
+        "sdks",
+        "integrations",
+        "examples"
+      ]
+    },
+    {
+      "group": "Learn",
+      "pages": [
         "platform",
         "concepts",
         "authentication"
+      ]
+    },
+    {
+      "group": "Basic Flows",
+      "pages": [
+        "misc-get-keys",
+        "misc-create-index"
       ]
     },
     {
@@ -100,14 +113,6 @@
         "api-reference/tunings/tune",
         "api-reference/tunings/get-one",
         "api-reference/tunings/get"
-      ]
-    },
-    {
-      "group": "Resources",
-      "pages": [
-        "sdks",
-        "integrations",
-        "examples"
       ]
     }
   ],
