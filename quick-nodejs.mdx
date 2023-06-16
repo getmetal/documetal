@@ -1,0 +1,76 @@
+---
+title: "Introduction"
+description: "Learn how to build with Metal in your Node.js project."
+---
+
+## Prerequisites
+Before you begin, you'll need to:
+- [Create an Index](/docs/misc-create-index)
+- [Create an API Key](/docs/misc-get-keys)
+
+## 1. Install
+
+<CodeGroup>
+
+```bash npm
+npm install @getmetal/metal
+```
+
+```bash yarn
+yarn add @getmetal/metal
+```
+
+</CodeGroup>
+
+## 2. Embed text into Metal
+The first step is to embed your text into Metal. This will allow you to compare your text to other text in the index.
+
+```typescript
+
+import { Metal } from '@getmetal/metal';
+
+const metal = new Metal(
+  'pk_1234567890',  // api-key
+  'ci_1234567890',  // client-id
+  'index_1234567890', // index-id
+);
+
+
+(async () => {
+  const embeddingDocument = await metal.index({
+    text: 'A rocket flying towards mars.',
+    metadata: {
+      category: 'space',
+    },
+  });
+
+  console.log(embeddingDocument);
+
+})();
+
+```
+
+## 3.Run a Semantic Search
+Next, we'll want to run a semantic search against the index. This will allow us to find similar text to the text we just embedded.
+
+```typescript
+
+import { Metal } from '@getmetal/metal';
+
+const metal = new Metal(
+  'pk_1234567890',  // api-key
+  'ci_1234567890',  // client-id
+  'index_1234567890', // index-id
+);
+
+
+(async () => {
+  const results = await metal.search({
+    text: 'space travel',
+  });
+
+  console.log(results);
+
+})();
+
+```

@@ -33,32 +33,30 @@
   ],
   "navigation": [
     {
-      "group": "Overview",
+      "group": "Documentation",
       "pages": [
-        "introduction",
-        "platform",
-        "concepts",
-        "authentication"
+        "introduction"
       ]
     },
     {
-      "group": "Get Started",
+      "group": "Quickstart",
       "pages": [
-        "get-started-typescript"
-      ]
-    },
-    {
-      "group": "Libraries",
-      "pages": [
-        "sdk-python",
-        "sdk-typescript"
+        {
+          "group": "Node.js",
+          "pages": [
+            "quick-nodejs"
+          ]
+        }
       ]
     },
     {
       "group": "Miscellaneous",
       "pages": [
         "misc-get-keys",
-        "misc-create-index"
+        "misc-create-index",
+        "platform",
+        "concepts",
+        "authentication"
       ]
     },
     {
@@ -105,15 +103,9 @@
       ]
     },
     {
-      "group": "SDK Libraries",
-      "pages": [
-        "sdk-python",
-        "sdk-typescript"
-      ]
-    },
-    {
       "group": "Resources",
       "pages": [
+        "sdks",
         "integrations",
         "examples"
       ]
