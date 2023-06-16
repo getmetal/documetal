@@ -110,6 +110,13 @@
         "sdk-python",
         "sdk-typescript"
       ]
+    },
+    {
+      "group": "Resources",
+      "pages": [
+        "integrations",
+        "examples"
+      ]
     }
   ],
   "footerSocials": {
