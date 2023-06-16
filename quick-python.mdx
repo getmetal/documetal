@@ -37,14 +37,14 @@ metal = Metal(
 
 
 
-embeddingDocument = metal.index({
-  text: 'A rocket flying towards mars.',
-  metadata: {
-    category: 'space',
+embedding_document = metal.index({
+  "text": "A rocket flying towards mars.",
+  "metadata": {
+    "category": "space",
   },
 });
 
-print(embeddingDocument);
+print(embedding_document);
 
 ```
 
@@ -63,7 +63,7 @@ metal = Metal(
 
 
 results = await metal.search({
-  text: 'space travel',
+  "text": "space travel",
 });
 
 print(results);
