@@ -1,54 +1,14 @@
 ---
-title: "Overview"
-description: "A high level overview of the Metal Platform."
+title: "Introduction"
+description: "Metal is a developer platform for building AI/LLM capabilities."
 ---
 
-![Metal Platform](/images/diagram.png)
+At a high level, Metal provides developers with a toolset for easily building LLM capabilities into their applications. This is broken out into two products:
 
-## Nouns
+- **Retrieval:** Make your data compatible with your AI products.
+- **Memory:** Give your AI products the ability to remember & learn over time.
 
-Critical resources of the Metal Platform.
+Together, these products enable developers to leverage the full power of LLMs into their applications.
 
-| Resource | Description                                           |
-| -------- | ----------------------------------------------------- |
-| Document | An embedding resource representation                  |
-| Index    | An indexed vector database of your _Embeddings_       |
-| Org      | An organization                                       |
-| Tuning   | A mechanism to fine-tune your _App_ programatically.  |
-
-![Metal Platform](/images/resources.png)
-
-## Concepts
-
-| Concept   | Description                                                      |
-| --------- | ---------------------------------------------------------------- |
-| Indexing  | Pushing data (raw text, documents, images, etc) into our system. |
-| Searching | An operation to run semantic searches on your index.             |
-| Tuning    | A mechanism to fine-tune your _App_ programatically.             |
-
-### Indexing
-
-You can index various types of data into our system. We support the following data types:
-
-- Image URLs (.jpg, .png, .gif, .bmp, .tiff)
-- Text (string)
-- Embeddings (number[])
-
-Checkout the [Index](/api-reference/documents/indexing) endpoint for more details.
-
-### Searching
-
-You can run semantic searches on your embedded data in a number of ways. We support the following search term types:
-
-- Images (.jpg, .png, .gif, .bmp, .tiff)
-- Text (string)
-
-Checkout the [Search](/api-reference/core/search) endpoint for more details.
-
-### Tuning
-
-We offer a tuning mechanism to programatically improve the quality of your search results.
-By labeling your data with the tune endpoint, you can improve the accuracy of your data by
-generated custom embeddings for your specific use case.
-
-Checkout the [Tune](/api-reference/core/tune) endpoint for more details.
+## Enterprise Grade
+Metal is built for production. Our system is designed to be highly available, scalable, and secure. LLMs are computationally expensive, so we've built our system to be highly performant and cost effective.
