@@ -4,6 +4,7 @@
     "baseUrl": "https://api.getmetal.io"
   },
   "logo": {
+    "href": "https://getmetal.io",
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
