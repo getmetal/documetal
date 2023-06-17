@@ -4,7 +4,7 @@ description: "Metal Retrieval allows you to utilize AI on your data. "
 ---
 
 ## Overview
-LLM Retrieval is the process of making your data compatible with LLMs. This is done by embedding your data into a vector space, which is then indexed into a database. This allows you to run semantic searches on your data, which is the core of LLMs.
+LLM Retrieval is the process of making your data compatible with LLMs. This is done by embedding your data into a vector space, then indexed into a database. This allows you to run semantic searches on your data, which is the core of LLMs.
 
 ## Use Cases
 
@@ -35,9 +35,9 @@ We provide APIs to easily push larger collections of data into our system as wel
 - PDF
 - XML
 
-Upon upload, these files run throuhg the following pipeline:
+Upon upload, these files run through the following pipeline:
 
-1. The file is runs through a series of metadata extractors + augmenters
+1. The file runs through a series of metadata extractors + augmenters
 2. File is converted into a text representation via OCR (if applicable)
 3. The text is split into overlapping 500 token chunks
 4. These chunks are embedding based on the chosen embeddings model (ada, clip, etc)
@@ -46,13 +46,13 @@ Upon upload, these files run throuhg the following pipeline:
 
 
 ### Searching
-We provide APIs to easily search your data. We support the following search term types:
+Run semantic search out of the box with our API. We support the following search term types:
 
 - Images (.jpg, .png, .gif, .bmp, .tiff)
 - Text (string)
 - Embeddings (number[])
 
-Checkout the [Search](/api-reference/documents/search) endpoint for more details.
+Check out the [Search](/api-reference/documents/search) endpoint for more details.
 
 
 
@@ -65,4 +65,4 @@ Checkout the [Search](/api-reference/documents/search) endpoint for more details
 | Index | A database of your embeddings. |
 | Indexing | Pushing data (raw text, files, images, etc) into our system.  |
 | Search | An operation to run semantic searches on your index. |
-| Tuning | A mechanism to improve the quality of your embeddings for your particular use-case. |
+| Tuning | A mechanism to improve the quality of your embeddings for your particular use case. |
