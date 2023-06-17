@@ -1,6 +1,68 @@
 ---
 title: "Retrieval"
-description: "Metal Retrieval enables you to unlcok semantic search, prompting context generation, & more."
+description: "Metal Retrieval allows you to unlock LLMs onto your data. "
 ---
 
-[wip]
+## Overview
+LLM Retrieval is the process of making your data compatible with LLMs. This is done by embedding your data into a vector space, which is then indexed into a database. This allows you to run semantic searches on your data, which is the core of LLMs.
+
+## Use Cases
+
+| Title | Description | Demo
+| :--- | :--- | :--- |
+| Semantic Search | LLMs give your search the knowledge of semantics..going beyond keyword search and into meaning. | tbd |
+| Question+Answering | Utilize LLMs to ask specific questions on top of your unstructured data (files, text, images, etc.) | tbd |
+| Clustering |Uncover hidden trends within your unstructured data | tbd |
+| Classification | Automatically label + tag large datasets | tbd |
+| Metadata Generation | Automatically generate structured data off of your unstructured data | tbd |
+
+## Core Usage
+
+### Indexing
+We provide APIs to easily push data into our system. We support the following "primitive" data types for ingestion:
+
+- Image URLs (.jpg, .png, .gif, .bmp, .tiff)
+- Text (string)
+- Embeddings (number[])
+
+Checkout the [Index](/api-reference/documents/indexing) endpoint for more details.
+
+### File Importing
+We provide APIs to easily push larger collections of data into our system as well. We support the following file types for ingestion:
+
+- CSV
+- DOCX
+- PDF
+- XML
+
+Upon upload, these files run throuhg the following pipeline:
+
+1. The file is runs through a series of metadata extractors + augmenters
+2. File is converted into a text representation via OCR (if applicable)
+3. The text is split into overlapping 500 token chunks
+4. These chunks are embedding based on the chosen embeddings model (ada, clip, etc)
+5. The embeddings are indexed into a Vector database
+6. Vector is indexed into our database
+
+
+### Searching
+We provide APIs to easily search your data. We support the following search term types:
+
+- Images (.jpg, .png, .gif, .bmp, .tiff)
+- Text (string)
+- Embeddings (number[])
+
+Checkout the [Search](/api-reference/documents/search) endpoint for more details.
+
+
+
+## Definitions
+
+| Term | Definition |
+| --- | --- |
+| Document | A record that stores an embedding & metadata |
+| Embedding | A vector representation of your data. |
+| Index | A database of your embeddings. |
+| Indexing | Pushing data (raw text, files, images, etc) into our system.  |
+| Search | An operation to run semantic searches on your index. |
+| Tuning | A mechanism to improve the quality of your embeddings for your particular use-case. |
