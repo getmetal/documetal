@@ -114,6 +114,7 @@ metal = Metal(
 
 results = metal.search({
   "text": "space travel",
+  "filters": [{"field": "planet", "value": "mars"}]
 });
 
 print(results);
