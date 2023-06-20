@@ -88,9 +88,17 @@ self, payload: SearchPayload = {}, index_id=None, ids_only=False, limit=1
 | `embedding` | number[] | Raw embeddings to be searched.                    |
 | `imageUrl`  | string   | A URL for an image to be vectorized and searched. |
 | `text`      | string   | The text to be vectorized and searched.           |
+| `filters`   | dict[]   | List of filters to match in search.               |
+
+#### Filter
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `value`     | string \| number | Value to match.                    |
+| `field`     | string   | Field to filter. |
 
 ```python
-results = metal.search({ "text": "term-to-search" }, index_id="index1", limit=10)
+results = metal.search({ "text": "term-to-search", "filters": [{"field": "band", "value": "Black Sabbath"}] }, index_id="index1", limit=10)
 ```
 
 ## Uploading File
