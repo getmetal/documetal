@@ -22,11 +22,38 @@ const metal = new Metal("pk_123", "ci_123", "idx_123");
 
 ## index()
 
-Add a single embedding to an index.  When invoked, we will generate an embedding with one of the below "Embed" params and store it in a vector index.
+Add a single embedding to an index.  When invoked, we will generate an embedding with one of the below embedding params and store it into a vector db.
 
 <Note>
 You can only pass one of the following fields: `text`, `imageUrl`, or `embedding`. We only embed one field in a single request.
 </Note>
+
+```ts
+const textEmbedding = await metal.index({ text: "Rocket" });
+// or
+const imgEmbedding = await metal.index({ imageUrl: "https://path-to.img" });
+// or
+const rawEmbedding = await metal.index({ embedding: [0.1, 0.2, 0.3] });
+```
+
+
+You can also pass an optional `id` and `metadata` object to be stored with the embedding. Eg.
+
+```ts
+const opts = {
+  id: "rocket1",
+  metadata: {
+    category: "space",
+    another: 'field',
+  },
+}
+
+const embedding = await metal.index({
+  text: "Rocket",
+  ...opts,
+});
+```
+
 
 **Parameters**
 
@@ -35,20 +62,9 @@ You can only pass one of the following fields: `text`, `imageUrl`, or `embedding
 | Embed - `embedding` | number[] | Raw embedding to be indexed.                                          |
 | Embed - `imageUrl`  | string   | A URL for an image to be embedded and indexed.                       |
 | Embed - `text`      | string   | The text to be embedded and indexed.                                 |
-| `id`        | string   | Optional identifier for your embedding.                                |
-| `metadata`  | object   | A flexible metdata object to be stored w/ the embedding.               |
-| `indexId`   | string   | Optional index id. If none provided the initialized index will be used |
+| `id`        | string   | Optional. Identifier for your embedding.                                |
+| `metadata`  | object   | Optional. A flexible metdata object to be stored w/ the embedding.               |
 
-```typescript
-// Embed text
-await metal.index({ text: "text-to-index" });
-
-// Embed image
-await metal.index({ imageUrl: "https://path-to.img" });
-
-// Store raw embedding
-await metal.index({ embedding: [0, 1] });
-```
 
 ## indexMany()
 
