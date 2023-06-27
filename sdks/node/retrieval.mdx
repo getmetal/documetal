@@ -1,26 +1,13 @@
 ---
-title: "Node"
-description: "Overview of the TypeScript Metal SDK."
+title: "Retrieval (Metal)"
+description: "Overview of the Retrieval module in Node."
 ---
-
-<Card title="Node SDK" icon="github" href="https://github.com/getmetal/metal-ts">
-  Visit the GitHub Repo
-</Card>
-
 
 <Note>
   You'll need to [Create an API Key](/misc-get-keys) to [Authentication](/api-reference/introduction#authentication) with Metal.
 </Note>
 
-## Installation
-
-```bash
-npm i @getmetal/metal-sdk
-```
-
-# Retrieval (Semantic Search)
-
-## App Setup
+## Setup
 
 | Param      | Type   | Description                                             |
 | ---------- | ------ | ------------------------------------------------------- |
@@ -28,42 +15,59 @@ npm i @getmetal/metal-sdk
 | `client_id` | string | The Client ID for your Org. [Learn more.](/misc-get-keys) |
 | `index_id`  | string | The ID of the index you want to connect with. [Learn more.](/misc-create-index)             |
 
-```typescript
+```ts
 import { Metal } from "@getmetal/metal-sdk";
-
-const metal = new Metal("apiKey", "clientId", "indexId");
+const metal = new Metal("pk_123", "ci_123", "idx_123");
 ```
 
-## Indexing
+## index()
 
-#### Payload Object:
+Add a single embedding to an index.  When invoked, we will generate an embedding with one of the below "Embed" params and store it in a vector index.
+
+<Note>
+You can only pass one of the following fields: `text`, `imageUrl`, or `embedding`. We only embed one field in a single request.
+</Note>
+
+**Parameters**
 
 | Param       | Type     | Description                                                            |
 | ----------- | -------- | ---------------------------------------------------------------------- |
+| Embed - `embedding` | number[] | Raw embedding to be indexed.                                          |
+| Embed - `imageUrl`  | string   | A URL for an image to be embedded and indexed.                       |
+| Embed - `text`      | string   | The text to be embedded and indexed.                                 |
 | `id`        | string   | Optional identifier for your embedding.                                |
-| `embedding` | number[] | Raw embeddings to be indexed.                                          |
-| `imageUrl`  | string   | A URL for an image to be vectorized and indexed.                       |
-| `text`      | string   | The text to be vectorized and indexed.                                 |
 | `metadata`  | object   | A flexible metdata object to be stored w/ the embedding.               |
 | `indexId`   | string   | Optional index id. If none provided the initialized index will be used |
 
 ```typescript
+// Embed text
 await metal.index({ text: "text-to-index" });
+
+// Embed image
+await metal.index({ imageUrl: "https://path-to.img" });
+
+// Store raw embedding
+await metal.index({ embedding: [0, 1] });
 ```
 
-## Multi(Bulk) Indexing
+## indexMany()
 
-#### Payload Object:
+Bulk add multiple embedding documents to an index. When invoked, we will generate an embedding with one of the below "Embed" params and store it in a vector index.
+
+<Note>
+You can only pass one of the following fields: `text`, `imageUrl`, or `embedding`. We only embed one field in a single request.
+</Note>
+
+**Parameters**
 
 | Param       | Type     | Description                                                            |
 | ----------- | -------- | ---------------------------------------------------------------------- |
-| `id`        | string   | Optional identifier for your embedding.                                |
-| `index`     | string   | Required index id.                                                     |
+| `index`     | string   | Required. Index id.                                                     |
 | `embedding` | number[] | Raw embeddings to be indexed.                                          |
 | `imageUrl`  | string   | A URL for an image to be vectorized and indexed.                       |
 | `text`      | string   | The text to be vectorized and indexed.                                 |
-| `metadata`  | object   | A flexible metdata object to be stored w/ the embedding.               |
-| `indexId`   | string   | Optional index id. If none provided the initialized index will be used |
+| `id`        | string   | Optional. identifier for your embedding.                                |
+| `metadata`  | object   | Optional. A flexible metdata object to be stored w/ the embedding.               |
 
 ```typescript
 await metal.indexMany([
@@ -72,9 +76,9 @@ await metal.indexMany([
 ]);
 ```
 
-## Searching
+## search()
 
-#### Payload Object:
+**Parameters**
 
 | Param       | Type     | Description                                       |
 | ----------- | -------- | ------------------------------------------------- |
@@ -86,7 +90,7 @@ await metal.indexMany([
 | `idsOnly`   | boolean  | Return only the ids of the documents.             |
 | `limit`     | number   | Number of documents returned by the API           |
 
-#### Filter Object:
+**Filter Object**
 
 | Param   | Type             | Description                 |
 | ------- | ---------------- | --------------------------- |
@@ -103,27 +107,26 @@ const results = await metal.search({
 });
 ```
 
-## Uploading File
+## uploadFile()
 
 Only `.csv`, `.docx` and `.pdf` are accepted.
 
-#### Payload Object:
+**Parameters**
 
 | Param       | Type     | Description                                       |
 | ----------- | -------- | ------------------------------------------------- |
-| `indexId`   | string   | Optional index id where record will get indexed.  |
 | `file`      | string \| File   | File path (NodeJs) or File Object (Browser).             |
+
+| `indexId`   | string   | Optional index id where record will get indexed.  |
 
 
 ```typescript
-const results = await metal.uploadFile({
-  indexId: "indexId",
-  file: './path/to/file.csv',
-});
+const results = await metal.uploadFile('./path/to/file.csv');
 ```
 
-## Tuning
+## tune()
 
+**Parameters**
 | Param     | Type             | Description                                                     |
 | --------- | ---------------- | --------------------------------------------------------------- |
 | `idA`     | string           | The ID of the first embedding..                                 |
@@ -135,82 +138,6 @@ const results = await metal.uploadFile({
 await metal.tune({ idA, idB, label, indexId: "indexId" });
 ```
 
-# Memory (Motorhead)
+---
 
-## App Setup
-
-| Param      | Type   | Description                                                         |
-| ---------- | ------ | ------------------------------------------------------------------- |
-| `apiKey`   | string | For Managed. The API Key for your Org. [details](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication).  |
-| `clientId` | string | For Managed.The Client ID for your Org. [details](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication). |
-| `baseUrl`  | string | For Self-hosted. The URL path to your motorhead instance            |
-
-```typescript
-import { Motorhead } from "@getmetal/metal-sdk";
-
-// Managed
-const motorhead = new Motorhead({ apiKey: "apiKey", clientId: "clientId" });
-
-// Self-hosted
-const motorhead = new Motorhead({
-  baseUrl: "https://motorhead.yourdomain.com",
-});
-```
-
-````
-
-## Get Memory
-
-#### Payload Object:
-
-| Param       | Type   | Description                                  |
-| ----------- | ------ | -------------------------------------------- |
-| `sessionId` | string | The ID of the session to retrieve memory for |
-
-```typescript
-await motorhead.getMemory("session-id");
-````
-
-## Create Memory
-
-### Parameters
-
-```typescript
-interface Memory {
-  messages: {
-    content: string;
-    role: "AI" | "Human";
-  };
-  context: string;
-}
-```
-
-| Param       | Type     | Description                                                              |
-| ----------- | -------- | ------------------------------------------------------------------------ |
-| `sessionId` | string   | The ID of the session. If the session does not exist, it will create one |
-| `memory`    | Memory[] | A memory payload to update the session memory                            |
-
-```typescript
-const memoryPayload = {
-  messages: [
-    { role: "Human", content: "Who is the best vocalist of all time?" },
-    { role: "AI", content: "Ozzy!" },
-  ],
-  context:
-    "User ask what can he eat in Colombia. The AI responds arepas are really nice",
-};
-
-await motorhead.addMemory("session-id", memoryPayload);
-```
-
-## Delete Memory
-
-#### Payload Object:
-
-| Param       | Type   | Description                                |
-| ----------- | ------ | ------------------------------------------ |
-| `sessionId` | string | The ID of the session to delete memory for |
-
-```typescript
-await motorhead.deleteMemory("session-id");
-```
+Checkout the code on [Github](https://github.com/getmetal/metal-ts)

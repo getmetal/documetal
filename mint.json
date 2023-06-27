@@ -101,7 +101,14 @@
     {
       "group": "SDKs",
       "pages": [
-        "sdks/node",
+        {
+          "group": "Node",
+          "pages": [
+            "sdks/node/setup",
+            "sdks/node/retrieval",
+            "sdks/node/memory"
+          ]
+        },
         "sdks/python"
       ]
     },
