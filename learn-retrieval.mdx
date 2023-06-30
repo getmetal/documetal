@@ -42,7 +42,7 @@ Upon upload, these files run through the following pipeline:
 1. The file runs through a series of metadata extractors + augmenters
 2. File is converted into a text representation via OCR (if applicable)
 3. The text is split into overlapping 500 token chunks
-4. These chunks are embedding based on the chosen embeddings model (ada, clip, etc)
+4. These chunks are embedded based on the chosen embeddings model (ada, clip, etc)
 5. The embeddings are indexed into a Vector database
 6. Vector is indexed into our database
 
