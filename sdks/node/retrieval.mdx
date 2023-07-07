@@ -101,7 +101,7 @@ await metal.indexMany([
 | `embedding` | number[] | Raw embeddings to be searched.                    |
 | `imageUrl`  | string   | A URL for an image to be vectorized and searched. |
 | `text`      | string   | The text to be vectorized and searched.           |
-| `filters`   | Filter[] | Filters included for filtered search.             |
+| `filters`   | Filter   | Filters included for filtered search.             |
 | `indexId`   | string   | Optional index id where record will get indexed.  |
 | `idsOnly`   | boolean  | Return only the ids of the documents.             |
 | `limit`     | number   | Number of documents returned by the API           |
@@ -110,13 +110,22 @@ await metal.indexMany([
 
 | Param   | Type             | Description                 |
 | ------- | ---------------- | --------------------------- |
+| `and`   | FilterItem[]     | And clause, all members have to be satisfied. |
+| `or`    | FilterItem[]     | Or clause, at least one member has to be satisfied. |
+
+
+**Filter Item**
+
+| Param   | Type             | Description                 |
+| ------- | ---------------- | --------------------------- |
 | `field` | string           | Name of the field to filter |
 | `value` | string \| number | Value to match the filter   |
+| `operator` | string | One of: `eq`, `gt`, `gte`, `lt`, `lte`.   |
 
 ```typescript
 const results = await metal.search({
   text: "term-to-search",
-  filters: [{ field: "favoriteNumber", value: 666 }],
+  filters: { and: [{ field: "favoriteNumber", value: 666 }] },
   indexId: "indexId",
   idsOnly: false,
   limit: 100,
