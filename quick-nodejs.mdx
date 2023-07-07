@@ -158,6 +158,38 @@ const metal = new Metal(
 
 </CodeGroup>
 
+#### Filtering
+
+Filtering allows you to narrow down your search results by a specific field.
+
+`and` and `or` clauses are supported. Every `and` clause has to be satisfied and at least one `or` clause has to be satisfied to match a document. The operators supported are `eq`, `gt`, `gte`, `lt` and `lte`. A simple example:
+
+```python
+{
+  "filters": {
+    "and": [
+      {
+        "field": "planet",
+        "value": "mars",
+        "operator": "eq"
+      },
+    ],
+    "or": [
+      {
+        "field": "gravity",
+        "value": 0.1,
+        "operator": "gte"
+      },
+      {
+          "field": "gravity",
+          "value": 0.9,
+          "operator": "lte"
+      }
+    ]
+  }
+}
+```
+
 ## Memory
 
 ### 1. Add a Memory
