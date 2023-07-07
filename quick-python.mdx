@@ -114,7 +114,7 @@ metal = Metal(
 
 results = metal.search({
   "text": "space travel",
-  "filters": {"and": [{"field": "planet", "value": "mars"}]}
+  "filters": {"and": [{"field": "planet", "value": "mars", "operator": "eq"}]}
 })
 
 print(results)
