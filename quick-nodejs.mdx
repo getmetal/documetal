@@ -121,7 +121,7 @@ const metal = new Metal(
 (async () => {
   const results = await metal.search({
     text: 'space travel',
-    filters: [{ field: 'planet', value: 'mars' }]
+    filters: { and: [{ field: 'planet', value: 'mars' }] }
   });
 
   console.log(results);

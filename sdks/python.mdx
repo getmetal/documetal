@@ -102,11 +102,20 @@ self, payload: SearchPayload = {}, index_id=None, ids_only=False, limit=1
 
 | Param       | Type     | Description                                       |
 | ----------- | -------- | ------------------------------------------------- |
+| `and`       | dict | And clause, all members have to be satisfied.   |
+| `or`        | dict   | Or clause, at least one member has to be satisfied. |
+
+
+#### Filter Item
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
 | `value`     | string \| number | Value to match.                    |
 | `field`     | string   | Field to filter. |
+| `operator`  | string   | Possible values: `eq`, `gt`, `gte`, `lt`, `lte`. |
 
 ```python
-results = metal.search({ "text": "term-to-search", "filters": [{"field": "band", "value": "Black Sabbath"}] }, index_id="index1", limit=10)
+results = metal.search({ "text": "term-to-search", "filters": { "and": [{"field": "band", "value": "Black Sabbath"}]} }, index_id="index1", limit=10)
 ```
 
 ## Uploading File
