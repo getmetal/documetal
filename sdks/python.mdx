@@ -132,6 +132,17 @@ Only `.csv`, `.docx` and `.pdf` are accepted.
 results = metal.upload_file("index1", "./file_path.csv")
 ```
 
+## get_one()
+
+| Param   | Type             | Description                                                      |
+| ------- | ---------------- | ---------------------------------------------------------------- |
+| `id`   | string           | The ID of the document to retrieve. |
+| `index_id` | string  | Optional. Id of index to search.        |
+
+```python
+document = metal.get_one("document_id_123")
+```
+
 ## Tuning
 
 | Param   | Type             | Description                                                      |
