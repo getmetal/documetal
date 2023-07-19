@@ -132,6 +132,22 @@ const results = await metal.search({
 });
 ```
 
+## getOne()
+
+Retrieve a single embedding document.
+
+**Parameters**
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `id`        | string   | The ID of the document to retrieve.               |
+| `indexId`   | string   | Optional. index id where record will get indexed. |
+
+
+```typescript
+const document = await metal.getOne('documentId-123');
+```
+
 ## uploadFile()
 
 Only `.csv`, `.docx` and `.pdf` are accepted.
