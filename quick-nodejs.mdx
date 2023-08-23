@@ -37,7 +37,7 @@ import { Metal } from '@getmetal/metal-sdk';
 const metal = new Metal(
   'pk_1234567890',  // api-key
   'ci_1234567890',  // client-id
-  'index_1234567890', // index-id
+  'idx_1234567890', // index-id
 );
 
 (async () => {
@@ -121,7 +121,7 @@ const metal = new Metal(
 (async () => {
   const results = await metal.search({
     text: 'space travel',
-    filters: [{ field: 'planet', value: 'mars' }]
+    filters: { and: [{ field: 'planet', value: 'mars', operator: 'eq' }] }
   });
 
   console.log(results);
@@ -136,7 +136,7 @@ import { Metal } from '@getmetal/metal-sdk';
 const metal = new Metal(
   'pk_1234567890',  // api-key
   'ci_1234567890',  // client-id
-  'index_1234567890', // index-id
+  'idx_1234567890', // index-id
 );
 
 
@@ -157,6 +157,38 @@ const metal = new Metal(
 ```
 
 </CodeGroup>
+
+#### Filtering
+
+Filtering allows you to narrow down your search results by a specific field.
+
+`and` and `or` clauses are supported. Every `and` clause has to be satisfied and at least one `or` clause has to be satisfied to match a document. The operators supported are `eq`, `gt`, `gte`, `lt` and `lte`. A simple example:
+
+```python
+{
+  "filters": {
+    "and": [
+      {
+        "field": "planet",
+        "value": "mars",
+        "operator": "eq"
+      },
+    ],
+    "or": [
+      {
+        "field": "gravity",
+        "value": 0.1,
+        "operator": "gte"
+      },
+      {
+          "field": "gravity",
+          "value": 0.9,
+          "operator": "lte"
+      }
+    ]
+  }
+}
+```
 
 ## Memory
 

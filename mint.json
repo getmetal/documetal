@@ -33,6 +33,11 @@
       "name": "API Reference",
       "icon": "rectangle-terminal",
       "url": "api-reference"
+    },
+    {
+      "name": "SDKs",
+      "icon": "rectangle-code",
+      "url": "sdks"
     }
   ],
   "navigation": [
@@ -70,9 +75,8 @@
     {
       "group": "Resources",
       "pages": [
-        "sdks",
-        "integrations",
-        "examples"
+        "examples",
+        "integrations"
       ]
     },
     {
@@ -86,6 +90,26 @@
       "group": "API Reference",
       "pages": [
         "api-reference/introduction"
+      ]
+    },
+    {
+      "group": "Overview",
+      "pages": [
+        "sdks/introduction"
+      ]
+    },
+    {
+      "group": "SDKs",
+      "pages": [
+        {
+          "group": "Node",
+          "pages": [
+            "sdks/node/setup",
+            "sdks/node/retrieval",
+            "sdks/node/memory"
+          ]
+        },
+        "sdks/python"
       ]
     },
     {

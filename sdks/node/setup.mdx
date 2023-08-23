@@ -1,0 +1,34 @@
+---
+title: "Get Started"
+description: "Setup the Node SDK in your application"
+---
+
+<Note>
+  You'll need to [Create an API Key](/misc-get-keys) to [Authentication](/api-reference/introduction#authentication) with Metal.
+</Note>
+
+## Install
+
+```bash
+npm install @getmetal/metal-sdk
+# or
+yarn add @getmetal/metal-sdk
+```
+
+## Modules
+```ts
+import { Metal, Motorhead } from '@getmetal/metal-sdk'
+
+const API_KEY = 'pk_123'
+const CLIENT_ID = 'ci_123'
+
+// Metal is the retrieval module
+const metalRetriever = new Metal(API_KEY, CLIENT_ID, 'idx_123')
+
+// Motorhead is the memory module
+const motorMemory = new Motorhead(API_KEY, CLIENT_ID)
+```
+
+---
+
+Checkout the code on [Github](https://github.com/getmetal/metal-ts)

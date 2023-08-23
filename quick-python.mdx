@@ -38,16 +38,16 @@ metal = Metal(
   "pk_1234567890",  # api-key
   "ci_1234567890",  # client-id
   "index_1234567890", # index-id
-);
+)
 
 embedded_document = metal.index({
   "text": "A rocket flying towards mars.",
   "metadata": {
     "category": "space",
   },
-});
+})
 
-print(embedded_document);
+print(embedded_document)
 
 ```
 
@@ -59,14 +59,14 @@ from metal_sdk.metal import Metal
 metal = Metal(
   "pk_1234567890",  # api-key
   "ci_1234567890",  # client-id
-);
+)
 
 embedded_file = metal.upload_file(
   "index_1234567890", # index-id
   "path/to/file.(txt|pdf|csv)", # file path
 )
 
-print(embedded_file);
+print(embedded_file)
 ```
 
 ```python Image
@@ -78,13 +78,13 @@ metal = Metal(
   "pk_1234567890",  # api-key
   "ci_1234567890",  # client-id
   "index_1234567890", # index-id
-);
+)
 
 embedded_image = metal.index({
   "imageUrl": "https://path-to-image.jpg",
-});
+})
 
-print(embedded_image);
+print(embedded_image)
 
 ```
 
@@ -110,14 +110,14 @@ metal = Metal(
   "pk_1234567890",  # api-key
   "ci_1234567890",  # client-id
   "index_1234567890", # index-id
-);
+)
 
 results = metal.search({
   "text": "space travel",
-  "filters": [{"field": "planet", "value": "mars"}]
-});
+  "filters": {"and": [{"field": "planet", "value": "mars", "operator": "eq"}]}
+})
 
-print(results);
+print(results)
 ```
 
 ```python Image
@@ -129,13 +129,13 @@ metal = Metal(
   "pk_1234567890",  # api-key
   "ci_1234567890",  # client-id
   "index_1234567890", # index-id
-);
+)
 
 results = metal.search({
   "imageUrl": "https://path-to-image.jpg",
-});
+})
 
-print(results);
+print(results)
 ```
 
 ```python Web UI
@@ -145,6 +145,40 @@ print(results);
 ```
 
 </CodeGroup>
+
+#### Filtering
+
+Filtering allows you to narrow down your search results by a specific field.
+
+`and` and `or` clauses are supported. Every `and` clause has to be satisfied and at least one `or` clause has to be satisfied to match a document. The operators supported are `eq`, `gt`, `gte`, `lt` and `lte`. A simple example:
+
+```python
+{
+  "filters": {
+    "and": [
+      {
+        "field": "planet",
+        "value": "mars",
+        "operator": "eq"
+      },
+    ],
+    "or": [
+      {
+        "field": "gravity",
+        "value": 0.1,
+        "operator": "gte"
+      },
+      {
+          "field": "gravity",
+          "value": 0.9,
+          "operator": "lte"
+      }
+    ]
+  }
+}
+```
+
+
 
 ## Memory
 
@@ -158,7 +192,7 @@ from metal_sdk.motorhead import Motorhead
 motor = Motorhead({
   "api_key": "pk_1234567890",  # api-key
   "client_id": "ci_1234567890", # client-id
-});
+})
 
 mem = motor.add_memory(
   "my-session-id",
@@ -168,9 +202,9 @@ mem = motor.add_memory(
       { "role": "AI", "content": "hello, human" },
     ],
   },
-);
+)
 
-print(mem);
+print(mem)
 
 ````
 
@@ -186,11 +220,11 @@ from metal_sdk.motorhead import Motorhead
 motor = Motorhead({
   "api_key": "pk_1234567890",  # api-key
   "client_id": "ci_1234567890", # client-id
-});
+})
 
-mem = motor.get_memory("my-session-id");
+mem = motor.get_memory("my-session-id")
 
-print(mem);
+print(mem)
 
 ````
 

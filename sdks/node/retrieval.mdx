@@ -1,0 +1,184 @@
+---
+title: "Retrieval (Metal)"
+description: "Overview of the Retrieval module in Node."
+---
+
+<Note>
+  You'll need to [Create an API Key](/misc-get-keys) to [Authenticate](/api-reference/introduction#authentication) with Metal.
+</Note>
+
+## Setup
+
+| Param      | Type   | Description                                             |
+| ---------- | ------ | ------------------------------------------------------- |
+| `api_key`   | string | The API Key for your Org. [Learn more.](/misc-get-keys)  |
+| `client_id` | string | The Client ID for your Org. [Learn more.](/misc-get-keys) |
+| `index_id`  | string | The ID of the index you want to connect with. [Learn more.](/misc-create-index)             |
+
+```ts
+import { Metal } from "@getmetal/metal-sdk";
+const metal = new Metal("pk_123", "ci_123", "idx_123");
+```
+
+## index()
+
+Add a single embedding to an index.  When invoked, we will generate an embedding with one of the below embedding params and store it into a vector db.
+
+<Note>
+You can only pass one of the following fields: `text`, `imageUrl`, or `embedding`. We only embed one field in a single request.
+</Note>
+
+```ts
+const textEmbedding = await metal.index({ text: "Rocket" });
+// or
+const imgEmbedding = await metal.index({ imageUrl: "https://path-to.img" });
+// or
+const rawEmbedding = await metal.index({ embedding: [0.1, 0.2, 0.3] });
+```
+
+
+You can also pass an optional `id` and `metadata` object to be stored with the embedding. Eg.
+
+```ts
+const opts = {
+  id: "rocket1",
+  metadata: {
+    category: "space",
+    another: 'field',
+  },
+}
+
+const embedding = await metal.index({
+  text: "Rocket",
+  ...opts,
+});
+```
+
+
+**Parameters**
+
+| Param       | Type     | Description                                                            |
+| ----------- | -------- | ---------------------------------------------------------------------- |
+| Embed - `embedding` | number[] | Raw embedding to be indexed.                                          |
+| Embed - `imageUrl`  | string   | A URL for an image to be embedded and indexed.                       |
+| Embed - `text`      | string   | The text to be embedded and indexed.                                 |
+| `id`        | string   | Optional. Identifier for your embedding.                                |
+| `metadata`  | object   | Optional. A flexible metdata object to be stored w/ the embedding.               |
+
+
+## indexMany()
+
+Bulk add multiple embedding documents to an index. When invoked, we will generate an embedding with one of the below "Embed" params and store it in a vector index.
+
+<Note>
+You can only pass one of the following fields: `text`, `imageUrl`, or `embedding`. We only embed one field in a single request.
+</Note>
+
+**Parameters**
+
+| Param       | Type     | Description                                                            |
+| ----------- | -------- | ---------------------------------------------------------------------- |
+| `index`     | string   | Required. Index id.                                                     |
+| `embedding` | number[] | Raw embeddings to be indexed.                                          |
+| `imageUrl`  | string   | A URL for an image to be vectorized and indexed.                       |
+| `text`      | string   | The text to be vectorized and indexed.                                 |
+| `id`        | string   | Optional. identifier for your embedding.                                |
+| `metadata`  | object   | Optional. A flexible metdata object to be stored w/ the embedding.               |
+
+```typescript
+await metal.indexMany([
+  { text: "Megadeth", index: "index-id" },
+  { text: "Metallica", index: "index-id" },
+]);
+```
+
+## search()
+
+**Parameters**
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `embedding` | number[] | Raw embeddings to be searched.                    |
+| `imageUrl`  | string   | A URL for an image to be vectorized and searched. |
+| `text`      | string   | The text to be vectorized and searched.           |
+| `filters`   | Filter   | Filters included for filtered search.             |
+| `indexId`   | string   | Optional index id where record will get indexed.  |
+| `idsOnly`   | boolean  | Return only the ids of the documents.             |
+| `limit`     | number   | Number of documents returned by the API           |
+
+**Filter Object**
+
+| Param   | Type             | Description                 |
+| ------- | ---------------- | --------------------------- |
+| `and`   | FilterItem[]     | And clause, all members have to be satisfied. |
+| `or`    | FilterItem[]     | Or clause, at least one member has to be satisfied. |
+
+
+**Filter Item**
+
+| Param   | Type             | Description                 |
+| ------- | ---------------- | --------------------------- |
+| `field` | string           | Name of the field to filter |
+| `value` | string \| number | Value to match the filter   |
+| `operator` | string | One of: `eq`, `gt`, `gte`, `lt`, `lte`.   |
+
+```typescript
+const results = await metal.search({
+  text: "term-to-search",
+  filters: { and: [{ field: "favoriteNumber", value: 666 }] },
+  indexId: "indexId",
+  idsOnly: false,
+  limit: 100,
+});
+```
+
+## getOne()
+
+Retrieve a single embedding document.
+
+**Parameters**
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `id`        | string   | The ID of the document to retrieve.               |
+| `indexId`   | string   | Optional. index id where record will get indexed. |
+
+
+```typescript
+const document = await metal.getOne('documentId-123');
+```
+
+## uploadFile()
+
+Only `.csv`, `.docx` and `.pdf` are accepted.
+
+**Parameters**
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `file`      | string \| File   | File path (NodeJs) or File Object (Browser).             |
+
+| `indexId`   | string   | Optional index id where record will get indexed.  |
+
+
+```typescript
+const results = await metal.uploadFile('./path/to/file.csv');
+```
+
+## tune()
+
+**Parameters**
+| Param     | Type             | Description                                                     |
+| --------- | ---------------- | --------------------------------------------------------------- |
+| `idA`     | string           | The ID of the first embedding..                                 |
+| `idB`     | string           | The ID of the second embedding.                                 |
+| `label`   | number[-1, 0, 1] | The "closeness score" of the two items. Either `-1`, `0` or `1` |
+| `indexId` | string           | Optional index id where tuning pair will get recorded.          |
+
+```typescript
+await metal.tune({ idA, idB, label, indexId: "indexId" });
+```
+
+---
+
+Checkout the code on [Github](https://github.com/getmetal/metal-ts)

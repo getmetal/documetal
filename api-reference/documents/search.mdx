@@ -36,17 +36,41 @@ description: "Semantically search your embedded documents."
   Subset of documents ids to match
 </ParamField>
 
-<ParamField body="filters" type="object[]">
-  <Expandable title="properties">
-    <ParamField body="field" type="string">
-      The name of the filtereable field
-    </ParamField>
+<ParamField body="filters" type="object">
+    <Expandable title="properties">
+    <ParamField body="and" type="object[]">
+        <Expandable title="properties">
+            <ParamField body="field" type="string">
+            The name of the filtereable field
+            </ParamField>
 
-    <ParamField body="value" type="string or number" >
-      The field value to search for.
-    </ParamField>
+            <ParamField body="value" type="string or number" >
+            The field value to search for.
+            </ParamField>
 
-  </Expandable>
+            <ParamField body="operator" type="string" >
+            Possible values: `eq`, `gt`, `gte`, `lt`, `lte`
+            </ParamField>
+
+        </Expandable>
+    </ParamField>
+    <ParamField body="or" type="object[]">
+        <Expandable title="properties">
+            <ParamField body="field" type="string">
+            The name of the filtereable field
+            </ParamField>
+
+            <ParamField body="value" type="string or number" >
+            The field value to search for.
+            </ParamField>
+
+            <ParamField body="operator" type="string" >
+            Possible values: `eq`, `gt`, `gte`, `lt`, `lte`
+            </ParamField>
+
+        </Expandable>
+    </ParamField>
+    </Expandable>
 </ParamField>
 
 ### Query
@@ -88,10 +112,22 @@ curl --location --request POST 'https://api.getmetal.io/v1/search' \
 --data-raw '{
     "index": "index-id",
     "text": "Generals gathered in their masses",
-    "filters": [{
-        "field": "year",
-        "value": 1984
-    }]
+    "filters": {
+        "and": [{
+            "field": "year",
+            "value": 1984,
+            "operator": "lte"
+        }],
+        "or": [{
+            "field": "name",
+            "value": "Iron Maiden",
+            "operator": "eq"
+        }, {
+            "field": "name",
+            "value": "Helloween",
+            "operator": "eq"
+        }]
+    }
 }'
 ```
 
@@ -119,8 +155,12 @@ curl --location --request POST 'https://api.getmetal.io/v1/search' \
       "metadata": {
         "name": "Iron Maiden",
         "year": 1978
+<<<<<<< HEAD
       },
       "createdAt": "2023-08-10T11:44:53.010Z"
+=======
+      }
+>>>>>>> 47219aaf4937bd3514123e84228e03507b697d33
     }
   ]
 }
