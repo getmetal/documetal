@@ -62,13 +62,31 @@ curl --location --request GET 'https://api.getmetal.io/v1/indexes/{indexId}' \
 
 ```json Response
 {
-  "data": {
-    "id": "1",
-    "name": "Danzig's Index",
-    "app": "<APP_ID>",
-    "model": "clip",
-    "dimensions": 512
-  }
+	"data": {
+		"id": "1",
+		"createdAt": "2023-07-03T14:25:22.104Z",
+		"app": "<APP_ID>",
+		"name": "Danzig's Index",
+		"model": "clip",
+		"dimensions": 512,
+		"filters": [
+			{
+				"field": "name",
+				"type": "string"
+			},
+			{
+				"field": "age",
+				"type": "number"
+			}
+		],
+		"counts": {
+			"docs": 42,
+			"searches": 666
+		},
+		"chunkConfig": {
+			"size": 999
+		}
+	}
 }
 ```
 
