@@ -1,6 +1,6 @@
 ---
 title: "Add Index"
-api: "POST https://api.getmetal.io/v1/apps/{appId}/indexes"
+api: "POST https://api.getmetal.io/v1/indexes"
 description: "This endpoint creates an index for an app."
 ---
 
@@ -87,7 +87,7 @@ description: "This endpoint creates an index for an app."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/indexes' \
+curl --location --request POST 'https://api.getmetal.io/v1/indexes' \
 --header 'Content-Type: application/json' \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \
@@ -132,7 +132,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/indexes'
 			}
 		],
 		"counts": {
-			"docs": 0
+			"docs": 0,
 		}
 	}
 }

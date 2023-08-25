@@ -26,7 +26,7 @@ description: "This endpoint deletes an embedding document."
 
 <RequestExample>
 ```bash Example Request
-curl --location --request DELETE 'https://api.getmetal.io/v1/documents/{documentId}' \
+curl --location --request DELETE 'https://api.getmetal.io/v1/indexes/:indexId/documents/:documentId' \
 --header 'Content-Type: application/json' \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \

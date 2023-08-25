@@ -1,0 +1,56 @@
+---
+title: "Get Sessions"
+api: "GET https://api.getmetal.io/v1/motorhead/sessions"
+description: "This endpoint gets a list of sessions"
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+
+### Response
+
+<ResponseField name="data" type="Index Array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Session Id 1
+    </ResponseField>
+
+    <ResponseField name="app" type="string">
+      Session Id 2
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://api.getmetal.io/v1/motorhead/sessions' \
+--header 'Content-Type: application/json' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+	"data": [
+		"session-1",
+		"session-2",
+		"session-3",
+		"session-4"
+	]
+}
+```
+
+</ResponseExample>

@@ -4,6 +4,17 @@ api: "GET https://api.getmetal.io/v1/motorhead/sessions/{sessionId}/memory"
 description: "This endpoint gets a single memory."
 ---
 
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+
 ### Params
 
 <ParamField required path="sessionId" type="string">
