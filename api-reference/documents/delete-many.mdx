@@ -1,6 +1,6 @@
 ---
 title: "Delete Documents (bulk)"
-api: "DELETE https://api.getmetal.io/v1/documents/bulk"
+api: "DELETE https://api.getmetal.io/v1/indexes/{indexId}/documents/bulk"
 description: "This endpoint deletes multiple embedding documents."
 ---
 
@@ -41,7 +41,12 @@ curl --location --request DELETE 'https://api.getmetal.io/v1/documents/bulk' \
 
 ```json Response
 {
-  "data": {}
+	"data": {
+		"ids": [
+			"id1",
+			"id2"
+		]
+	}
 }
 ```
 

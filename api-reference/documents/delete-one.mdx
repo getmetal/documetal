@@ -1,6 +1,6 @@
 ---
 title: "Delete Document"
-api: "DELETE https://api.getmetal.io/v1/documents/{documentId}"
+api: "DELETE https://api.getmetal.io/v1/indexes/{indexId}/documents/{documentId}"
 description: "This endpoint deletes an embedding document."
 ---
 
@@ -38,7 +38,9 @@ curl --location --request DELETE 'https://api.getmetal.io/v1/documents/{document
 
 ```json Response
 {
-  "data": {}
+  "data": {
+    "id": "document-id"
+  }
 }
 ```
 
