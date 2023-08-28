@@ -117,6 +117,7 @@
       "pages": [
         "api-reference/documents/indexing",
         "api-reference/documents/bulk",
+        "api-reference/documents/update",
         "api-reference/documents/search",
         "api-reference/documents/get-one",
         "api-reference/documents/get",
@@ -138,6 +139,7 @@
       "pages": [
         "api-reference/memory/post-memory",
         "api-reference/memory/get-memory",
+        "api-reference/memory/get-sessions",
         "api-reference/memory/del-memory"
       ]
     },

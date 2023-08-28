@@ -1,0 +1,77 @@
+---
+title: "Update Document"
+api: "POST https://api.getmetal.io/v1/index"
+description: "This endpoint updates and replaces an existing Document(embedding) with the inputted data."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Body
+
+<ParamField body="index" type="string" placeholder="Index ID" required>
+  Index ID
+</ParamField>
+
+<ParamField body="id" type="string">
+  Identifier for the embedding you wish to replace. Must be between 3 - 256 chars and consist of
+  numbers, letters, or `-`.
+</ParamField>
+
+<ParamField body="text" type="string">
+  Text to be embedded. Must be between 3 - 10,000 chars.
+</ParamField>
+
+<ParamField body="imageUrl" type="string">
+  Image URL
+</ParamField>
+
+<ParamField body="embedding" type="number[]">
+  Custom Embeddings
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Metadata object.
+</ParamField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/index' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+--data-raw '{
+    "index": "index-id",
+    "text": "text that will replace the existing document",
+    "id": "my-unique-id",
+    "metadata": {
+        "fieldA": "my custom value"
+    }
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "id": "my-unique-id",
+  "text": "text that will replace the existing document",
+  "createdAt": "2023-03-17T17:21:13.163Z",
+  "metadata": {
+    "fieldA": "my custom value"
+  }
+
+}
+```
+
+</ResponseExample>
