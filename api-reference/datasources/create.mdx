@@ -1,0 +1,77 @@
+---
+title: "Create Data Source"
+api: "POST https://api.getmetal.io/v1/datasources"
+description: "This endpoint creates and stores a Data Source with the provided details."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Body
+
+<ParamField body="name" type="string" placeholder="Data Source Name" required>
+  Name of the Data Source.
+</ParamField>
+
+
+<ParamField body="sourcetype" type="string" placeholder="Source Type" required>
+  Type of the source. File or Text.
+</ParamField>
+
+<ParamField body="autoExtract" type="boolean" required>
+  Flag indicating whether auto-extraction is enabled.
+</ParamField>
+
+<ParamField body="metadataFields" type="array">
+  An array containing metadata fields. Each object should have `name`, `type`, and `description` properties.
+</ParamField>
+
+<RequestExample>
+
+```bash Example Request
+curl -X POST "https://api.yourdomain.com/datasources" \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "my_datasource",
+    "metadataFields": [
+      {
+        "name": "band",
+        "type": "String",
+        "description": "Which heavy metal band is represented by the iconic mascot Eddie?"
+      }
+    ],
+    "sourcetype": "File",
+    "autoExtract": true
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+  {
+    "data": {
+      "id": "some_id",
+      "createdAt": "2023-08-29T10:51:04.246Z",
+      "createdBy": "userId",
+      "name": "my_datasource",
+      "metadataFields": [
+        {
+          "name": "band",
+          "type": "String",
+          "description": "Which heavy metal band is represented by the iconic mascot Eddie?"
+        }
+      ],
+      "sourcetype": "File",
+      "autoExtract": true,
+    }
+  }
+  ```
+</ResponseExample>

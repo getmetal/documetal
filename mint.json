@@ -113,6 +113,26 @@
       ]
     },
     {
+      "group": "Data Entities",
+      "pages": [
+        "api-reference/dataentities/create",
+        "api-reference/dataentities/get-one",
+        "api-reference/dataentities/get-all",
+        "api-reference/dataentities/update",
+        "api-reference/dataentities/delete"
+      ]
+    },
+    {
+      "group": "Datasources",
+      "pages": [
+        "api-reference/datasources/create",
+        "api-reference/datasources/get-one",
+        "api-reference/datasources/get-all",
+        "api-reference/datasources/update",
+        "api-reference/datasources/delete"
+      ]
+    },
+    {
       "group": "Embedding Documents",
       "pages": [
         "api-reference/documents/indexing",

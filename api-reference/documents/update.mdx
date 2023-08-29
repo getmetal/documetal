@@ -1,7 +1,7 @@
 ---
 title: "Update Document"
-api: "POST https://api.getmetal.io/v1/index"
-description: "This endpoint updates and replaces an existing Document(embedding) with the inputted data."
+api: "POST https://api.getmetal.io/v1/index/{documentID}"
+description: "This endpoint updates and replaces an existing Document(embedding)."
 ---
 
 ### Auth Headers
@@ -20,8 +20,8 @@ description: "This endpoint updates and replaces an existing Document(embedding)
   Index ID
 </ParamField>
 
-<ParamField body="id" type="string">
-  Identifier for the embedding you wish to replace. Must be between 3 - 256 chars and consist of
+<ParamField body="id" type="string" placeholder="ID to update"required>
+  Existing Document ID to update. Must be between 3 - 256 chars and consist of
   numbers, letters, or `-`.
 </ParamField>
 
@@ -51,7 +51,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/index' \
 --data-raw '{
     "index": "index-id",
     "text": "text that will replace the existing document",
-    "id": "my-unique-id",
+    "id": "id-to-update",
     "metadata": {
         "fieldA": "my custom value"
     }
@@ -64,7 +64,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/index' \
 
 ```json Response
 {
-  "id": "my-unique-id",
+  "id": "id-to-update",
   "text": "text that will replace the existing document",
   "createdAt": "2023-03-17T17:21:13.163Z",
   "metadata": {
