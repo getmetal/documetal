@@ -1,7 +1,7 @@
 ---
 title: "Update Data Entity"
 api: "PUT https://api.getmetal.io/v1/data-entities/{dataentityID}"
-description: "This endpoint updates a Data Entity"
+description: "This endpoint updates the details of an existing data entity by its ID."
 ---
 
 ### Auth Headers
@@ -13,3 +13,85 @@ description: "This endpoint updates a Data Entity"
 <ParamField required header="x-metal-client-id" type="string">
   A Client ID for your org.
 </ParamField>
+
+
+
+### Params
+
+<ParamField required path="id" type="string">
+  The unique identifier of the data entity you wish to update.
+</ParamField>
+
+### Body
+
+### Body
+
+<ParamField required body="datasource" type="string">
+  The ID of the datasource that this data entity belongs to.
+</ParamField>
+
+<ParamField required body="name" type="string">
+  Name of the data entity.
+</ParamField>
+
+<ParamField body="extractedMetadata" type="object">
+  Extracted metadata as an array of objects, each containing name, value, and type.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Status of the data entity.
+</ParamField>
+
+<ParamField body="OCRData" type="object">
+  OCR data which includes updated timestamp, engine, fileType, and filename.
+</ParamField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl -X PUT "https://api.getmetal.io/dataentities/{id}" \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+--data-raw '{
+  "datasource": "datasourceID",
+  "name": "Updated Name",
+  "status": "updated_status",
+  "extractedMetadata": [
+    {
+      "name": "band",
+      "value": "Metallica",
+      "type": "String"
+    }
+  ],
+  "OCRData": {
+    "updatedAt": "timestamp",
+    "engine": "engine_name",
+    "fileType": "file_type",
+    "filename": "file_name"
+  }
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+
+  ```json
+  {
+    "id": "dataEntityID",
+    "datasource": "datasourceID",
+    "name": "Updated Name",
+    "extractedMetadata": [
+      {
+        "name": "band",
+        "value": "Metallica",
+        "type": "String"
+      }
+    ],
+    "sourceType": "Text",
+    "status": "Updated",
+    "updatedAt": "2023-08-29T10:51:04.246Z"
+  }
+  ```
+</ResponseExample>

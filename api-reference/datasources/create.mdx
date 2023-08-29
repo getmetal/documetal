@@ -36,8 +36,10 @@ description: "This endpoint creates and stores a Data Source with the provided d
 <RequestExample>
 
 ```bash Example Request
-curl -X POST "https://api.yourdomain.com/datasources" \
+curl -X POST "https://api.getmetal.io/v1/datasources" \
 --header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
 --data-raw '{
     "name": "my_datasource",
     "metadataFields": [
@@ -58,7 +60,7 @@ curl -X POST "https://api.yourdomain.com/datasources" \
 ```json Response
   {
     "data": {
-      "id": "some_id",
+      "id": "datasourceID",
       "createdAt": "2023-08-29T10:51:04.246Z",
       "createdBy": "userId",
       "name": "my_datasource",

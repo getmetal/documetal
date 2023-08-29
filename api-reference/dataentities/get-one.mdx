@@ -1,7 +1,7 @@
 ---
 title: "Get Data Entity"
-api: "GET https://api.getmetal.io/v1/data-entities/{dataentityID}"
-description: "This endpoint gets a Data Entity"
+api: "GET https://api.getmetal.io/v1/data-entities/{id}"
+description: "This endpoint retrieves a Data Entity by its ID"
 ---
 
 ### Auth Headers
@@ -13,3 +13,70 @@ description: "This endpoint gets a Data Entity"
 <ParamField required header="x-metal-client-id" type="string">
   A Client ID for your org.
 </ParamField>
+
+
+### Params
+
+<ParamField required path="id" type="string">
+  The unique identifier of the data entity you wish to retrieve.
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Data Entity Object">
+  <Expandable title="properties">
+
+    <ResponseField name="id" type="string">
+      The unique identifier of the data entity.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Name of the data entity.
+    </ResponseField>
+
+    <ResponseField name="attributes" type="array">
+      An array of attributes, each with a name, type, and value.
+    </ResponseField>
+
+    <ResponseField name="createdBy" type="string">
+      The user ID who created this entity.
+    </ResponseField>
+
+    <ResponseField name="createdAt" type="string">
+      Timestamp indicating when the data entity was created.
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl -X GET "https://api.getmetal.io/v1/data-entities/{id}" \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{
+  "data": {
+    "id": "entityID",
+    "name": "Record deal",
+    "attributes": [
+      {
+        "name": "band",
+        "type": "String",
+        "value": "Iron Maiden"
+      }
+    ],
+    "createdBy": "userID",
+    "createdAt": "2023-08-29T12:34:56.789Z"
+  }
+}
+```
+</ResponseExample>

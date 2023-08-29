@@ -1,7 +1,7 @@
 ---
 title: "Delete Data Entity"
-api: "Delete https://api.getmetal.io/v1/data-entities/{dataentityID}"
-description: "This endpoint deletes a Data Entity"
+api: "DELETE https://api.getmetal.io/dataEntities/{id}"
+description: "This endpoint deletes a specific data entity by its ID."
 ---
 
 ### Auth Headers
@@ -13,3 +13,31 @@ description: "This endpoint deletes a Data Entity"
 <ParamField required header="x-metal-client-id" type="string">
   A Client ID for your org.
 </ParamField>
+
+### Params
+
+<ParamField required path="id" type="string">
+  The unique ID of the data entity you wish to delete.
+</ParamField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl -X DELETE "https://api.getmetal.io/dataEntities/{id}" \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{
+  "message": "Data entity successfully deleted",
+  "id": "dataEntityID"
+}
+```
+
+</ResponseExample>

@@ -1,6 +1,6 @@
 ---
 title: "Get Data Source"
-api: "GET https://api.yourdomain.com/datasources/{id}"
+api: "GET https://api.getmetal.io/v1/datasources/{id}"
 description: "This endpoint retrieves the details of a specific data source by its ID."
 ---
 
@@ -61,7 +61,7 @@ description: "This endpoint retrieves the details of a specific data source by i
 
 ```bash
 # Example Request
-curl -X GET "https://api.yourdomain.com/datasources/{id}" \
+curl -X GET "https://api.getmetal.io/v1/datasources/{id}" \
 --header 'Content-Type: application/json' \
 --header 'Some-API-Key: <api-key>' \
 --header 'Some-Client-Id: <client-id>'
@@ -73,7 +73,7 @@ curl -X GET "https://api.yourdomain.com/datasources/{id}" \
 ```json Response
 {
   "data": {
-    "id": "some_id",
+    "id": "datasourceID",
     "name": "my_datasource",
     "metadataFields": [
       {

@@ -1,6 +1,6 @@
 ---
 title: "Update Data Source"
-api: "PUT https://api.yourdomain.com/datasources/{id}"
+api: "PUT https://api.getmetal.io/v1/datasources/{id}"
 description: "This endpoint updates the details of an existing data source by its ID."
 ---
 
@@ -43,7 +43,7 @@ description: "This endpoint updates the details of an existing data source by it
 
 ```bash
 # Example Request
-curl -X PUT "https://api.yourdomain.com/datasources/some_id" \
+curl -X PUT "https://api.getmetal.io/v1/datasources/some_id" \
 --header 'Content-Type: application/json' \
 --header 'Some-API-Key: <api-key>' \
 --header 'Some-Client-Id: <client-id>' \
@@ -67,7 +67,7 @@ curl -X PUT "https://api.yourdomain.com/datasources/some_id" \
 ```json
 {
   "data": {
-    "id": "some_id",
+    "id": "datasourceID",
     "name": "updated_datasource",
     "metadataFields": [
       {
