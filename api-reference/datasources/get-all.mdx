@@ -42,8 +42,10 @@ curl -X GET "https://api.getmetal.io/v1/datasources" \
   {
     "data": [
       {
-        "id": "id1",
-        "name": "datasource1",
+        "id": "datasourceID",
+        "createdAt": "2023-08-22T21:49:26.564Z",
+        "createdBy": "000000000000000000000000",
+        "name": "my-data-source-1",
         "metadataFields": [
           {
             "name": "band",
@@ -56,7 +58,9 @@ curl -X GET "https://api.getmetal.io/v1/datasources" \
       },
       {
         "id": "id2",
-        "name": "datasource2",
+        "createdAt": "2023-08-22T21:49:26.564Z",
+        "createdBy": "userID",
+        "name": "my-data-source-2",
         "metadataFields": [
           {
             "name": "year",
@@ -68,7 +72,6 @@ curl -X GET "https://api.getmetal.io/v1/datasources" \
         "autoExtract": false
       }
     ],
-    "total": 2
   }
 
 ```

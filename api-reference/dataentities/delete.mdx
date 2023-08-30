@@ -1,6 +1,6 @@
 ---
 title: "Delete Data Entity"
-api: "DELETE https://api.getmetal.io/dataEntities/{id}"
+api: "DELETE https://api.getmetal.io/data-entities/{id}"
 description: "This endpoint deletes a specific data entity by its ID."
 ---
 
@@ -24,8 +24,7 @@ description: "This endpoint deletes a specific data entity by its ID."
 
 ```bash
 # Example Request
-curl -X DELETE "https://api.getmetal.io/dataEntities/{id}" \
---header 'Content-Type: application/json' \
+curl -X DELETE "https://api.getmetal.io/data-entities/{id}" \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \
 ```
@@ -34,10 +33,7 @@ curl -X DELETE "https://api.getmetal.io/dataEntities/{id}" \
 <ResponseExample>
 
 ```json
-{
-  "message": "Data entity successfully deleted",
-  "id": "dataEntityID"
-}
+204 No Content
 ```
 
 </ResponseExample>

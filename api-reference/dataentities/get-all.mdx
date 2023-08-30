@@ -73,8 +73,7 @@ description: "This endpoint retrieves a list of all data entities."
 
 ```bash
 # Example Request
-curl -X GET "https://api.getmetal.io/data-entities?limit=10&offset=0" \
---header 'Content-Type: application/json' \
+curl -X GET "https://api.getmetal.io/datasources/{datasourceID}/data-entities" \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>'
 ```
@@ -88,7 +87,7 @@ curl -X GET "https://api.getmetal.io/data-entities?limit=10&offset=0" \
     {
       "id": "id1",
       "datasource": "datasourceID",
-      "name": "Record Deal",
+      "name": "record_deal.pdf",
       "extractedMetadata": [
         {
           "name": "band",
@@ -99,11 +98,20 @@ curl -X GET "https://api.getmetal.io/data-entities?limit=10&offset=0" \
       "sourceType": "File",
       "status": "Active",
       "createdAt": "2023-08-29T10:51:04.246Z",
-      "updatedAt": "2023-08-29T10:51:04.246Z"
+      "updatedAt": "2023-08-29T10:51:04.246Z",
+      "metadataFields": [
+        {
+          "name": "band",
+          "type": "String",
+          "description": "Which band is this record deal for?"
+        }
+			],
+      "createdBy": "userID"
     },
-          "id": "id2",
+    {
+      "id": "id2",
       "datasource": "datasource_id",
-      "name": "Tour Dates",
+      "name": "concert_list.docx",
       "extractedMetadata": [
         {
           "name": "Venue",
@@ -111,11 +119,20 @@ curl -X GET "https://api.getmetal.io/data-entities?limit=10&offset=0" \
           "type": "String"
         }
       ],
-      "sourceType": "Text",
+      "sourceType": "File",
       "status": "Active",
       "createdAt": "2023-08-29T10:51:04.246Z",
-      "updatedAt": "2023-08-29T10:51:04.246Z"
-  ]
+      "updatedAt": "2023-08-29T10:51:04.246Z",
+      "metadataFields": [
+        {
+          "name": "band",
+          "type": "String",
+          "description": "Where is the next concert at?"
+        }
+        ],
+      "createdBy": "userID"
+		}
+	]
 }
 ```
 </ResponseExample>

@@ -66,17 +66,51 @@ curl -X GET "https://api.getmetal.io/v1/data-entities/{id}" \
 {
   "data": {
     "id": "entityID",
-    "name": "Record deal",
-    "attributes": [
+    "datasource": "datasourceID",
+    "name": "record_deal.pdf",
+    "extractedMetadata": [
       {
         "name": "band",
         "type": "String",
         "value": "Iron Maiden"
-      }
+      },
+      {
+				"name": "recordLabel",
+				"value": "EMI",
+				"type": "String"
+			},
     ],
-    "createdBy": "userID",
-    "createdAt": "2023-08-29T12:34:56.789Z"
-  }
+    "sourcetype": "file",
+		"status": "EXTRACTED",
+    "createdAt": "2023-08-29T12:34:56.789Z",
+    "ocrData": {
+			"updatedAt": "1970-01-01T00:00:00Z",
+			"engine": "unstructured",
+			"dataEntity": "",
+			"filetype": "pdf",
+			"filename": "record_deal.pdf",
+			"data": [
+				{
+					"type": "UncategorizedText",
+					"text": "SEP-3-2R1@ B3:11F FROM: T0:17825834718 P.2"
+				},
+				{
+					"type": "Title",
+					"text": "RECORD DEAL AGREEMENT"
+				},
+        // ...
+      ],
+    },
+    "metadataFields": [
+			{
+				"name": "Partners",
+				"type": "string",
+				"description": "Who are the partners involved in the deal?"
+      },
+    ],
+    "url": "signed-url-to-file",
+    "createdBy": "007"
+}
 }
 ```
 </ResponseExample>
