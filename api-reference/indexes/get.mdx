@@ -1,6 +1,6 @@
 ---
 title: "List Indexes"
-api: "GET https://api.getmetal.io/v1/apps/{appId}/indexes"
+api: "GET https://api.getmetal.io/v1/indexes"
 description: "This endpoint gets a list of indexes for an app."
 ---
 
@@ -50,7 +50,7 @@ description: "This endpoint gets a list of indexes for an app."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request GET 'https://api.getmetal.io/v1/apps/{appId}/indexes' \
+curl --location --request GET 'https://api.getmetal.io/v1/indexes' \
 --header 'Content-Type: application/json' \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \
@@ -65,17 +65,45 @@ curl --location --request GET 'https://api.getmetal.io/v1/apps/{appId}/indexes' 
   "data": [
     {
       "id": "1",
-      "name": "Bruce's Index",
+      "createdAt": "2023-08-23T22:13:31.539Z",
       "app": "<APP_ID>",
-      "model": "clip",
-      "dimensions": 512
+      "name": "Bruce's Index",
+      "model": "text-embedding-ada-002",
+      "dimensions": 1536,
+      "filters": [
+				{
+					"field": "name",
+					"type": "string"
+				},
+				{
+					"field": "age",
+					"type": "number"
+				}
+			],
+			"chunkConfig": {
+				"size": 24000
+			}
     },
     {
       "id": "2",
-      "name": "Dave's Index",
+      "createdAt": "2023-08-23T15:35:27.398Z",
       "app": "<APP_ID>",
+      "name": "Dave's Index",
       "model": "clip",
-      "dimensions": 512
+      "dimensions": 512,
+      "filters": [
+				{
+					"field": "name",
+					"type": "string"
+				},
+				{
+					"field": "age",
+					"type": "number"
+				}
+			],
+			"chunkConfig": {
+				"size": 24000
+			}
     }
   ]
 }

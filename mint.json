@@ -69,7 +69,9 @@
       "pages": [
         "learn-introduction",
         "learn-retrieval",
-        "learn-memory"
+        "learn-memory",
+        "learn-extraction"
+
       ]
     },
     {
@@ -83,7 +85,9 @@
       "group": "Basic Flows",
       "pages": [
         "misc-create-index",
-        "misc-get-keys"
+        "misc-get-keys",
+        "misc-attribute-extraction"
+
       ]
     },
     {
@@ -113,10 +117,45 @@
       ]
     },
     {
+      "group": "Account",
+      "pages": [
+        "api-reference/account/get-current",
+        "api-reference/account/get-org"
+      ]
+    },
+    {
+      "group": "Analytics",
+      "pages": [
+        "api-reference/analytics/get-queries"
+
+      ]
+    },
+
+    {
+      "group": "Data Entities",
+      "pages": [
+        "api-reference/dataentities/create",
+        "api-reference/dataentities/get-one",
+        "api-reference/dataentities/get-all",
+        "api-reference/dataentities/delete"
+      ]
+    },
+    {
+      "group": "Datasources",
+      "pages": [
+        "api-reference/datasources/create",
+        "api-reference/datasources/get-one",
+        "api-reference/datasources/get-all",
+        "api-reference/datasources/update",
+        "api-reference/datasources/delete"
+      ]
+    },
+    {
       "group": "Embedding Documents",
       "pages": [
         "api-reference/documents/indexing",
         "api-reference/documents/bulk",
+        "api-reference/documents/update",
         "api-reference/documents/search",
         "api-reference/documents/get-one",
         "api-reference/documents/get",
@@ -138,6 +177,7 @@
       "pages": [
         "api-reference/memory/post-memory",
         "api-reference/memory/get-memory",
+        "api-reference/memory/get-sessions",
         "api-reference/memory/del-memory"
       ]
     },
@@ -148,7 +188,16 @@
         "api-reference/tunings/get-one",
         "api-reference/tunings/get"
       ]
+    },
+    {
+      "group": "Upload Files",
+      "pages": [
+        "api-reference/files/post",
+        "api-reference/files/get-one",
+        "api-reference/files/get-all"
+      ]
     }
+
   ],
   "footerSocials": {
     "discord": "https://discord.gg/GHY3Y8tU3J",

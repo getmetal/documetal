@@ -1,7 +1,7 @@
 ---
-title: "Add Document"
-api: "POST https://api.getmetal.io/v1/index"
-description: "This endpoint generates and stores a Document(embedding) with the inputted data."
+title: "Update Document"
+api: "POST https://api.getmetal.io/v1/index/{documentID}"
+description: "This endpoint updates and replaces an existing Document(embedding)."
 ---
 
 ### Auth Headers
@@ -20,9 +20,9 @@ description: "This endpoint generates and stores a Document(embedding) with the 
   Index ID
 </ParamField>
 
-<ParamField body="id" type="string">
-  Identifier for your embedding. Must be between 3 - 256 chars and consist of
-  numbers, letters, or `-`. If not provided, a random ID will be generated.
+<ParamField body="id" type="string" placeholder="ID to update"required>
+  Existing Document ID to update. Must be between 3 - 256 chars and consist of
+  numbers, letters, or `-`.
 </ParamField>
 
 <ParamField body="text" type="string">
@@ -38,8 +38,7 @@ description: "This endpoint generates and stores a Document(embedding) with the 
 </ParamField>
 
 <ParamField body="metadata" type="object">
-  Additional metadata for the document.
-
+  Metadata object.
 </ParamField>
 
 <RequestExample>
@@ -51,11 +50,10 @@ curl --location --request POST 'https://api.getmetal.io/v1/index' \
 --header 'x-metal-client-id: <client-id>' \
 --data-raw '{
     "index": "index-id",
-    "text": "text that will be embedded",
-    "id": "my-unique-id",
+    "text": "text that will replace the existing document",
+    "id": "id-to-update",
     "metadata": {
-      "fieldA": "my custom value",
-      "fieldB": "my other custom value"
+        "fieldA": "my custom value"
     }
 }'
 ```
@@ -66,16 +64,11 @@ curl --location --request POST 'https://api.getmetal.io/v1/index' \
 
 ```json Response
 {
-
-  "data": {
-    "id": "my-unique-id",
-    "text": "text that will be embedded",
-    "createdAt": "2023-03-17T17:21:13.163Z",
-    "metadata": {
-      "fieldA": "my custom value",
-      "fieldB": "my other custom value"
-
-      }
+  "id": "id-to-update",
+  "text": "text that will replace the existing document",
+  "createdAt": "2023-03-17T17:21:13.163Z",
+  "metadata": {
+    "fieldA": "my custom value"
   }
 
 }

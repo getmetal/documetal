@@ -1,0 +1,54 @@
+---
+title: "Current Organization"
+api: "GET https://api.getmetal.io/v1/orgs/current"
+description: "This endpoint retrieves the current organization's information."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your organization.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your organization.
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Organization Object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      ID of the organization.
+    </ResponseField>
+    <ResponseField name="name" type="string">
+  Name of the organization.
+</ResponseField>
+
+<ResponseField name="plan" type="string">
+  The current plan the organization is on.
+</ResponseField>
+  </Expandable>
+</ResponseField>
+
+
+
+<RequestExample>
+```bash
+
+curl --location --request GET 'https://api.getmetal.io/v1/orgs/current' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+```
+</RequestExample>
+<ResponseExample>
+```json
+{
+  "data": {
+    "id": "<org-id>",
+    "name": "My Organization",
+    "plan": "developer"
+  }
+}
+```
+</ResponseExample>

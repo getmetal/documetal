@@ -1,0 +1,85 @@
+---
+title: "Update Data Source"
+api: "PUT https://api.getmetal.io/v1/datasources/{id}"
+description: "This endpoint updates the details of an existing data source by its ID."
+---
+
+### Auth Headers
+
+
+<ParamField required header="Some-API-Key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="Some-Client-Id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Params
+
+<ParamField required path="id" type="string">
+  The unique identifier of the data source you wish to update.
+</ParamField>
+
+### Body
+
+<ParamField body="name" type="string">
+  Updated name of the data source.
+</ParamField>
+
+<ParamField body="metadataFields" type="array">
+  An array of updated metadata fields, each having a name, type, and description.
+</ParamField>
+
+<ParamField body="sourcetype" type="string">
+  Updated type of the data source.
+</ParamField>
+
+<ParamField body="autoExtract" type="boolean">
+  Updated flag indicating whether auto-extraction is enabled or not.
+</ParamField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl -X PUT "https://api.getmetal.io/v1/datasources/some_id" \
+--header 'Content-Type: application/json' \
+--header 'Some-API-Key: <api-key>' \
+--header 'Some-Client-Id: <client-id>' \
+--data-raw '{
+  "name": "updated_datasource",
+  "metadataFields": [
+    {
+      "name": "updated_field",
+      "type": "string",
+      "description": "Updated description"
+    }
+  ],
+  "sourcetype": "updated_type",
+  "autoExtract": false
+}'
+```
+</RequestExample>
+
+
+<ResponseExample>
+```json
+{
+  "data": {
+    "id": "datasourceID",
+    "name": "updated_datasource",
+    "metadataFields": [
+      {
+        "name": "updated_field",
+        "type": "string",
+        "description": "Updated description"
+      }
+    ],
+    "sourcetype": "updated_type",
+    "autoExtract": false,
+    "updatedAt": "some_timestamp"
+  }
+}
+```
+</ResponseExample>

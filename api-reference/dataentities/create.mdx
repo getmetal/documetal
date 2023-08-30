@@ -1,0 +1,114 @@
+---
+title: "Create Data Entity"
+api: "POST https://api.getmetal.io/v1/data-entities"
+description: "This endpoint creates a new Data Entity"
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+
+### Body
+
+<ParamField required body="datasource" type="ObjectID" placeholder="DataSource ObjectID">
+  The datasource ID.
+</ParamField>
+
+<ParamField required body="name" type="string" placeholder="Entity Name">
+  The name of the data entity.
+</ParamField>
+
+<ParamField optional body="extractedMetadata" type="array">
+  An array of extracted metadata, each with a name, value, and type.
+</ParamField>
+
+<ParamField required body="sourceType" type="string" placeholder="Source Type">
+  The type of the source (e.g., "PDF", "Text").
+</ParamField>
+
+<ParamField optional body="status" type="string" placeholder="Status">
+  The status of the data entity.
+</ParamField>
+
+
+### Response
+
+<ResponseField name="data" type="Data Entity Object">
+  <Expandable title="properties">
+
+    <ResponseField name="id" type="string">
+      The unique identifier of the data entity.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Name of the data entity.
+    </ResponseField>
+
+    <ResponseField name="createdBy" type="string">
+      The user ID who created this entity.
+    </ResponseField>
+
+    <ResponseField name="createdAt" type="string">
+      Timestamp indicating when the data entity was created.
+    </ResponseField>
+
+
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl -X POST "https://api.getmetal.io/v1/data-entities" \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+--data '{
+  "datasource": "datasourceID",
+  "name": "Song Lyrics",
+  "sourceType": "file",
+  "status": "active"
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+
+  ```json
+{
+	"data": {
+		"id": "dataEntityID",
+		"datasource": "datasourceID",
+		"name": "Song Lyrics",
+		"extractedMetadata": [
+      {
+        "name": "band",
+        "value": "Iron Maiden",
+        "description": "String"
+      }
+    ],
+		"sourcetype": "file",
+		"status": "active",
+		"createdAt": "2023-08-29T17:00:55.002Z",
+		"updatedAt": "1970-01-01T00:00:00Z",
+		"metadataFields": [
+			{
+        "name": "band",
+        "type": "String",
+        "description": "Which heavy metal band is represented by the iconic mascot Eddie?"
+			}
+		],
+		"url": "signed_upload_url",
+		"createdBy": "userID"
+	}
+}
+  ```
+</ResponseExample>

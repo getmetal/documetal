@@ -1,6 +1,6 @@
 ---
 title: "List Documents"
-api: "GET https://api.getmetal.io/v1/indexes/:indexId/documents"
+api: "GET https://api.getmetal.io/v1/indexes/{indexId}/documents"
 description: "This endpoint gets a list of documents for a given index."
 ---
 
@@ -60,7 +60,7 @@ description: "This endpoint gets a list of documents for a given index."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request GET 'https://api.getmetal.io/v1/indexes/:indexId/documents' \
+curl --location --request GET 'https://api.getmetal.io/v1/indexes/{indexId}/documents' \
 --header 'Content-Type: application/json' \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \

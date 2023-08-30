@@ -1,6 +1,6 @@
 ---
 title: "Add Index"
-api: "POST https://api.getmetal.io/v1/apps/{appId}/indexes"
+api: "POST https://api.getmetal.io/v1/indexes"
 description: "This endpoint creates an index for an app."
 ---
 
@@ -87,7 +87,7 @@ description: "This endpoint creates an index for an app."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/indexes' \
+curl --location --request POST 'https://api.getmetal.io/v1/indexes' \
 --header 'Content-Type: application/json' \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \
@@ -95,7 +95,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/indexes'
     "model": "custom",
     "name": "Ozzy Osbourne",
     "dimensions": 666,
-    "filters: [
+    "filters": [
       {
         "field": "name",
         "type": "string"
@@ -114,13 +114,27 @@ curl --location --request POST 'https://api.getmetal.io/v1/apps/{appId}/indexes'
 
 ```json Response
 {
-  "data": {
-    "id": "1",
-    "name": "Ozzy Osbourne",
-    "app": "<APP_ID>",
-    "model": "text-embedding-ada-002",
-    "dimensions": 1536
-  }
+	"data": {
+		"id": "1",
+		"createdAt": "2023-08-23T22:13:31.539Z",
+		"app": "<APP_ID>",
+		"name": "Ozzy Osbourne",
+		"model": "text-embedding-ada-002",
+		"dimensions": 1536,
+		"filters": [
+			{
+				"field": "name",
+				"type": "string"
+			},
+			{
+				"field": "age",
+				"type": "number"
+			}
+		],
+		"counts": {
+			"docs": 0,
+		}
+	}
 }
 ```
 
