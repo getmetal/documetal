@@ -1,0 +1,59 @@
+---
+title: "List Files"
+api: "GET https://api.getmetal.io/v1/indexes/{id}/files"
+description: "This endpoint allows you to retrieve a list of all files associated with a specific index."
+---
+
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your organization.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your organization.
+</ParamField>
+
+### Params
+
+<ParamField required path="id" type="string" pattern="^[0-9a-fA-F]{24}$">
+  Index ID
+</ParamField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl --location --request GET 'https://api.getmetal.io/v1/indexes/:id/files' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>'
+```
+</RequestExample>
+
+<ResponseExample>
+```json
+{
+  "data": [
+    {
+      "id": "<file-id>",
+      "status": "CREATED",
+      "createdAt": "2023-08-29T18:00:00.000Z",
+      "fileName": "example.pdf",
+      "fileType": "application/pdf",
+      "url": "<preSignedUrl>"
+    },
+    {
+      "id": "<file-id-2>",
+      "status": "CREATED",
+      "createdAt": "2023-08-29T19:00:00.000Z",
+      "fileName": "example2.csv",
+      "fileType": "text/csv",
+      "url": "<preSignedUrl-2>"
+    },
+    // ... more files
+  ]
+}
+```
+</ResponseExample>

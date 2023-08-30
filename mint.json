@@ -83,7 +83,9 @@
       "group": "Basic Flows",
       "pages": [
         "misc-create-index",
-        "misc-get-keys"
+        "misc-get-keys",
+        "misc-attribute-extraction"
+
       ]
     },
     {
@@ -112,6 +114,21 @@
         "sdks/python"
       ]
     },
+    {
+      "group": "Account",
+      "pages": [
+        "api-reference/account/get-current",
+        "api-reference/account/get-org"
+      ]
+    },
+    {
+      "group": "Analytics",
+      "pages": [
+        "api-reference/analytics/get-queries"
+
+      ]
+    },
+
     {
       "group": "Data Entities",
       "pages": [
@@ -170,7 +187,17 @@
         "api-reference/tunings/get-one",
         "api-reference/tunings/get"
       ]
+    },
+    {
+      "group": "Upload Files",
+      "pages": [
+        "api-reference/files/post-file",
+        "api-reference/files/get-one",
+        "api-reference/files/get-all",
+        "api-reference/files/update-file"
+      ]
     }
+
   ],
   "footerSocials": {
     "discord": "https://discord.gg/GHY3Y8tU3J",

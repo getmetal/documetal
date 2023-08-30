@@ -1,12 +1,18 @@
 ---
-title: Generate an API Key
-description: API Keys are used to authenticate requests to the Metal API and SDKs.
+title: Attribute Extraction
+description: Identify and retrieve specific pieces of information from unstructured data and transform them into a structured format.
 ---
 
-## Generate API Keys (`apiKey` + `clientId`)
+## Creating a Data Source
 
-Navigate to the [Org Settings page](https://app.getmetal.io/settings/organization) to generate an API Key:
-![Org Settings](/images/generate-key.png)
+Log into your [Metal Account](https://app.getmetal.io/login) to get started.<br />
 
-Immeditely upon creation, you'll receive an `apiKey`. Make sure to store this somewhere safe, as you won't be able to access it after navigating away.
-After returning to the list page, you'll be able to see the `clientId`for each API Key.
+Navigate to the [Data Source](https://app.getmetal.io/datasources) page and add a Data Source specifying the attributes to extract. Use the description box to guide the LLM.
+
+![Add Datasource](/images/add.gif)
+
+Next upload your file (pdf, docx, or csv) and stand by for the extracted results. Note you can add multiple files to the same Datasource.
+
+![Upload Dataentity](/images/upload-file.gif)
+
+Now you can integrate your structured data into Metal indexes or opt to download it.

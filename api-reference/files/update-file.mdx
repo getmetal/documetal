@@ -1,0 +1,57 @@
+---
+title: "Update File"
+api: "PUT https://api.getmetal.io/v1/files/{id}"
+description: "This endpoint allows you to update the status of a specific file by its ID. A new pre-signed URL will be returned upon successful update."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Params
+<ParamField required url="id" type="string" pattern="^[0-9a-fA-F]{24}$">
+  The ID of the file you wish to update.
+</ParamField>
+
+### Body
+
+<ParamField required body="status" type="string">
+  The new status for the file.
+</ParamField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl --location --request PUT 'https://api.getmetal.io/v1/files/{id}' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+--data-raw '{
+    "status": "UPDATED"
+}'
+```
+</RequestExample>
+
+
+<ResponseExample>
+
+  ```json
+  {
+    "data": {
+      "id": "<file-id>",
+      "status": "UPDATED",
+      "createdAt": "2023-08-29T18:00:00.000Z",
+      "fileName": "example.pdf",
+      "fileType": "application/pdf",
+      "url": "<new_preSignedUrl>"
+    }
+  }
+
+  ```
+</ResponseExample>
