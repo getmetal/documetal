@@ -137,7 +137,6 @@
         "api-reference/dataentities/create",
         "api-reference/dataentities/get-one",
         "api-reference/dataentities/get-all",
-        "api-reference/dataentities/update",
         "api-reference/dataentities/delete"
       ]
     },
@@ -195,8 +194,7 @@
       "pages": [
         "api-reference/files/post",
         "api-reference/files/get-one",
-        "api-reference/files/get-all",
-        "api-reference/files/update-file"
+        "api-reference/files/get-all"
       ]
     }
 
