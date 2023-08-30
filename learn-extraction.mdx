@@ -1,0 +1,55 @@
+---
+title: "AI Extraction"
+description: "Metal Attribute Extraction allows you to easily pull and organize information from unstructured data."
+---
+
+## Overview
+Attribute Extraction is the process of identifying specific information within unstructured data and converting it into a structured format. It scans data sources, isolates particular pieces of information, and presents them in a structured manner.
+
+| Title | Description | Demo
+| :--- | :--- | :--- |
+| Content Organization | Structure scattered data into defined formats. | tbd |
+| Insight Generation | Derive actionable insights from unstructured content.| tbd |
+| Data Enrichment | Enhance existing data sets with additional extracted attributes. | tbd |
+| Decision Support | Provide data-driven support for decision-making processes. | tbd |
+| Monitoring | Monitor for specific attributes in large volumes of data. | tbd |
+| Trend Analysis | Identify and track patterns over time using extracted data. | tbd |
+| Data Validation | Ensure data consistency and accuracy across sources. | tbd |
+| Reporting | Generate detailed reports based on extracted attributes. | tbd |
+| Segmentation | Segment data sources based on extracted attributes. | tbd |
+| Integration Support | Prepare unstructured data for integration into systems. | tbd |
+
+## Usage
+
+### Add Data Source
+
+Create a datasource by calling the Add datasource endpoint to define the field attributes to extract. Use the description parameter to guide the LLM.
+
+### Get Data Source
+
+Get the datasource by calling the Get datasource endpoint. This will return the datasource with the corresponding id.
+
+### File Uploading
+
+We support the following file types for Attribute Extraction:
+- `.pdf`
+- `.csv`
+- `.docx`
+- `.xlsx`
+
+Upon upload, these files run through the following pipeline:
+1. File is converted into a text representation via OCR (if applicable)
+2. The text runs through a series of metadata extractors + augmenters
+3. Attributes are stored in our database and ready to use in your indexes.
+
+## Definitions
+
+## Glossary
+
+| Term                        | Definition                                                                                     |
+|-----------------------------|----------------------------------------------------------------------------------------------|
+| Attribute                   | Specific pieces of information identified and extracted from the raw data.                     |
+| Attribute Extraction template | An outline of specified attributes and its descriptions.                                       |
+| Data Entity                 | A unique entry in a Datasource. Eg: an uploaded file and the extracted attributes.             |
+| Datasource                  | A collection of Data Entities addressing a specific data concern. This could be from an integration, grouping of files, etc. |
+| OCR (Optical Character Recognition) | A technology that recognizes and converts different types of documents, such as scanned paper documents, PDF files, or images, into editable and searchable text. |

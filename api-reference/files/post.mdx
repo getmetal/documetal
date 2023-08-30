@@ -1,8 +1,14 @@
 ---
 title: "Upload File"
 api: "POST https://api.getmetal.io/v1/indexes/{id}/files"
-description: "This endpoint allows you to upload a file to a specific index. The uploaded file will be stored in S3."
+description: "This endpoint allows you to upload a file to a specific index. The uploaded file will be stored in S3 in a two-step process. First, you'll request a pre-signed URL, and then you'll upload the file to that URL."
 ---
+
+### Two-step process
+- Step 1: `POST https://api.getmetal.io/v1/indexes/{id}/files`
+- Step 2: `PUT` to the signed URL
+
+## Step 1: Request a Pre-signed URL for the File
 
 ### Auth Headers
 
@@ -66,3 +72,11 @@ curl --location --request POST 'https://api.getmetal.io/v1/indexes/{id}/files' \
 
 ```
 </ResponseExample>
+
+## Step 2: Upload the File to the Signed URL
+
+```bash
+# Example Request
+curl --location --request PUT '<preSignedUrl>' \
+--header 'Content-Type: application/pdf' \
+--upload-file '/path/to/your/example.pdf'

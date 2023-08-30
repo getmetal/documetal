@@ -33,8 +33,14 @@ description: "This endpoint retrieves a list of queries related to a specific in
         </ResponseField>
       </Expandable>
     </ResponseField>
-    <ResponseField name="t" type="number">
+    <ResponseField name="t" type="string">
       Timestamp of the query
+    </ResponseField>
+    <ResponseField name="d" type="number">
+      The cosine distance of the query
+    </ResponseField>
+    <ResponseField name="q" type="string">
+      The query
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -54,18 +60,14 @@ curl --location --request GET 'https://api.getmetal.io/v1/indexes/{id}/queries' 
 {
   "data": [
     {
-      "m": {
-        "org": "5fc2b4d2a4b8a1721169af15",
-        "index": "602b6f4za4b817d11769ae15"
+      "t": "2023-08-30T11:34:35.128Z",
+      "d": 0.176956892014,
+      "q": "Who is the best drummer of all time?"
       },
-      "t": 1627558400
-    },
     {
-      "m": {
-        "org": "5fc2b4d2a4b8a1721169af15",
-        "index": "602b6f4za4b817d11769ae15"
-      },
-      "t": 1627458500
+      "t": "2023-08-29T11:34:18.099Z",
+      "d": 0.156819581985,
+      "q": "Which band is represented by the iconic mascot Eddie?"
     }
     // ... up to 100 items
   ]

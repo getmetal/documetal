@@ -44,7 +44,7 @@ description: "This endpoint generates and stores a Document(embedding) with the 
 </ParamField>
 
 <ParamField body="metadata" type="object">
-  Metadata object.
+  Additional metadata for the document.
 </ParamField>
 
 <RequestExample>
@@ -61,7 +61,8 @@ curl --location --request POST 'https://api.getmetal.io/v1/index/bulk' \
             "text": "Ozzy is the best vocalist of all time",
             "id": "my-unique-id1",
             "metadata": {
-                "band": "Black Sabbath"
+                "band": "Black Sabbath",
+                "year": 1970
             }
         },
         {
@@ -69,7 +70,9 @@ curl --location --request POST 'https://api.getmetal.io/v1/index/bulk' \
             "text": "Dave Mustain disagrees",
             "id": "my-unique-id2",
             "metadata": {
-                "band": "Megadeth"
+                "band": "Megadeth",
+                "year": 1983
+
             }
         }
     ]

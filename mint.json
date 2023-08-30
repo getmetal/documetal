@@ -69,7 +69,9 @@
       "pages": [
         "learn-introduction",
         "learn-retrieval",
-        "learn-memory"
+        "learn-memory",
+        "learn-extraction"
+
       ]
     },
     {
@@ -191,7 +193,7 @@
     {
       "group": "Upload Files",
       "pages": [
-        "api-reference/files/post-file",
+        "api-reference/files/post",
         "api-reference/files/get-one",
         "api-reference/files/get-all",
         "api-reference/files/update-file"

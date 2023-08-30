@@ -38,7 +38,8 @@ description: "This endpoint generates and stores a Document(embedding) with the 
 </ParamField>
 
 <ParamField body="metadata" type="object">
-  Metadata object.
+  Additional metadata for the document.
+
 </ParamField>
 
 <RequestExample>
@@ -53,7 +54,8 @@ curl --location --request POST 'https://api.getmetal.io/v1/index' \
     "text": "text that will be embedded",
     "id": "my-unique-id",
     "metadata": {
-        "fieldA": "my custom value"
+      "fieldA": "my custom value",
+      "fieldB": "my other custom value"
     }
 }'
 ```
@@ -64,11 +66,16 @@ curl --location --request POST 'https://api.getmetal.io/v1/index' \
 
 ```json Response
 {
-  "id": "my-unique-id",
-  "text": "text that will be embedded",
-  "createdAt": "2023-03-17T17:21:13.163Z",
-  "metadata": {
-    "fieldA": "my custom value"
+
+  "data": {
+    "id": "my-unique-id",
+    "text": "text that will be embedded",
+    "createdAt": "2023-03-17T17:21:13.163Z",
+    "metadata": {
+      "fieldA": "my custom value",
+      "fieldB": "my other custom value"
+
+      }
   }
 
 }
