@@ -1,8 +1,17 @@
 ---
 title: "Create Data Entity"
 api: "POST https://api.getmetal.io/v1/data-entities"
-description: "This endpoint creates a new Data Entity"
+description: "This endpoint creates a new Data Entity."
 ---
+
+### Two-step process
+
+This endpoint is a two-step process. First, you create the data entity's URL, and then you upload the file to the signed URL.
+- Step 1: `POST https://api.getmetal.io/v1/data-entities`
+- Step 2: `PUT` to the signed URL
+
+## Step 1: Request URL for the File
+
 
 ### Auth Headers
 
@@ -112,3 +121,11 @@ curl -X POST "https://api.getmetal.io/v1/data-entities" \
 }
   ```
 </ResponseExample>
+
+## Step 2: Upload the File to the Signed URL
+
+```bash
+# Example Request
+curl --location --request PUT '<preSignedUrl>' \
+--header 'Content-Type: application/pdf' \
+--upload-file '/path/to/your/example.pdf'

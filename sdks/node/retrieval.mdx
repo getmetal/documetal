@@ -176,6 +176,37 @@ const results = await metal.uploadFile("./path/to/file.csv");
 await metal.tune({ idA, idB, label, indexId: "indexId" });
 ```
 
+## deleteOne()
+
+Delete a single embedding document.
+
+**Parameters**
+
+| Param     | Type   | Description                                       |
+| --------- | ------ | ------------------------------------------------- |
+| `id`      | string | The ID of the document to delte.               |
+| `indexId` | string | Optional. The ID of the index containing the document. |
+
+```typescript
+const document = await metal.deleteOne("documentId-123");
+```
+
+## deleteMany()
+
+Deletes multiple documents in an index based on their IDs.
+
+**Parameters**
+
+| Param     | Type   | Description                                       |
+| --------- | ------ | ------------------------------------------------- |
+| `id`      | string[] | The IDs of the documents to delete.               |
+| `indexId` | string | Optional. The ID of the index containing the document. |
+
+```typescript
+const document = await metal.deleteOne("documentId-123");
+```
+
 ---
+
 
 Checkout the code on [Github](https://github.com/getmetal/metal-ts)
