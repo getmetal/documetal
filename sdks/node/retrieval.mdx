@@ -124,7 +124,7 @@ await metal.indexMany([
 ```typescript
 const results = await metal.search({
   text: "term-to-search",
-  filters: { and: [{ field: "favoriteNumber", value: 666 }] },
+  filters: { and: [{ field: "favoriteNumber", value: 666, operator:"lt"}] },
   indexId: "indexId",
   idsOnly: false,
   limit: 100,
