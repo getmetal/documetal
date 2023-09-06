@@ -84,27 +84,28 @@ Metal uses conventional HTTP response codes to indicate the success or failure o
 | 5xx | Server Errors - something went wrong on Metal's end. |
 
 ## Normal pagination
-For endpoints like `/v1/indexes/:id/documents` pagination can be achieved using `page` and `limit` parameters.
+For certain endpoints, such as `/v1/indexes/:id/documents`, pagination can be achieved using the `page` and `limit` query parameters.
 
-These values can only be positive integers up to 100. This means that this method only allows callers to obtain up to `100 * 100` records.
+Both page and limit should be positive integers with a maximum value of 100. This constraint means that using this method, callers can retrieve a maximum of `10,000` (i.e., `100` * `100`) records.
 
 ## Deep pagination
-In order to obtain documents beyond the limits of normal pagination, users will need to use the `lastObjectIdSeen` returned from some API endpoints. That `id` allows the API to jump into a deeper point to keep reading data. An example script to do that would be the following:
+To fetch documents beyond the limitations of normal pagination, you should utilize the `lastObjectIdSeen` value returned. This ID enables the API to access data from a deeper point in the dataset. Below is an illustrative script to demonstrate this approach:
 
 ```js
 const fetchAllDocuments = () => {
   do {
     try {
-      const response = await axios.get(https://api.getmetal.io/indexes/<indexID>/documents, {
-        headers: {
-          'x-metal-api-key': '<your_key>',
-          'x-metal-client-id': '<your_client_id>',
-        },
-        params: {
-          lt: lastSeenObjectId, // this will be a querystring parameter `lt=${lastSeenObjectId}`
-          limit: 100,
-        },
-      });
+      const response = await axios
+        .get('https://api.getmetal.io/indexes/<indexID>/documents', {
+          headers: {
+            'x-metal-api-key': '<your_key>',
+            'x-metal-client-id': '<your_client_id>',
+          },
+          params: {
+            lt: lastSeenObjectId, // this will be a querystring parameter `lt=${lastSeenObjectId}`
+            limit: 100,
+          },
+        });
 
       documents = documents.concat(response.data.data);
 
