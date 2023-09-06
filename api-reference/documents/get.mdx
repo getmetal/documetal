@@ -57,6 +57,10 @@ description: "This endpoint gets a list of documents for a given index."
   </Expandable>
 </ResponseField>
 
+<ResponseField name="lastSeenObjectId" type="String">
+  The last object id seen in the result set. This can be used for deep pagination.
+</ResponseField>
+
 <RequestExample>
 
 ```bash Example Request
@@ -85,7 +89,8 @@ curl --location --request GET 'https://api.getmetal.io/v1/indexes/{indexId}/docu
       "createdAt": "2023-07-03T14:27:02.418Z",
       "metadata": {}
     }
-  ]
+  ],
+  "lastSeenObjectId": "64d529f3bd43b75ce5e020f9"
 }
 ```
 

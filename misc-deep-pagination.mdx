@@ -1,0 +1,43 @@
+---
+title: "Pagination"
+description: "Normal Pagination and deep pagination methods"
+---
+
+## Normal pagination
+
+For endpoints like `/v1/indexes/:id/documents` pagination can be achieved using `page` and `limit` parameters.
+
+These values can only be positive integers up to 100. This means that this method only allows callers to obtain up to `100 * 100` records.
+
+
+## Deep pagination
+
+In order to obtain documents beyond the limits of normal pagination, users will need to use the `lastObjectIdSeen` returned from some API endpoints. That `id` allows the API to jump into a deeper point to keep reading data. An example script to do that would be the following:
+
+```js
+const fetchAllDocuments = () => {
+  do {
+    try {
+      const response = await axios.get(https://api.getmetal.io/indexes/<indexID>/documents, {
+        headers: {
+          'x-metal-api-key': '<your_key>',
+          'x-metal-client-id': '<your_client_id>',
+        },
+        params: {
+          lt: lastSeenObjectId, // this will be a querystring parameter `lt=${lastSeenObjectId}`
+          limit: 100,
+        },
+      });
+
+      documents = documents.concat(response.data.data);
+
+      lastSeenObjectId = response.data.lastSeenObjectId;
+    } catch (error) {
+      console.error('Error fetching documents:', error);
+      break;
+    }
+  } while (lastSeenObjectId);
+
+  return documents;
+}
+```
