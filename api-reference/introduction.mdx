@@ -82,3 +82,40 @@ Metal uses conventional HTTP response codes to indicate the success or failure o
 | 422 | Usage Limit Exceeded - Hit a feature or usage limit based on your plan.  |
 | 429 | Rate Limit Exceeded - Too many requests hit the API too quickly. |
 | 5xx | Server Errors - something went wrong on Metal's end. |
+
+## Normal pagination
+For certain endpoints, such as `/v1/indexes/:id/documents`, pagination can be achieved using the `page` and `limit` query parameters.
+
+Both page and limit should be positive integers with a maximum value of 100. This constraint means that using this method, callers can retrieve a maximum of `10,000` (i.e., `100` * `100`) records.
+
+## Deep pagination
+To fetch documents beyond the limitations of normal pagination, you should utilize the `lastObjectIdSeen` value returned. This ID enables the API to access data from a deeper point in the dataset. Below is an illustrative script to demonstrate this approach:
+
+```js
+const fetchAllDocuments = () => {
+  do {
+    try {
+      const response = await axios
+        .get('https://api.getmetal.io/indexes/<indexID>/documents', {
+          headers: {
+            'x-metal-api-key': '<your_key>',
+            'x-metal-client-id': '<your_client_id>',
+          },
+          params: {
+            lt: lastSeenObjectId, // this will be a querystring parameter `lt=${lastSeenObjectId}`
+            limit: 100,
+          },
+        });
+
+      documents = documents.concat(response.data.data);
+
+      lastSeenObjectId = response.data.lastSeenObjectId;
+    } catch (error) {
+      console.error('Error fetching documents:', error);
+      break;
+    }
+  } while (lastSeenObjectId);
+
+  return documents;
+}
+```
