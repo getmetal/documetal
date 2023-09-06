@@ -34,7 +34,7 @@ from metal_sdk.metal import Metal
 metal = Metal("api_key", "client_id", "index_id")
 ```
 
-## Indexing
+## Indexing a Document
 
 | Param      | Type   | Description                                      |
 | ---------- | ------ | ------------------------------------------------ |
@@ -80,7 +80,7 @@ metal.index_many([{ "text": "blacksabbath", "index": "index-id" }, { "text": "ir
 
 ## Searching
 
-self, payload: SearchPayload = {}, index_id=None, ids_only=False, limit=1
+`self, payload: SearchPayload = {}, index_id=None, ids_only=False, limit=1`
 
 | Param      | Type    | Description                                          |
 | ---------- | ------- | ---------------------------------------------------- |
@@ -115,7 +115,7 @@ self, payload: SearchPayload = {}, index_id=None, ids_only=False, limit=1
 | `operator`  | string   | Possible values: `eq`, `gt`, `gte`, `lt`, `lte`. |
 
 ```python
-results = metal.search({ "text": "term-to-search", "filters": { "and": [{"field": "band", "value": "Black Sabbath"}]} }, index_id="index1", limit=10)
+results = metal.search({ "text": "term-to-search", "filters": { "and": [{"field": "band", "value": "Black Sabbath", "operator":"eq"}]} }, index_id="indexID", limit=10)
 ```
 
 ## Uploading File
@@ -129,10 +129,10 @@ Only `.csv`, `.docx` and `.pdf` are accepted.
 
 
 ```python
-results = metal.upload_file("index1", "./file_path.csv")
+results = metal.upload_file("./file_path.csv","indexID")
 ```
 
-## get_one()
+## Get One
 
 | Param   | Type             | Description                                                      |
 | ------- | ---------------- | ---------------------------------------------------------------- |
@@ -152,8 +152,34 @@ document = metal.get_one("document_id_123")
 | `label` | number[-1, 0, 1] | The "closeness score" of the two items. Either `-1`, `0`, or `1` |
 
 ```python
-metal.tune({ "idA": "id_a", "idB": "id_b", "label": 1 })
+metal.tune({ "idA": "embedding-id-1", "idB": "embedding-id-2", "label": 1 })
 ```
+
+
+## Delete One
+
+| Param          | Type   | Description                                           |
+| -------------- | ------ | ----------------------------------------------------- |
+| `embedding_id` | string | The ID of the document or embedding to delete.         |
+| `index_id`     | string | The ID of the index containing the document.           |
+
+
+```python
+metal.delete_one("embedding_id", "index_id")
+```
+
+## Delete Many (Bulk)
+
+| Param          | Type     | Description                                                |
+| -------------- | -------- | ---------------------------------------------------------- |
+| `embedding_ids`| list     | A list of IDs for the documents or embeddings to delete.   |
+| `index_id`     | string   | The ID of the index containing the documents.              |
+
+```python
+embedding_ids_to_delete = ["id1", "id2", "id3"]
+metal.delete_many(embedding_ids_to_delete, "index_id")
+```
+
 
 # Memory (Motorhead)
 
@@ -169,13 +195,13 @@ metal.tune({ "idA": "id_a", "idB": "id_b", "label": 1 })
 from metal_sdk.motorhead import Motorhead
 
 # Managed
-motorhead = Motorhead({ "api_key": "api_key", "client_id": "client-id" });
+motorhead = Motorhead({ "api_key": "api_key", "client_id": "client-id" })
 
 # Self-hosted
-motorhead = Motorhead({ "base_url": "https://motorhead.yourdomain.com" });
+motorhead = Motorhead({ "base_url": "https://motorhead.yourdomain.com" })
 ```
 
-````
+
 
 ## Get Memory
 
@@ -184,20 +210,12 @@ motorhead = Motorhead({ "base_url": "https://motorhead.yourdomain.com" });
 | `session_id` | string | The ID of the session to retrieve memory for |
 
 ```python
-motorhead.get_memory("session-id");
-````
+motorhead.get_memory("session-id")
+```
 
 ## Create Memory
 
 ```python
-interface Memory {
-  messages: {
-    content: string;
-    role: "AI" | "Human";
-  };
-  context: string;
-}
-
 class Message:
     content: str
     role: str  # "AI" or "Human"
@@ -223,7 +241,7 @@ memory_payload = {
 }
 
 
-motorhead.add_memory("session-id", memory_payload);
+motorhead.add_memory("session-id", memory_payload)
 ```
 
 ## Delete Memory
@@ -233,5 +251,5 @@ motorhead.add_memory("session-id", memory_payload);
 | `session_id` | string | The ID of the session to delete memory for |
 
 ```python
-motorhead.delete_memory("session-id");
+motorhead.delete_memory("session-id")
 ```
