@@ -253,3 +253,154 @@ motorhead.add_memory("session-id", memory_payload)
 ```python
 motorhead.delete_memory("session-id")
 ```
+
+# Data Sources
+
+## Add a Data Source
+
+| Param           | Type    | Description                                                              |
+| --------------- | ------- | ------------------------------------------------------------------------ |
+| `name`          | string  | Name of the Data Source.                                                 |
+| `sourcetype`    | string  | Type of the source. It can either be 'File' or 'Text'.                   |
+| `autoExtract`   | boolean | Flag indicating whether auto-extraction is enabled.                      |
+| `metadataFields`| array   | An array of fields specifying which attributes you wish to extract. Each object should have `name`, `type`, and `description` properties.|
+
+#### Metadata Fields
+
+| Param       | Type     | Description                                                          |
+| ----------- | -------- | -------------------------------------------------------------------- |
+| `name`      | string   | Name of the attribute you wish to extract.                           |
+| `type`      | string   | Type of the attribute (e.g., "String", "Number").                    |
+| `description` | string | Brief description or example of the attribute.                      |
+
+```python
+from metal_sdk.metal import Metal
+
+payload = {
+    "name": "my_datasource",
+    "sourcetype": "File",
+    "autoExtract": True,
+    "metadataFields": [
+      {
+        "name": "band",
+        "type": "String",
+        "description": "Which heavy metal band is represented by the iconic mascot Eddie?"
+      }
+    ]
+}
+
+metal.create_data_source(payload)
+```
+## Update Data Source
+
+### Parameters
+
+| Param             | Type    | Description                                                         |
+| ----------------- | ------- | ------------------------------------------------------------------- |
+| `dataSourceId`    | string  | Identifier of the Data Source you want to update.                   |
+| `name`            | string  | Updated name of the Data Source.                                    |
+| `sourcetype`      | string  | Updated type of the source. Either 'File' or 'Text'.                |
+| `autoExtract`     | boolean | Updated flag indicating whether auto-extraction is enabled.         |
+| `metadataFields`  | array   | Updated fields specifying which attributes you wish to extract. |
+
+### Example
+
+```python
+payload = {
+    "name": "updated_datasource",
+    "sourcetype": "Text",
+    "autoExtract": False,
+    "metadataFields": [
+        {
+            "name": "song",
+            "type": "String",
+            "description": "Which was Iron Maiden's first single?"
+        }
+    ]
+}
+
+metal.update_datasource("existing_dataSourceId", payload)
+```
+
+## Get Data Source
+
+### Parameters
+
+| Param             | Type    | Description                                                           |
+| ----------------- | ------- | --------------------------------------------------------------------- |
+| `dataSourceId`    | string  | Identifier of the Data Source you want to retrieve information about. |
+
+### Example
+
+```python
+metal.get_datasource("existing_dataSourceId")
+print(response)  # This will display detailed information about the data source
+```
+
+## List Data Sources
+
+### Parameters
+
+| Param  | Type  | Description                                                                   |
+| ------| ------| ------------------------------------------------------------------------------|
+| `limit` | int  | (Optional) The maximum number of data sources to return. Default is 10 and a maximum of 100. |
+| `page` | int   | (Optional) The page number for pagination. Should be a positive integer up to 100. |
+
+```python
+metal.get_all_datasources(page=1, limit=10)
+```
+
+## Delete Data Source
+
+### Parameters
+
+| Param          | Type   | Description                                      |
+| -------------- | ------ | ------------------------------------------------ |
+| `datasource_id`| string | The ID of the data source you want to delete.    |
+
+### Example
+
+```python
+response = metal.delete_data_source("datasourceID")
+print(response)  # Expected: "Data source successfully deleted."
+```
+
+# Data Entities
+
+## Get Data Entity
+
+### Parameters
+
+| Param | Type   | Description                                       |
+| ----- | ------ | ------------------------------------------------- |
+| `id`  | string | The ID of the data entity you want to retrieve.   |
+
+```python
+metal.get_dataentity("dataentity_id")
+```
+
+## List Data Entities
+
+### Parameters
+
+| Param          | Type   | Description                                                                        |
+| -------------- | ------ | ---------------------------------------------------------------------------------- |
+| `datasourceID` | string | The ID of the datasource for which you want to list the data entities.              |
+| `limit`        | int    | (Optional) The maximum number of data entities to return. Default is 10 and a maximum of 100.|
+| `page`         | int    | (Optional) The page number for pagination. Should be a positive integer up to 100. |
+
+```python
+metal.get_all_dataentities("datasource_id", page=1, limit=10)
+```
+
+## Delete Data Entity
+
+### Parameters
+
+| Param | Type   | Description                                       |
+| ----- | ------ | ------------------------------------------------- |
+| `id`  | string | The ID of the data entity you want to delete.     |
+
+```python
+metal.delete_dataentity("dataentity_id")
+```
