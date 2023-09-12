@@ -7,11 +7,11 @@ description: "This endpoint updates the details of an existing data source by it
 ### Auth Headers
 
 
-<ParamField required header="Some-API-Key" type="string">
+<ParamField required header="x-metal-api-key" type="string">
   An API key for your org.
 </ParamField>
 
-<ParamField required header="Some-Client-Id" type="string">
+<ParamField required header="x-metal-client-id" type="string">
   A Client ID for your org.
 </ParamField>
 
@@ -43,10 +43,10 @@ description: "This endpoint updates the details of an existing data source by it
 
 ```bash
 # Example Request
-curl -X PUT "https://api.getmetal.io/v1/datasources/some_id" \
+curl -X PUT "https://api.getmetal.io/v1/datasources/{id}" \
 --header 'Content-Type: application/json' \
---header 'Some-API-Key: <api-key>' \
---header 'Some-Client-Id: <client-id>' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
 --data-raw '{
   "name": "updated_datasource",
   "metadataFields": [
@@ -78,7 +78,7 @@ curl -X PUT "https://api.getmetal.io/v1/datasources/some_id" \
     ],
     "sourcetype": "updated_type",
     "autoExtract": false,
-    "updatedAt": "some_timestamp"
+    "updatedAt": "2023-03-17T17:21:13.163Z"
   }
 }
 ```

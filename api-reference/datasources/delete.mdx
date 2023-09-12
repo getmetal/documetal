@@ -6,11 +6,11 @@ description: "This endpoint deletes a data source by its ID."
 
 ### Auth Headers
 
-<ParamField required header="Some-API-Key" type="string">
+<ParamField required header="x-metal-api-key" type="string">
   An API key for your org.
 </ParamField>
 
-<ParamField required header="Some-Client-Id" type="string">
+<ParamField required header="x-metal-client-id" type="string">
   A Client ID for your org.
 </ParamField>
 
@@ -24,10 +24,10 @@ description: "This endpoint deletes a data source by its ID."
 
 ```bash
 # Example Request
-curl -X DELETE "https://api.getmetal.io/v1/datasources/some_id" \
+curl -X DELETE "https://api.getmetal.io/v1/datasources/{id}" \
 --header 'Content-Type: application/json' \
---header 'Some-API-Key: <api-key>' \
---header 'Some-Client-Id: <client-id>'
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>'
 ```
 </RequestExample>
 
