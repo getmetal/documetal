@@ -1,0 +1,44 @@
+---
+title: "Delete File"
+api: "DELETE https://api.getmetal.io/v1/files/{id}"
+description: "This endpoint allows you to delete a specific file by its ID. The file will be removed from S3 storage."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Params
+
+<ParamField required url="id" type="string" pattern="^[0-9a-fA-F]{24}$">
+  The ID of the file you wish to delete.
+</ParamField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl --location --request DELETE 'https://api.getmetal.io/v1/files/{id}' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>'
+```
+</RequestExample>
+
+
+<ResponseExample>
+
+  ```json
+{
+  "message": "File successfully deleted.",
+  "status": "DELETED",
+  "id": "fileID",
+  "createdAt": "2023-03-17T17:21:13.163Z"
+}
+  ```
+
+</ResponseExample>

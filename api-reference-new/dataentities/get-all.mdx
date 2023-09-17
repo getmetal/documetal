@@ -1,0 +1,138 @@
+---
+title: "List Data Entities"
+api: "GET https://api.getmetal.io/v1/datasources/{datasourceID}/data-entities"
+description: "This endpoint retrieves a list of all data entities."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+
+### Query
+
+<ParamField optional query="limit" type="integer">
+  The maximum number of data entities to return. Default is 10.
+</ParamField>
+
+<ParamField optional query="page" type="integer">
+  The starting position for the query. Useful for pagination.
+</ParamField>
+
+
+
+### Response
+
+<ResponseField name="data" type="array">
+  <Expandable title="Data Entity Object">
+
+    <ResponseField name="id" type="string">
+      The unique identifier of the data entity.
+    </ResponseField>
+
+    <ResponseField name="datasource" type="string">
+      The ID of the datasource this entity belongs to.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The name of the data entity.
+    </ResponseField>
+
+    <ResponseField name="extractedMetadata" type="array">
+      An array of extracted metadata fields.
+    </ResponseField>
+
+    <ResponseField name="sourceType" type="string">
+      The source type of the data entity.
+    </ResponseField>
+
+    <ResponseField name="status" type="string">
+      The status of the data entity.
+    </ResponseField>
+
+    <ResponseField name="createdAt" type="string">
+      The creation timestamp of the data entity.
+    </ResponseField>
+
+    <ResponseField name="updatedAt" type="string">
+      The update timestamp of the data entity.
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+
+
+<RequestExample>
+
+```bash
+# Example Request
+curl -X GET "https://api.getmetal.io/datasources/{datasourceID}/data-entities" \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{
+  "data": [
+    {
+      "id": "id1",
+      "datasource": "datasourceID",
+      "name": "record_deal.pdf",
+      "extractedMetadata": [
+        {
+          "name": "band",
+          "value": "Iron Maiden",
+          "type": "String"
+        }
+      ],
+      "sourceType": "File",
+      "status": "Active",
+      "createdAt": "2023-08-29T10:51:04.246Z",
+      "updatedAt": "2023-08-29T10:51:04.246Z",
+      "metadataFields": [
+        {
+          "name": "band",
+          "type": "String",
+          "description": "Which band is this record deal for?"
+        }
+			],
+      "createdBy": "userID"
+    },
+    {
+      "id": "id2",
+      "datasource": "datasource_id",
+      "name": "concert_list.docx",
+      "extractedMetadata": [
+        {
+          "name": "Venue",
+          "value": "Glastonbury",
+          "type": "String"
+        }
+      ],
+      "sourceType": "File",
+      "status": "Active",
+      "createdAt": "2023-08-29T10:51:04.246Z",
+      "updatedAt": "2023-08-29T10:51:04.246Z",
+      "metadataFields": [
+        {
+          "name": "band",
+          "type": "String",
+          "description": "Where is the next concert at?"
+        }
+        ],
+      "createdBy": "userID"
+		}
+	]
+}
+```
+</ResponseExample>

@@ -1,0 +1,141 @@
+---
+title: "Add Index"
+api: "POST https://api.getmetal.io/v1/indexes"
+description: "This endpoint creates an index for an app."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Params
+
+<ParamField required path="appId" type="string">
+  The App ID
+</ParamField>
+
+### Body
+
+<ParamField
+  body="model"
+  type="string"
+  placeholder="model used for generating embeddings"
+  required
+>
+  Model used to generate the embeddings
+</ParamField>
+
+<ParamField body="name" type="string" placeholder="name of the index" required>
+  Name of the Index
+</ParamField>
+
+<ParamField
+  body="dimensions"
+  type="integer"
+  min="3"
+  placeholder="number of dimensions that the embeddings will have"
+>
+  Number of dimensions for the stored vectors
+</ParamField>
+
+<ParamField body="filters" type="object[]" placeholder="Metadata filters that the index can support for /search.">
+<Expandable title="properties">
+    <ParamField body="field" type="string">
+      The name of the filtereable field
+    </ParamField>
+
+    <ParamField body="type" type="string" >
+      The field type. Enum: `string` or `number`.
+    </ParamField>
+
+  </Expandable>
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Index Object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the index
+    </ResponseField>
+
+    <ResponseField name="app" type="string">
+      Id of the app of the index
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Name of the index
+    </ResponseField>
+
+    <ResponseField name="model" type="string">
+      Model used to generate the embeddings
+    </ResponseField>
+
+    <ResponseField name="dimensions" type="number">
+      Dimensions of the embeddings
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/indexes' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+--data-raw '{
+    "model": "custom",
+    "name": "Ozzy Osbourne",
+    "dimensions": 666,
+    "filters": [
+      {
+        "field": "name",
+        "type": "string"
+      },
+      {
+        "field": "age",
+        "type": "number"
+      }
+    ]
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+	"data": {
+		"id": "1",
+		"createdAt": "2023-08-23T22:13:31.539Z",
+		"app": "<APP_ID>",
+		"name": "Ozzy Osbourne",
+		"model": "text-embedding-ada-002",
+		"dimensions": 1536,
+		"filters": [
+			{
+				"field": "name",
+				"type": "string"
+			},
+			{
+				"field": "age",
+				"type": "number"
+			}
+		],
+		"counts": {
+			"docs": 0,
+		}
+	}
+}
+```
+
+</ResponseExample>

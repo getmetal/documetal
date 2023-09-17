@@ -1,0 +1,406 @@
+---
+title: "Python"
+description: "Overview of the Python Metal SDK."
+---
+
+<Card title="Python SDK" icon="github" href="https://github.com/getmetal/metal-python">
+  Visit the GitHub Repo
+</Card>
+
+
+<Note>
+  You'll need to [Create an API Key](/misc-get-keys) to [Authentication](/api-reference/introduction#authentication) with Metal.
+</Note>
+
+## Installation
+
+```bash
+pip3 install metal-sdk
+```
+
+# Retrieval
+
+## App Setup
+
+| Param       | Type   | Description                                             |
+| ----------- | ------ | ------------------------------------------------------- |
+| `api_key`   | string | The API Key for your Org. [Learn more.](/misc-get-keys)  |
+| `client_id` | string | The Client ID for your Org. [Learn more.](/misc-get-keys) |
+| `index_id`  | string | The ID of the index you want to connect with. [Learn more.](/misc-create-index)             |
+
+```python
+from metal_sdk.metal import Metal
+
+metal = Metal("api_key", "client_id", "index_id")
+```
+
+## Indexing a Document
+
+| Param      | Type   | Description                                      |
+| ---------- | ------ | ------------------------------------------------ |
+| `payload`  | dict   | Dictionary with index parameters                 |
+| `index_id` | string | Optional index id where record will get indexed. |
+
+#### Payload
+
+| Param       | Type     | Description                                              |
+| ----------- | -------- | -------------------------------------------------------- |
+| `id`        | string   | Optional identifier for your embedding.                  |
+| `embedding` | number[] | Raw embeddings to be indexed.                            |
+| `imageUrl`  | string   | A URL for an image to be vectorized and indexed.         |
+| `text`      | string   | The text to be vectorized and indexed.                   |
+| `metadata`  | object   | A flexible metdata object to be stored w/ the embedding. |
+
+```python
+metal.index({ "text": "text-to-index" }, "index_id")
+```
+
+## Multi(Bulk) Indexing
+
+You can index up to `100` records in a single request.
+
+| Param     | Type            | Description         |
+| --------- | --------------- | ------------------- |
+| `payload` | BulkIndexItem[] | Array of bulk items |
+
+#### BulkIndexItem
+
+| Param       | Type     | Description                                              |
+| ----------- | -------- | -------------------------------------------------------- |
+| `id`        | string   | Optional identifier for your embedding.                  |
+| `index`     | string   | Required - index id.                                     |
+| `embedding` | number[] | Raw embeddings to be indexed.                            |
+| `imageUrl`  | string   | A URL for an image to be vectorized and indexed.         |
+| `text`      | string   | The text to be vectorized and indexed.                   |
+| `metadata`  | object   | A flexible metdata object to be stored w/ the embedding. |
+
+```python
+metal.index_many([{ "text": "blacksabbath", "index": "index-id" }, { "text": "ironmaiden", "index": "index-id" }])
+```
+
+## Searching
+
+`self, payload: SearchPayload = {}, index_id=None, ids_only=False, limit=1`
+
+| Param      | Type    | Description                                          |
+| ---------- | ------- | ---------------------------------------------------- |
+| `payload`  | dict    | search payload.                                      |
+| `index_id` | string  | Id of index to search.                               |
+| `ids_only` | boolean | Optional return only the ids                         |
+| `limit`    | number  | Number of documents returned by the API (default=1). |
+
+#### Payload
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `embedding` | number[] | Raw embeddings to be searched.                    |
+| `imageUrl`  | string   | A URL for an image to be vectorized and searched. |
+| `text`      | string   | The text to be vectorized and searched.           |
+| `filters`   | dict[]   | List of filters to match in search.               |
+
+#### Filter
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `and`       | dict | And clause, all members have to be satisfied.   |
+| `or`        | dict   | Or clause, at least one member has to be satisfied. |
+
+
+#### Filter Item
+
+| Param       | Type     | Description                                       |
+| ----------- | -------- | ------------------------------------------------- |
+| `value`     | string \| number | Value to match.                    |
+| `field`     | string   | Field to filter. |
+| `operator`  | string   | Possible values: `eq`, `gt`, `gte`, `lt`, `lte`. |
+
+```python
+results = metal.search({ "text": "term-to-search", "filters": { "and": [{"field": "band", "value": "Black Sabbath", "operator":"eq"}]} }, index_id="indexID", limit=10)
+```
+
+## Uploading File
+
+Only `.csv`, `.docx` and `.pdf` are accepted.
+
+| Param      | Type    | Description                                          |
+| ---------- | ------- | ---------------------------------------------------- |
+| `index_id` | string  | Id of index to search.                               |
+| `file_path`| string  | file path to upload. |
+
+
+```python
+results = metal.upload_file("./file_path.csv","indexID")
+```
+
+## Get One
+
+| Param   | Type             | Description                                                      |
+| ------- | ---------------- | ---------------------------------------------------------------- |
+| `id`   | string           | The ID of the document to retrieve. |
+| `index_id` | string  | Optional. Id of index to search.        |
+
+```python
+document = metal.get_one("document_id_123")
+```
+
+## Tuning
+
+| Param   | Type             | Description                                                      |
+| ------- | ---------------- | ---------------------------------------------------------------- |
+| `idA`   | string           | The ID of the first embedding                                    |
+| `idB`   | string           | The ID of the second embedding                                   |
+| `label` | number[-1, 0, 1] | The "closeness score" of the two items. Either `-1`, `0`, or `1` |
+
+```python
+metal.tune({ "idA": "embedding-id-1", "idB": "embedding-id-2", "label": 1 })
+```
+
+
+## Delete One
+
+| Param          | Type   | Description                                           |
+| -------------- | ------ | ----------------------------------------------------- |
+| `embedding_id` | string | The ID of the document or embedding to delete.         |
+| `index_id`     | string | The ID of the index containing the document.           |
+
+
+```python
+metal.delete_one("embedding_id", "index_id")
+```
+
+## Delete Many (Bulk)
+
+| Param          | Type     | Description                                                |
+| -------------- | -------- | ---------------------------------------------------------- |
+| `embedding_ids`| list     | A list of IDs for the documents or embeddings to delete.   |
+| `index_id`     | string   | The ID of the index containing the documents.              |
+
+```python
+embedding_ids_to_delete = ["id1", "id2", "id3"]
+metal.delete_many(embedding_ids_to_delete, "index_id")
+```
+
+
+# Memory (Motorhead)
+
+## App Setup
+
+| Param       | Type   | Description                                                         |
+| ----------- | ------ | ------------------------------------------------------------------- |
+| `api_key`   | string | For Managed. The API Key for your Org. [details](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication).  |
+| `client_id` | string | For Managed.The Client ID for your Org. [details](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication). |
+| `base_url`  | string | For Self-hosted. The URL path to your motorhead instance            |
+
+```python
+from metal_sdk.motorhead import Motorhead
+
+# Managed
+motorhead = Motorhead({ "api_key": "api_key", "client_id": "client-id" })
+
+# Self-hosted
+motorhead = Motorhead({ "base_url": "https://motorhead.yourdomain.com" })
+```
+
+
+
+## Get Memory
+
+| Param        | Type   | Description                                  |
+| ------------ | ------ | -------------------------------------------- |
+| `session_id` | string | The ID of the session to retrieve memory for |
+
+```python
+motorhead.get_memory("session-id")
+```
+
+## Create Memory
+
+```python
+class Message:
+    content: str
+    role: str  # "AI" or "Human"
+
+class Memory:
+    messages: list  # List of Message instances
+    context: str
+```
+
+| Param        | Type     | Description                                                              |
+| ------------ | -------- | ------------------------------------------------------------------------ |
+| `session_id` | string   | The ID of the session. If the session does not exist, it will create one |
+| `memory`     | Memory[] | A memory payload to update the session memory                            |
+
+```python
+memory_payload = {
+  "messages": [
+    {"role": "Human", "content": "Who is the best vocalist of all time?"},
+    {"role": "AI", "content": "Ozzy!"},
+  ],
+  "context":
+    "User ask what can he eat in Colombia. The AI responds arepas are really nice",
+}
+
+
+motorhead.add_memory("session-id", memory_payload)
+```
+
+## Delete Memory
+
+| Param        | Type   | Description                                |
+| ------------ | ------ | ------------------------------------------ |
+| `session_id` | string | The ID of the session to delete memory for |
+
+```python
+motorhead.delete_memory("session-id")
+```
+
+# Data Sources
+
+## Add a Data Source
+
+| Param           | Type    | Description                                                              |
+| --------------- | ------- | ------------------------------------------------------------------------ |
+| `name`          | string  | Name of the Data Source.                                                 |
+| `sourcetype`    | string  | Type of the source. It can either be 'File' or 'Text'.                   |
+| `autoExtract`   | boolean | Flag indicating whether auto-extraction is enabled.                      |
+| `metadataFields`| array   | An array of fields specifying which attributes you wish to extract. Each object should have `name`, `type`, and `description` properties.|
+
+#### Metadata Fields
+
+| Param       | Type     | Description                                                          |
+| ----------- | -------- | -------------------------------------------------------------------- |
+| `name`      | string   | Name of the attribute you wish to extract.                           |
+| `type`      | string   | Type of the attribute (e.g., "String", "Number").                    |
+| `description` | string | Brief description or example of the attribute.                      |
+
+```python
+from metal_sdk.metal import Metal
+
+payload = {
+    "name": "my_datasource",
+    "sourcetype": "File",
+    "autoExtract": True,
+    "metadataFields": [
+      {
+        "name": "band",
+        "type": "String",
+        "description": "Which heavy metal band is represented by the iconic mascot Eddie?"
+      }
+    ]
+}
+
+metal.create_datasource(payload)
+```
+## Update Data Source
+
+### Parameters
+
+| Param             | Type    | Description                                                         |
+| ----------------- | ------- | ------------------------------------------------------------------- |
+| `dataSourceId`    | string  | Identifier of the Data Source you want to update.                   |
+| `name`            | string  | Updated name of the Data Source.                                    |
+| `sourcetype`      | string  | Updated type of the source. Either 'File' or 'Text'.                |
+| `autoExtract`     | boolean | Updated flag indicating whether auto-extraction is enabled.         |
+| `metadataFields`  | array   | Updated fields specifying which attributes you wish to extract. |
+
+### Example
+
+```python
+payload = {
+    "name": "updated_datasource",
+    "sourcetype": "Text",
+    "autoExtract": False,
+    "metadataFields": [
+        {
+            "name": "song",
+            "type": "String",
+            "description": "Which was Iron Maiden's first single?"
+        }
+    ]
+}
+
+metal.update_datasource("existing_dataSourceId", payload)
+```
+
+## Get Data Source
+
+### Parameters
+
+| Param             | Type    | Description                                                           |
+| ----------------- | ------- | --------------------------------------------------------------------- |
+| `dataSourceId`    | string  | Identifier of the Data Source you want to retrieve information about. |
+
+### Example
+
+```python
+metal.get_datasource("existing_dataSourceId")
+print(response)  # This will display detailed information about the data source
+```
+
+## List Data Sources
+
+### Parameters
+
+| Param  | Type  | Description                                                                   |
+| ------| ------| ------------------------------------------------------------------------------|
+| `limit` | int  | (Optional) The maximum number of data sources to return. Default is 10 and a maximum of 100. |
+| `page` | int   | (Optional) The page number for pagination. Should be a positive integer up to 100. |
+
+```python
+metal.get_all_datasources(page=1, limit=10)
+```
+
+## Delete Data Source
+
+### Parameters
+
+| Param          | Type   | Description                                      |
+| -------------- | ------ | ------------------------------------------------ |
+| `datasource_id`| string | The ID of the data source you want to delete.    |
+
+### Example
+
+```python
+response = metal.delete_data_source("datasourceID")
+print(response)  # Expected: "Data source successfully deleted."
+```
+
+# Data Entities
+
+## Get Data Entity
+
+### Parameters
+
+| Param | Type   | Description                                       |
+| ----- | ------ | ------------------------------------------------- |
+| `id`  | string | The ID of the data entity you want to retrieve.   |
+
+```python
+metal.get_dataentity("dataentity_id")
+```
+
+## List Data Entities
+
+### Parameters
+
+| Param          | Type   | Description                                                                        |
+| -------------- | ------ | ---------------------------------------------------------------------------------- |
+| `datasourceID` | string | The ID of the datasource for which you want to list the data entities.              |
+| `limit`        | int    | (Optional) The maximum number of data entities to return. Default is 10 and a maximum of 100.|
+| `page`         | int    | (Optional) The page number for pagination. Should be a positive integer up to 100. |
+
+```python
+metal.get_all_dataentities("datasource_id", page=1, limit=10)
+```
+
+## Delete Data Entity
+
+### Parameters
+
+| Param | Type   | Description                                       |
+| ----- | ------ | ------------------------------------------------- |
+| `id`  | string | The ID of the data entity you want to delete.     |
+
+```python
+metal.delete_dataentity("dataentity_id")
+```

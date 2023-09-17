@@ -1,0 +1,95 @@
+---
+title: "Get Index"
+api: "GET https://api.getmetal.io/v1/indexes/{indexId}"
+description: "This endpoint gets a single index."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Params
+
+<ParamField required path="indexId" type="string">
+  The Index ID
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Index Object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the index
+    </ResponseField>
+
+    <ResponseField name="app" type="string">
+      Id of the app of the index
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Name of the index
+    </ResponseField>
+
+    <ResponseField name="model" type="string">
+      Model used to generate the embeddings
+    </ResponseField>
+
+    <ResponseField name="dimensions" type="number">
+      Dimensions of the embeddings
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://api.getmetal.io/v1/indexes/{indexId}' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+	"data": {
+		"id": "1",
+		"createdAt": "2023-07-03T14:25:22.104Z",
+		"app": "<APP_ID>",
+		"name": "Danzig's Index",
+		"model": "clip",
+		"dimensions": 512,
+    "lastActivityAt": "2023-09-14T13:18:52.547Z",
+		"lastSearchAt": "2023-09-14T13:18:52.547Z",
+		"filters": [
+			{
+				"field": "name",
+				"type": "string"
+			},
+			{
+				"field": "age",
+				"type": "number"
+			}
+		],
+		"counts": {
+			"docs": 42,
+			"searches": 666
+		},
+		"chunkConfig": {
+			"size": 999
+		}
+	}
+}
+```
+
+</ResponseExample>

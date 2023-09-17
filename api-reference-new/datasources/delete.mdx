@@ -1,0 +1,39 @@
+---
+title: "Delete Data Source"
+api: "DELETE https://api.getmetal.io/v1/datasources/{id}"
+description: "This endpoint deletes a data source by its ID."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Params
+
+<ParamField required path="id" type="string">
+  The unique identifier of the data source you wish to delete.
+</ParamField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl -X DELETE "https://api.getmetal.io/v1/datasources/{id}" \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+204 No Content
+```
+</ResponseExample>

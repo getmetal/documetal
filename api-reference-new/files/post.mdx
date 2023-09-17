@@ -1,0 +1,85 @@
+---
+title: "Upload File"
+api: "POST https://api.getmetal.io/v1/indexes/{id}/files"
+description: "This endpoint allows you to upload a file to a specific index. The uploaded file will be stored in S3 in a two-step process. First, you'll request a pre-signed URL, and then you'll upload the file to that URL."
+---
+
+### Two-step process
+- Step 1: `POST https://api.getmetal.io/v1/indexes/{id}/files`
+- Step 2: `PUT` to the signed URL
+
+## Step 1: Request a Pre-signed URL for the File
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+<ParamField optional header="x-metal-file-size" type="number">
+  The size of the file in bytes. Limited to 10MB.
+</ParamField>
+
+### Params
+
+<ParamField required path="id" type="string" pattern="^[0-9a-fA-F]{24}$">
+  Index ID
+</ParamField>
+
+### Body
+
+<ParamField required body="fileName" type="string">
+  The name of the file being uploaded.
+</ParamField>
+
+<ParamField required body="fileType" type="string">
+  The MIME type of the file being uploaded. Must be one of the following:
+  - `application/pdf` for PDF files
+  - `text/csv` for CSV files
+  - `application/vnd.openxmlformats-officedocument.wordprocessingml.document` for DOCX files
+  </ParamField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl --location --request POST 'https://api.getmetal.io/v1/indexes/{id}/files' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+--data-raw '{
+    "fileName": "example.pdf",
+    "fileType": "application/pdf"
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json
+
+{
+  "data": {
+    "id": "<generated-id>",
+    "status": "CREATED",
+    "createdAt": "2023-08-29T18:00:00.000Z",
+    "fileName": "example.pdf",
+    "fileType": "application/pdf",
+    "url": "<preSignedUrl>"
+  }
+}
+
+```
+</ResponseExample>
+
+## Step 2: Upload the File to the Signed URL
+
+```bash
+# Example Request
+curl --location --request PUT '<preSignedUrl>' \
+--header 'Content-Type: application/pdf' \
+--upload-file '/path/to/your/example.pdf'

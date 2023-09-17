@@ -1,0 +1,47 @@
+---
+title: "Delete Document"
+api: "DELETE https://api.getmetal.io/v1/indexes/{indexId}/documents/{documentId}"
+description: "This endpoint deletes an embedding document."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Params
+
+<ParamField required path="documentId" type="string">
+  The Document ID
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="object"></ResponseField>
+
+<RequestExample>
+```bash Example Request
+curl --location --request DELETE 'https://api.getmetal.io/v1/indexes/{indexId}/documents/{documentId}' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "id": "document-id"
+  }
+}
+```
+
+</ResponseExample>

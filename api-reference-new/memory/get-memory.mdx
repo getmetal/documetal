@@ -1,0 +1,69 @@
+---
+title: "Get Memory"
+api: "GET https://api.getmetal.io/v1/motorhead/sessions/{sessionId}/memory"
+description: "This endpoint gets a single memory."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+
+### Params
+
+<ParamField required path="sessionId" type="string">
+  The Session ID
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="Memory Object">
+  <Expandable title="properties">
+    <ResponseField name="messages" type="array">
+        <Expandable title="message-properties">
+            <ResponseField name="role" type="string">
+                Role of the message author
+            </ResponseField>
+            <ResponseField name="content" type="string">
+                Content of the message
+            </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="context" type="string">
+      Incremental summarization of the conversation
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://api.getmetal.io/v1/motorhead/sessions/{sessionId}/memory' \
+--header 'Content-Type: application/json' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "messages": [
+      { "role": "Human", "content": "Who is the best vocalist of all time?" },
+      { "role": "AI", "content": "Ozzy!" }
+    ],
+    "context": "User ask what can he eat in Colombia. The AI responds arepas are really nice"
+  }
+}
+```
+
+</ResponseExample>

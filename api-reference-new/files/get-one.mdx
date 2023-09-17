@@ -1,0 +1,45 @@
+---
+title: "Get File"
+api: "GET https://api.getmetal.io/v1/files/{id}"
+description: "This endpoint allows you to retrieve a specific file by its ID. The file information and a pre-signed URL for downloading will be returned."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Params
+<ParamField required url="id" type="string" pattern="^[0-9a-fA-F]{24}$">
+  The ID of the file you wish to retrieve.
+</ParamField>
+
+<RequestExample>
+
+```bash
+# Example Request
+curl --location --request GET 'https://api.getmetal.io/v1/files/{id}' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{
+  "data": {
+    "id": "file-id",
+    "fileName": "my-file.pdf",
+    "fileType": "application/pdf",
+    "createdAt": "2023-03-17T17:21:13.163Z",
+    "url": "<preSignedUrl>"
+  }
+}
+```
+</ResponseExample>

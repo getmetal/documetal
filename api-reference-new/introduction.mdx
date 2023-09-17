@@ -1,0 +1,121 @@
+---
+title: "Introduction"
+description: "Familiarize with resources, response codes, and authentication."
+---
+
+## Base URL
+The Metal API is available at the following URL:
+
+```
+https://api.getmetal.io
+```
+
+## Authentication
+Metal uses API keys to authenticate requests. You can view and manage your API keys in the [Metal Application](https://app.getmetal.io/settings/organization). There are two headers that you'll retrieve from each Key.
+
+### API Key Headers
+| Title | Header | Example Key
+| :--- | :--- | :--- |
+| API Key | `x-metal-api-key` | `pk_1234567890` |
+| Client ID | `x-metal-client-id` | `ci_1234567890` |
+
+
+### Example Authenticated Request
+```bash
+curl --location --request GET 'https://api.getmetal.io' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: pk_1234567890' \
+--header 'x-metal-client-id: ci_1234567890' \
+
+```
+
+## Rate Limits
+Metal has rate limits in place to ensure the stability of the API. These limits are applied on a per-minute basis. If you exceed the rate limit, you'll receive a `429 Too Many Requests` response with the following body:
+
+```json
+{
+  "statusCode": 429,
+  "error": "Too Many Requests",
+  "message": "Rate limit exceeded, retry in 1 minute"
+}
+```
+
+### Rate Limits by Plan
+
+| Plan | Limit |
+| :--- | :--- |
+| Hobbyist | 300 RPM |
+| Developer | 1,000 RPM |
+| Enterprise | 1k+ RPM |
+
+## Feature Usage Limits
+Metal has usage limits in place at each payment plan. These limits are applied on a per-org basis. If you exceed the usage limit, you'll receive a `422` response with the following body:
+
+```json
+{
+  "statusCode": 422,
+  "message": "<feature> limit reached"
+}
+```
+
+### Feature Usage Limits by Plan
+
+| Limit | Hobbyist | Developer | Enterprise |
+| :--- | :--- | :--- | :--- |
+| Embeddings | 100k | 1M | custom |
+| Files | 100 | 500 | custom |
+| Indexes | 2 | 10 | custom |
+| Jobs | 10 | 100 | custom |
+| Memories | 1k | 1k | custom |
+| Users | 1 | 3 | custom |
+
+## Response Codes
+Metal uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the `2xx` range indicate success, codes in the `4xx` range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.), and codes in the `5xx` range indicate an error with Metal's servers.
+
+| Code | Description |
+| :--- | :--- |
+| 200 | OK - Everything worked as expected. |
+| 400 | Bad Request - Often missing a required parameter. |
+| 401 | Unauthorized - No valid API key provided. |
+| 402 | Request Failed - Parameters were valid but request failed. |
+| 404 | Not Found - The requested item doesn't exist. |
+| 422 | Usage Limit Exceeded - Hit a feature or usage limit based on your plan.  |
+| 429 | Rate Limit Exceeded - Too many requests hit the API too quickly. |
+| 5xx | Server Errors - something went wrong on Metal's end. |
+
+## Normal pagination
+For certain endpoints, such as `/v1/indexes/:id/documents`, pagination can be achieved using the `page` and `limit` query parameters.
+
+Both page and limit should be positive integers with a maximum value of 100. This constraint means that using this method, callers can retrieve a maximum of `10,000` (i.e., `100` * `100`) records.
+
+## Deep pagination
+To fetch documents beyond the limitations of normal pagination, you should utilize the `lastObjectIdSeen` value returned. This ID enables the API to access data from a deeper point in the dataset. Below is an illustrative script to demonstrate this approach:
+
+```js
+const fetchAllDocuments = () => {
+  do {
+    try {
+      const response = await axios
+        .get('https://api.getmetal.io/indexes/<indexID>/documents', {
+          headers: {
+            'x-metal-api-key': '<your_key>',
+            'x-metal-client-id': '<your_client_id>',
+          },
+          params: {
+            lt: lastSeenObjectId, // this will be a querystring parameter `lt=${lastSeenObjectId}`
+            limit: 100,
+          },
+        });
+
+      documents = documents.concat(response.data.data);
+
+      lastSeenObjectId = response.data.lastSeenObjectId;
+    } catch (error) {
+      console.error('Error fetching documents:', error);
+      break;
+    }
+  } while (lastSeenObjectId);
+
+  return documents;
+}
+```

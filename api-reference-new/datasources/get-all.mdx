@@ -1,0 +1,78 @@
+---
+title: "List Data Sources"
+api: "GET https://api.getmetal.io/v1/datasources"
+description: "This endpoint retrieves a list with all data sources available for the authenticated org."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Query Parameters
+
+<ParamField path="limit" type="integer">
+  Number of data sources to retrieve per request (optional).
+</ParamField>
+
+<ParamField path="page" type="integer">
+  Number to start pagination from (optional).
+</ParamField>
+
+
+<RequestExample>
+
+```bash
+# Example Request
+curl -X GET "https://api.getmetal.io/v1/datasources" \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+  {
+    "data": [
+      {
+        "id": "datasourceID",
+        "createdAt": "2023-08-22T21:49:26.564Z",
+        "createdBy": "000000000000000000000000",
+        "name": "my-data-source-1",
+        "metadataFields": [
+          {
+            "name": "band",
+            "type": "String",
+            "description": "Which heavy metal band is represented by the iconic mascot Eddie?"
+          }
+        ],
+        "sourcetype": "File",
+        "autoExtract": true
+      },
+      {
+        "id": "id2",
+        "createdAt": "2023-08-22T21:49:26.564Z",
+        "createdBy": "userID",
+        "name": "my-data-source-2",
+        "metadataFields": [
+          {
+            "name": "year",
+            "type": "Number",
+            "description": "In what year was the debut album featuring Eddie released?"
+          }
+        ],
+        "sourcetype": "File",
+        "autoExtract": false
+      }
+    ],
+  }
+
+```
+</ResponseExample>
