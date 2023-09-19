@@ -30,9 +30,9 @@
   ],
   "anchors": [
     {
-      "name": "Guides",
+      "name": "API Reference",
       "icon": "rectangle-terminal",
-      "url": "guides"
+      "url": "api-reference-new"
     },
     {
       "name": "Examples",
@@ -63,116 +63,101 @@
       ]
     },
     {
-      "group": "Products",
-      "pages": [
-        "products/chat",
-        "products/Semantic-Search",
-        "products/attribute-Extraction"
-      ]
-    },
-    {
-      "group": "SDKs",
-      "pages":
-      [
-        "new-sdk/introduction",
-        "new-sdk/node",
-        "new-sdk/python"
-        ]
-    },
-    {
       "group": "API Reference",
       "pages":  [
         "api-reference-new/introduction",
         {
-        "group": "🔑 Account",
-        "pages": [
-          "api-reference-new/account/get-current",
-          "api-reference-new/account/get-org"
+          "group": "REST API",
+          "pages": [
+              {
+            "group": "🔑 Account",
+            "pages": [
+              "api-reference-new/account/get-current",
+              "api-reference-new/account/get-org"
+              ]
+              },
+              {
+                "group": "📈 Analytics",
+                "pages": [
+                  "api-reference-new/analytics/get-queries"
+                ]
+              },
+              {
+                "group": "📄 Data Entities",
+                "pages": [
+                  "api-reference-new/dataentities/create",
+                  "api-reference-new/dataentities/get-one",
+                  "api-reference-new/dataentities/get-all",
+                    "api-reference-new/dataentities/delete"
+                ]
+              },
+              {
+                "group": "🗄️Data Sources",
+                "pages": [
+                  "api-reference-new/datasources/create",
+                  "api-reference-new/datasources/get-one",
+                  "api-reference-new/datasources/get-all",
+                  "api-reference-new/datasources/update",
+                  "api-reference-new/datasources/delete"
+                ]
+              },
+              {
+                "group": "🧬Embedding Documents",
+                "pages": [
+                  "api-reference-new/documents/indexing",
+                  "api-reference-new/documents/bulk",
+                  "api-reference-new/documents/update",
+                  "api-reference-new/documents/search",
+                  "api-reference-new/documents/get-one",
+                  "api-reference-new/documents/get",
+                  "api-reference-new/documents/delete-one",
+                  "api-reference-new/documents/delete-many"
+                ]
+              },
+              {
+                "group": "🔗 Indexes",
+                "pages": [
+                  "api-reference-new/indexes/post",
+                  "api-reference-new/indexes/get-one",
+                  "api-reference-new/indexes/get",
+                  "api-reference-new/indexes/delete"
+                ]
+              },
+              {
+                "group": "🧠 Memory",
+                "pages": [
+                  "api-reference-new/memory/post-memory",
+                  "api-reference-new/memory/get-memory",
+                  "api-reference-new/memory/get-sessions",
+                  "api-reference-new/memory/del-memory"
+                ]
+              },
+              {
+                "group": "🎛️ Tunings",
+                "pages": [
+                  "api-reference-new/tunings/tune",
+                  "api-reference-new/tunings/get-one",
+                  "api-reference-new/tunings/get"
+                ]
+              },
+              {
+                "group": "📁 Upload Files",
+                "pages": [
+                  "api-reference-new/files/post",
+                  "api-reference-new/files/get-one",
+                  "api-reference-new/files/get-all"
+                ]
+              }
           ]
-          },
-          {
-            "group": "📈 Analytics",
-            "pages": [
-              "api-reference-new/analytics/get-queries"
-            ]
-          },
-          {
-            "group": "📄 Data Entities",
-            "pages": [
-              "api-reference-new/dataentities/create",
-              "api-reference-new/dataentities/get-one",
-              "api-reference-new/dataentities/get-all",
-              "api-reference-new/dataentities/delete"
-            ]
-          },
-          {
-            "group": "🗄️Data Sources",
-            "pages": [
-              "api-reference-new/datasources/create",
-              "api-reference-new/datasources/get-one",
-              "api-reference-new/datasources/get-all",
-              "api-reference-new/datasources/update",
-              "api-reference-new/datasources/delete"
-            ]
-          },
-          {
-            "group": "🧬Embedding Documents",
-            "pages": [
-              "api-reference-new/documents/indexing",
-              "api-reference-new/documents/bulk",
-              "api-reference-new/documents/update",
-              "api-reference-new/documents/search",
-              "api-reference-new/documents/get-one",
-              "api-reference-new/documents/get",
-              "api-reference-new/documents/delete-one",
-              "api-reference-new/documents/delete-many"
-            ]
-          },
-          {
-            "group": "🔗 Indexes",
-            "pages": [
-              "api-reference-new/indexes/post",
-              "api-reference-new/indexes/get-one",
-              "api-reference-new/indexes/get",
-              "api-reference-new/indexes/delete"
-            ]
-          },
-          {
-            "group": "🧠 Memory",
-            "pages": [
-              "api-reference-new/memory/post-memory",
-              "api-reference-new/memory/get-memory",
-              "api-reference-new/memory/get-sessions",
-              "api-reference-new/memory/del-memory"
-            ]
-          },
-          {
-            "group": "🎛️ Tunings",
-            "pages": [
-              "api-reference-new/tunings/tune",
-              "api-reference-new/tunings/get-one",
-              "api-reference-new/tunings/get"
-            ]
-          },
-          {
-            "group": "📁 Upload Files",
-            "pages": [
-              "api-reference-new/files/post",
-              "api-reference-new/files/get-one",
-              "api-reference-new/files/get-all"
-            ]
-          }
-
+        },
+        {
+          "group": "SDKs",
+          "pages":[
+            "api-reference-new/new-sdk/node",
+            "api-reference-new/new-sdk/python"
+          ]
+        }
         ]
-    },
-    {
-      "group": "Platform",
-      "pages": [
-        "platform/limits",
-        "platform/logs",
-        "platform/analytics",
-        "platform/user-management"
-      ]
     },
     {
       "group": "Guides",
@@ -180,6 +165,14 @@
         "guides/misc-get-keys",
         "guides/misc-create-index",
         "guides/misc-create-datasource"
+      ]
+    },
+    {
+      "group": "Platform",
+      "pages": [
+        "platform/analytics",
+        "platform/logs"
+
       ]
     },
     {
