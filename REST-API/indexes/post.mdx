@@ -36,6 +36,22 @@ description: "This endpoint creates an index for an app."
 </ParamField>
 
 <ParamField
+  body="datasource"
+  type="string"
+  placeholder="datasource id"
+>
+  Datasource ID to connect to the index.
+</ParamField>
+
+<ParamField
+  body="indexType"
+  type="string"
+  placeholder="FLAT or HNSW"
+>
+  Type of the index. `FLAT` or `HNSW`
+</ParamField>
+
+<ParamField
   body="dimensions"
   type="integer"
   min="3"

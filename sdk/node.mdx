@@ -1,14 +1,35 @@
 ---
-title: "Retrieval (Metal)"
-description: "Overview of the Retrieval module in Node."
+title: "Node.js SDK"
+description: "Overview of the Node Metal SDK."
 ---
+
+<Card title="Node SDK" icon="github" href="https://github.com/getmetal/metal-ts">
+  Visit the GitHub Repo
+</Card>
+
+
+<Note>
+  You'll need to [Create an API Key](/misc-get-keys) to
+  [Authentication](/api-reference/introduction#authentication) with Metal.
+</Note>
+
+## Installation
+
+```bash
+npm install @getmetal/metal-sdk
+# or
+yarn add @getmetal/metal-sdk
+```
+
+# Retrieval
+
 
 <Note>
   You'll need to [Create an API Key](/misc-get-keys) to
   [Authenticate](/api-reference/introduction#authentication) with Metal.
 </Note>
 
-## Setup
+## App Setup
 
 | Param       | Type   | Description                                                                     |
 | ----------- | ------ | ------------------------------------------------------------------------------- |
@@ -55,7 +76,7 @@ const embedding = await metal.index({
 });
 ```
 
-**Parameters**
+#### Parameters
 
 | Param               | Type     | Description                                                        |
 | ------------------- | -------- | ------------------------------------------------------------------ |
@@ -74,7 +95,7 @@ Bulk add multiple embedding documents to an index. When invoked, we will generat
   `embedding`. We only embed one field in a single request.
 </Note>
 
-**Parameters**
+#### Parameters
 
 | Param       | Type     | Description                                                        |
 | ----------- | -------- | ------------------------------------------------------------------ |
@@ -94,7 +115,7 @@ await metal.indexMany([
 
 ## search()
 
-**Parameters**
+#### Parameters
 
 | Param       | Type     | Description                                       |
 | ----------- | -------- | ------------------------------------------------- |
@@ -135,7 +156,7 @@ const results = await metal.search({
 
 Retrieve a single embedding document.
 
-**Parameters**
+#### Parameters
 
 | Param     | Type   | Description                                       |
 | --------- | ------ | ------------------------------------------------- |
@@ -150,7 +171,7 @@ const document = await metal.getOne("documentId-123");
 
 Only `.csv`, `.docx` and `.pdf` are accepted.
 
-**Parameters**
+#### Parameters
 
 | Param  | Type           | Description                                  |
 | ------ | -------------- | -------------------------------------------- |
@@ -164,7 +185,7 @@ const results = await metal.uploadFile("./path/to/file.csv");
 
 ## tune()
 
-**Parameters**
+#### Parameters
 | Param | Type | Description |
 | --------- | ---------------- | --------------------------------------------------------------- |
 | `idA` | string | The ID of the first embedding.. |
@@ -180,7 +201,7 @@ await metal.tune({ idA, idB, label, indexId: "indexId" });
 
 Delete a single embedding document.
 
-**Parameters**
+#### Parameters
 
 | Param     | Type   | Description                                       |
 | --------- | ------ | ------------------------------------------------- |
@@ -195,7 +216,7 @@ const document = await metal.deleteOne("documentId-123");
 
 Deletes multiple documents in an index based on their IDs.
 
-**Parameters**
+#### Parameters
 
 | Param     | Type   | Description                                       |
 | --------- | ------ | ------------------------------------------------- |
@@ -206,7 +227,81 @@ Deletes multiple documents in an index based on their IDs.
 const document = await metal.deleteOne("documentId-123");
 ```
 
----
+# Memory (Motorhead)
 
+## App Setup
+
+| Param      | Type   | Description                                                         |
+| ---------- | ------ | ------------------------------------------------------------------- |
+| `apiKey`   | string | For Managed. The API Key for your Org. [details](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication).  |
+| `clientId` | string | For Managed.The Client ID for your Org. [details](- [Create an API Key](/misc-get-keys) for [Authentication](/api-reference/introduction#authentication). |
+| `baseUrl`  | string | For Self-hosted. The URL path to your motorhead instance            |
+
+```typescript
+import { Motorhead } from "@getmetal/metal-sdk";
+
+// Managed
+const motorhead = new Motorhead({ apiKey: "apiKey", clientId: "clientId" });
+
+// Self-hosted
+const motorhead = new Motorhead({
+  baseUrl: "https://motorhead.yourdomain.com",
+});
+```
+
+
+## `getMemory()`
+
+| Param       | Type   | Description                                  |
+| ----------- | ------ | -------------------------------------------- |
+| `sessionId` | string | The ID of the session to retrieve memory for |
+
+```typescript
+await motorhead.getMemory("session-id");
+````
+
+## `addMemory()`
+
+```typescript
+interface Memory {
+  messages: {
+    content: string;
+    role: "AI" | "Human";
+  };
+  context: string;
+}
+```
+
+| Param       | Type     | Description                                                              |
+| ----------- | -------- | ------------------------------------------------------------------------ |
+| `sessionId` | string   | The ID of the session. If the session does not exist, it will create one |
+| `memory`    | Memory[] | A memory payload to update the session memory                            |
+
+```typescript
+const memoryPayload = {
+  messages: [
+    { role: "Human", content: "Who is the best vocalist of all time?" },
+    { role: "AI", content: "Ozzy!" },
+  ],
+  context:
+    "User ask what can he eat in Colombia. The AI responds arepas are really nice",
+};
+
+await motorhead.addMemory("session-id", memoryPayload);
+```
+
+## `deleteMemory()`
+
+
+| Param       | Type   | Description                                |
+| ----------- | ------ | ------------------------------------------ |
+| `sessionId` | string | The ID of the session to delete memory for |
+
+```typescript
+await motorhead.deleteMemory("session-id");
+```
+
+
+---
 
 Checkout the code on [Github](https://github.com/getmetal/metal-ts)

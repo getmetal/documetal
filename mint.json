@@ -30,173 +30,153 @@
   ],
   "anchors": [
     {
-      "name": "API Reference",
+      "name": "REST API",
       "icon": "rectangle-terminal",
-      "url": "api-reference"
+      "url": "REST-API"
     },
     {
-      "name": "SDKs",
+      "name": "Examples",
       "icon": "rectangle-code",
-      "url": "sdks"
+      "url": "examples"
     }
   ],
   "navigation": [
     {
       "group": "Documentation",
       "pages": [
-        "introduction"
-      ]
+        "introduction",
+        "getting-started"
+          ]
     },
     {
-      "group": "Quickstart",
+      "group": "Concepts",
       "pages": [
+        "learn-introduction",
         {
-          "group": "Node.js",
+          "group": "LLMs 101",
           "pages": [
-            "quick-nodejs"
-          ]
-        },
-        {
-          "group": "Python",
-          "pages": [
-            "quick-python"
+            "learn-retrieval",
+            "learn-memory",
+            "learn-extraction"
           ]
         }
       ]
     },
     {
+      "group": "API Reference",
+      "pages":  [
+        "REST-API",
+        "sdk/node",
+        "sdk/python"
+        ]
+    },
+    {
+      "group": "REST API",
+      "pages": [
+        "REST-API/introduction"
+        ]
+    },
+    {
+      "group": "🔑 Account",
+      "pages": [
+        "REST-API/account/get-current",
+        "REST-API/account/get-org"
+        ]
+    },
+    {
+      "group": "📈 Analytics",
+      "pages": [
+        "REST-API/analytics/get-queries"
+      ]
+    },
+    {
+      "group": "📄 Data Entities",
+      "pages": [
+        "REST-API/dataentities/create",
+        "REST-API/dataentities/get-one",
+        "REST-API/dataentities/get-all",
+          "REST-API/dataentities/delete"
+      ]
+    },
+    {
+      "group": "🗄️Data Sources",
+      "pages": [
+        "REST-API/datasources/create",
+        "REST-API/datasources/get-one",
+        "REST-API/datasources/get-all",
+        "REST-API/datasources/update",
+        "REST-API/datasources/delete"
+      ]
+    },
+    {
+      "group": "🧬Embedding Documents",
+      "pages": [
+        "REST-API/documents/indexing",
+        "REST-API/documents/bulk",
+        "REST-API/documents/update",
+        "REST-API/documents/search",
+        "REST-API/documents/get-one",
+        "REST-API/documents/get",
+        "REST-API/documents/delete-one",
+        "REST-API/documents/delete-many"
+      ]
+    },
+    {
+      "group": "🔗 Indexes",
+      "pages": [
+        "REST-API/indexes/post",
+        "REST-API/indexes/get-one",
+        "REST-API/indexes/get",
+        "REST-API/indexes/delete"
+      ]
+    },
+    {
+      "group": "🧠 Memory",
+      "pages": [
+        "REST-API/memory/post-memory",
+        "REST-API/memory/get-memory",
+        "REST-API/memory/get-sessions",
+        "REST-API/memory/del-memory"
+      ]
+    },
+    {
+      "group": "🎛️ Tunings",
+      "pages": [
+        "REST-API/tunings/tune",
+        "REST-API/tunings/get-one",
+        "REST-API/tunings/get"
+      ]
+    },
+    {
+      "group": "📁 Upload Files",
+      "pages": [
+        "REST-API/files/post",
+        "REST-API/files/get-one",
+        "REST-API/files/get-all"
+      ]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "guides/misc-get-keys",
+        "guides/misc-create-index",
+        "guides/misc-create-datasource"
+      ]
+    },
+    {
       "group": "Platform",
       "pages": [
-        "learn-introduction",
-        "learn-retrieval",
-        "learn-memory",
-        "learn-extraction"
-
+        "platform/analytics",
+        "platform/logs"
       ]
     },
     {
-      "group": "Resources",
+      "group": "Examples",
       "pages": [
-        "examples",
-        "integrations"
-      ]
-    },
-    {
-      "group": "Basic Flows",
-      "pages": [
-        "misc-create-index",
-        "misc-get-keys",
-        "misc-attribute-extraction"
-      ]
-    },
-    {
-      "group": "API Reference",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Overview",
-      "pages": [
-        "sdks/introduction"
-      ]
-    },
-    {
-      "group": "SDKs",
-      "pages": [
-        {
-          "group": "Node",
-          "pages": [
-            "sdks/node/setup",
-            "sdks/node/retrieval",
-            "sdks/node/memory"
-          ]
-        },
-        "sdks/python"
-      ]
-    },
-    {
-      "group": "Account",
-      "pages": [
-        "api-reference/account/get-current",
-        "api-reference/account/get-org"
-      ]
-    },
-    {
-      "group": "Analytics",
-      "pages": [
-        "api-reference/analytics/get-queries"
-
-      ]
-    },
-
-    {
-      "group": "Data Entities",
-      "pages": [
-        "api-reference/dataentities/create",
-        "api-reference/dataentities/get-one",
-        "api-reference/dataentities/get-all",
-        "api-reference/dataentities/delete"
-      ]
-    },
-    {
-      "group": "Datasources",
-      "pages": [
-        "api-reference/datasources/create",
-        "api-reference/datasources/get-one",
-        "api-reference/datasources/get-all",
-        "api-reference/datasources/update",
-        "api-reference/datasources/delete"
-      ]
-    },
-    {
-      "group": "Embedding Documents",
-      "pages": [
-        "api-reference/documents/indexing",
-        "api-reference/documents/bulk",
-        "api-reference/documents/update",
-        "api-reference/documents/search",
-        "api-reference/documents/get-one",
-        "api-reference/documents/get",
-        "api-reference/documents/delete-one",
-        "api-reference/documents/delete-many"
-      ]
-    },
-    {
-      "group": "Indexes",
-      "pages": [
-        "api-reference/indexes/post",
-        "api-reference/indexes/get-one",
-        "api-reference/indexes/get",
-        "api-reference/indexes/delete"
-      ]
-    },
-    {
-      "group": "Memory",
-      "pages": [
-        "api-reference/memory/post-memory",
-        "api-reference/memory/get-memory",
-        "api-reference/memory/get-sessions",
-        "api-reference/memory/del-memory"
-      ]
-    },
-    {
-      "group": "Tunings",
-      "pages": [
-        "api-reference/tunings/tune",
-        "api-reference/tunings/get-one",
-        "api-reference/tunings/get"
-      ]
-    },
-    {
-      "group": "Upload Files",
-      "pages": [
-        "api-reference/files/post",
-        "api-reference/files/get-one",
-        "api-reference/files/get-all"
+        "examples/examples",
+        "examples/integrations"
       ]
     }
-
   ],
   "footerSocials": {
     "discord": "https://discord.gg/GHY3Y8tU3J",
