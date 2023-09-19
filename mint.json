@@ -66,8 +66,8 @@
       "group": "API Reference",
       "pages":  [
         "REST-API",
-        "new-sdk/node",
-        "new-sdk/python"
+        "sdk/node",
+        "sdk/python"
         ]
     },
     {
