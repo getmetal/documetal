@@ -53,7 +53,7 @@
       "pages": [
         "learn-introduction",
         {
-          "group": "LLMs 101",
+          "group": "How Metal Works",
           "pages": [
             "learn-retrieval",
             "learn-memory",
@@ -62,6 +62,7 @@
         }
       ]
     },
+
     {
       "group": "API Reference",
       "pages":  [
