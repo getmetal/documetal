@@ -42,7 +42,51 @@ import { Metal } from "@getmetal/metal-sdk";
 const metal = new Metal("pk_123", "ci_123", "index-id");
 ```
 
-## index()
+## `addIndex()`
+
+#### Parameters
+| Param       | Type    | Description                                                                           |
+| ----------- | ------- | ------------------------------------------------------------------------------------- |
+| `model`     | string  | Identifier for the model being used, e.g., "text-embedding-ada-002".                  |
+| `name`      | string  | Name of the index.                                                                    |
+| `datasource`| string  | Unique identifier for the data source.                                                |
+| `indexType` | string  | Type of index structure, e.g., "FLAT", "HNSW".                                               |
+| `dimensions`| number  | Number of dimensions for the index. e.g.1536                                                    |
+| `filters`   | array   | An array of filters specifying fields for advanced searching.                         |
+
+#### Filters
+
+| Param  | Type     | Description                                             |
+| ------ | -------- | ------------------------------------------------------- |
+| `field`| string   | Name of the attribute you wish to filter by.             |
+| `type` | string   | Type of the attribute (e.g., "string", "number").       |
+
+
+```ts
+const payload = {
+    model: "text-embedding-ada-002",
+    name: "my index",
+    datasource: "<datasource_id>",
+    indexType: "FLAT",
+    dimensions: 1536,
+    filters: [
+        {
+            field: "name",
+            type: "string"
+        },
+        {
+            field: "age",
+            type: "number"
+        }
+    ]
+};
+
+const newIndex = await metal.addIndex(payload);
+
+```
+
+
+## `index()`
 
 Add a single embedding to an index. When invoked, we will generate an embedding with one of the below embedding params and store it into a vector db.
 
@@ -86,7 +130,7 @@ const embedding = await metal.index({
 | `id`                | string   | Optional. Identifier for your embedding.                           |
 | `metadata`          | object   | Optional. A flexible metdata object to be stored w/ the embedding. |
 
-## indexMany()
+## `indexMany()`
 
 Bulk add multiple embedding documents to an index. When invoked, we will generate an embedding with one of the below "Embed" params and store it in a vector index.
 
@@ -113,7 +157,7 @@ await metal.indexMany([
 ]);
 ```
 
-## search()
+## `search()`
 
 #### Parameters
 
@@ -152,7 +196,7 @@ const results = await metal.search({
 });
 ```
 
-## getOne()
+## `getOne()`
 
 Retrieve a single embedding document.
 
@@ -167,7 +211,24 @@ Retrieve a single embedding document.
 const document = await metal.getOne("documentId-123");
 ```
 
-## uploadFile()
+## `getMany()`
+
+#### Parameters
+
+| Name       | Type           | Description                                                                                                   |
+| ---------- | -------------- | ------------------------------------------------------------------------------------------------------------- |
+| `ids`      | Array of str   | An array of document IDs to retrieve.                                                                         |
+| `index_id` | str, optional  | The ID of the index from which to retrieve documents. If not provided, the default index ID will be used.   |
+
+```ts
+
+const documentIDs = ['document_id_123', 'document_id_456'];
+const result = await Metal.getManyDocuments(documentIDs);
+
+```
+
+
+## `uploadFile()`
 
 Only `.csv`, `.docx` and `.pdf` are accepted.
 
@@ -183,7 +244,7 @@ Only `.csv`, `.docx` and `.pdf` are accepted.
 const results = await metal.uploadFile("./path/to/file.csv");
 ```
 
-## tune()
+## `tune()`
 
 #### Parameters
 | Param | Type | Description |
@@ -197,7 +258,7 @@ const results = await metal.uploadFile("./path/to/file.csv");
 await metal.tune({ idA, idB, label, indexId: "indexId" });
 ```
 
-## deleteOne()
+## `deleteOne()`
 
 Delete a single embedding document.
 
@@ -212,7 +273,7 @@ Delete a single embedding document.
 const document = await metal.deleteOne("documentId-123");
 ```
 
-## deleteMany()
+## `deleteMany()`
 
 Deletes multiple documents in an index based on their IDs.
 
@@ -256,13 +317,13 @@ const motorhead = new Motorhead({
 | ----------- | ------ | -------------------------------------------- |
 | `sessionId` | string | The ID of the session to retrieve memory for |
 
-```typescript
+```ts
 await motorhead.getMemory("session-id");
-````
+```
 
 ## `addMemory()`
 
-```typescript
+```ts
 interface Memory {
   messages: {
     content: string;
@@ -277,7 +338,7 @@ interface Memory {
 | `sessionId` | string   | The ID of the session. If the session does not exist, it will create one |
 | `memory`    | Memory[] | A memory payload to update the session memory                            |
 
-```typescript
+```ts
 const memoryPayload = {
   messages: [
     { role: "Human", content: "Who is the best vocalist of all time?" },
@@ -297,8 +358,201 @@ await motorhead.addMemory("session-id", memoryPayload);
 | ----------- | ------ | ------------------------------------------ |
 | `sessionId` | string | The ID of the session to delete memory for |
 
-```typescript
+```ts
 await motorhead.deleteMemory("session-id");
+```
+
+# Datasources
+
+## `addDataSource()`
+
+Add a new Data Source to your Metal instance.
+
+#### Parameters
+
+| Name             | Type      | Description                                                  |
+| -----------------| --------- | ------------------------------------------------------------ |
+| `name`           | string    | Name of the Data Source.                                     |
+| `sourcetype`     | string    | Type of the source. It can either be 'File' or 'Text'.       |
+| `autoExtract`    | boolean   | Flag indicating whether auto-extraction is enabled.          |
+| `metadataFields` | array     | An array of fields specifying which attributes you wish to extract. Each object should have `name`, `type`, and `description` properties. |
+
+#### Metadata Fields
+
+| Name         | Type     | Description                                      |
+| ------------ | -------- | ------------------------------------------------ |
+| `name`       | string   | Name of the attribute you wish to extract.      |
+| `type`       | string   | Type of the attribute (e.g., "String", "Number").|
+| `description`| string   | Brief description or example of the attribute. |
+
+
+```ts
+const dataSourcePayload = {
+    name: "my datasource",
+    sourcetype: "File",
+    autoExtract: true,
+    metadataFields: [
+      {
+        name: "band",
+        type: "String",
+        description: "Which heavy metal band is represented by the iconic mascot Eddie?"
+      }
+    ]
+};
+
+const response = await metal.createDataSource(dataSourcePayload);
+```
+
+
+## `updateDatasource()`
+
+#### Parameters
+
+| Name             | Type      | Description                                                  |
+| -----------------| --------- | ------------------------------------------------------------ |
+| `dataSourceId`   | string    | Identifier of the Data Source you want to update.            |
+| `name`           | string    | Updated name of the Data Source.                             |
+| `sourcetype`     | string    | Updated type of the source. Either 'File' or 'Text'.         |
+| `autoExtract`    | boolean   | Updated flag indicating whether auto-extraction is enabled.  |
+| `metadataFields` | array     | Updated fields specifying which attributes you wish to extract. |
+
+
+```ts
+
+const updatedDataSourcePayload = {
+    name: "updated_datasource",
+    sourcetype: "Text",
+    autoExtract: false,
+    metadataFields: [
+        {
+            name: "song",
+            type: "String",
+            description: "Which was Iron Maiden's first single?"
+        }
+    ]
+};
+
+const response = await Metal.updateDataSource("existing_dataSourceId", updatedDataSourcePayload);
+
+```
+
+## `getDatasource()`
+
+#### Parameters
+
+| Name             | Type   | Description                                                           |
+| -----------------| ------ | --------------------------------------------------------------------- |
+| `dataSourceId`   | string | Identifier of the Data Source you want to retrieve information about. |
+
+```ts
+const dataSourceId = "existing_dataSourceId";
+const response = await Metal.getDataSource(dataSourceId);
+```
+
+## `getAllDatasources()`
+
+#### Parameters
+
+| Name   | Type     | Description                                                                                     |
+| ------ | -------- | ----------------------------------------------------------------------------------------------- |
+| `limit`| number   | (Optional) The maximum number of data sources to return. Default is 10, with a maximum of 100. |
+| `page` | number   | (Optional) The page number for pagination. Should be a positive integer up to 100.             |
+
+
+```ts
+
+const limit = 10;
+const page = 2;
+
+const response = await Metal.getAllDataSources({ limit, page });
+```
+
+## `deleteDatasource()`
+
+#### Parameters
+
+| Name             | Type    | Description                                      |
+| ---------------- | ------- | ------------------------------------------------ |
+| `dataSourceId`   | string  | The ID of the Data Source you want to delete.    |
+
+```ts
+const dataSourceId = 'your_data_source_id';
+const response = await Metal.deleteDataSource(dataSourceId);
+```
+
+# Data Entities
+
+## `addDataEntity()`
+
+#### Parameters
+
+| Name          | Type    | Description                                      |
+| ------------- | ------- | ------------------------------------------------ |
+| `datasourceId`| string  | The ID of the datasource where the file belongs. |
+| `file_path`   | string  | The local file path of the file to upload.      |
+
+### Example
+
+```ts
+
+const dataSourceId = 'your_datasource_id';
+const filePath = './file_path.csv';
+
+const results = await metal.addDataEntity(dataSourceId, filePath);
+
+```
+
+
+## `getDataEntity()`
+
+#### Parameters
+
+| Name  | Type   | Description                                       |
+| ----- | ------ | ------------------------------------------------- |
+| `id`  | string | The ID of the data entity you want to retrieve.   |
+
+```ts
+
+const dataEntityId = 'your_dataentity_id';
+
+const dataEntity = await metal.getDataEntity(dataEntityId);
+```
+
+## `getAllDataEntities()`
+
+#### Parameters
+
+| Name          | Type   | Description                                                                        |
+| ------------- | ------ | ---------------------------------------------------------------------------------- |
+| `datasourceID`| string | The ID of the datasource for which you want to list the data entities.              |
+| `limit`       | number | (Optional) The maximum number of data entities to return. Default is 10, with a maximum of 100. |
+| `page`        | number | (Optional) The page number for pagination. Should be a positive integer up to 100. |
+
+
+```ts
+
+const datasourceID = 'your_datasource_id';
+const page = 1;
+const limit = 10;
+
+const dataEntities = await Metal.listDataEntities(datasourceID, page, limit);
+```
+
+## `deleteDataEntity()`
+
+#### Parameters
+
+| Name  | Type   | Description                                       |
+| ----- | ------ | ------------------------------------------------- |
+| `id`  | string | The ID of the data entity you want to delete.     |
+
+### Example
+
+```ts
+
+const dataEntityID = 'your_dataentity_id';
+
+const result = await Metal.deleteDataEntity(dataEntityID);
 ```
 
 

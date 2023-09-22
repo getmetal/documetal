@@ -33,6 +33,51 @@ from metal_sdk.metal import Metal
 
 metal = Metal("api_key", "client_id", "index_id")
 ```
+## Adding an Index
+
+### Payload
+
+| Param       | Type    | Description                                                                           |
+| ----------- | ------- | ------------------------------------------------------------------------------------- |
+| `model`     | string  | Identifier for the model being used, e.g., "text-embedding-ada-002".                  |
+| `name`      | string  | Name of the index.                                                                    |
+| `datasource`| string  | Unique identifier for the data source.                                                |
+| `indexType` | string  | Type of index structure, e.g., "FLAT", "HNSW".                                               |
+| `dimensions`| number  | Number of dimensions for the index. e.g.1536                                                    |
+| `filters`   | array   | An array of filters specifying fields for advanced searching.                         |
+
+### Filters
+
+| Param  | Type     | Description                                             |
+| ------ | -------- | ------------------------------------------------------- |
+| `field`| string   | Name of the attribute you wish to filter by.             |
+| `type` | string   | Type of the attribute (e.g., "string", "number").       |
+
+
+```python
+metal = Metal("api_key", "client_id")
+
+payload = {
+    "model": "text-embedding-ada-002",
+    "name": "my index",
+    "datasource": "<datasource_id>",
+    "indexType": "FLAT",
+    "dimensions": 1536,
+    "filters": [
+      {
+        "field": "name",
+        "type": "string"
+      },
+      {
+        "field": "age",
+        "type": "number"
+      }
+    ]
+}
+
+metal.add_index(payload)
+```
+
 
 ## Indexing a Document
 
@@ -132,7 +177,7 @@ Only `.csv`, `.docx` and `.pdf` are accepted.
 results = metal.upload_file("./file_path.csv","indexID")
 ```
 
-## Get One
+## Get One Document
 
 | Param   | Type             | Description                                                      |
 | ------- | ---------------- | ---------------------------------------------------------------- |
@@ -141,6 +186,18 @@ results = metal.upload_file("./file_path.csv","indexID")
 
 ```python
 document = metal.get_one("document_id_123")
+```
+
+## Get Many Documents
+
+| Param   | Type          | Description                                                                                                   |
+| ----------- | ------------- | ------------------------------------------------------------------------------------------------------------- |
+| `ids`       | list of str   | A list of document IDs to retrieve.                                                                          |
+| `index_id`  | str, optional | The ID of the index from which to retrieve documents. If not provided, the default index ID will be used.  |
+
+
+```python
+document = metal.get_many("[document_id_123, document_id_456]")
 ```
 
 ## Tuning
@@ -277,7 +334,7 @@ motorhead.delete_memory("session-id")
 from metal_sdk.metal import Metal
 
 payload = {
-    "name": "my_datasource",
+    "name": "my datasource",
     "sourcetype": "File",
     "autoExtract": True,
     "metadataFields": [
@@ -319,7 +376,7 @@ payload = {
     ]
 }
 
-metal.update_datasource("existing_dataSourceId", payload)
+metal.update_datasource("existing_datasourceId", payload)
 ```
 
 ## Get Data Source
@@ -366,6 +423,23 @@ print(response)  # Expected: "Data source successfully deleted."
 ```
 
 # Data Entities
+
+## Add a Data entity
+
+`.pdf`, `doc`, `.docx`, `.xlsx`, and `.csv` are accepted.
+
+## Parameters
+
+| Name          | Type    | Description                                      |
+| ------------- | ------- | ------------------------------------------------ |
+| `datasourceId`| string  | The ID of the datasource where the file belongs. |
+| `file_path`   | string  | The local file path of the file to upload.      |
+
+## Example
+
+```python
+results = metal.add_data_entity("datasource_id", "./file_path.csv")
+```
 
 ## Get Data Entity
 
