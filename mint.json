@@ -32,7 +32,7 @@
     {
       "name": "REST API",
       "icon": "rectangle-terminal",
-      "url": "rest-api"
+      "url": "rest-api-2"
     },
     {
       "name": "Examples",
@@ -67,84 +67,84 @@
       "pages": [
         "api-reference/node",
         "api-reference/python",
-        "api-reference/rest-api"
+        "api-reference/rest-api-2"
       ]
     },
     {
       "group": "Overview",
       "pages": [
-        "rest-api/introduction"
+        "rest-api-2/introduction"
       ]
     },
     {
       "group": "🔑 Account",
       "pages": [
-        "rest-api/account/get-current",
-        "rest-api/account/get-org"
+        "rest-api-2/account/get-current",
+        "rest-api-2/account/get-org"
       ]
     },
     {
       "group": "📈 Analytics",
       "pages": [
-        "rest-api/analytics/get-queries"
+        "rest-api-2/analytics/get-queries"
       ]
     },
     {
       "group": "📄 Data Entities",
       "pages": [
-        "rest-api/dataentities/create",
-        "rest-api/dataentities/get-one",
-        "rest-api/dataentities/get-all",
-        "rest-api/dataentities/delete"
+        "rest-api-2/dataentities/create",
+        "rest-api-2/dataentities/get-one",
+        "rest-api-2/dataentities/get-all",
+        "rest-api-2/dataentities/delete"
       ]
     },
     {
       "group": "🗄️ Data Sources",
       "pages": [
-        "rest-api/datasources/create",
-        "rest-api/datasources/get-one",
-        "rest-api/datasources/get-all",
-        "rest-api/datasources/update",
-        "rest-api/datasources/delete"
+        "rest-api-2/datasources/create",
+        "rest-api-2/datasources/get-one",
+        "rest-api-2/datasources/get-all",
+        "rest-api-2/datasources/update",
+        "rest-api-2/datasources/delete"
       ]
     },
     {
       "group": "🧬 Embedding Documents",
       "pages": [
-        "rest-api/documents/indexing",
-        "rest-api/documents/bulk",
-        "rest-api/documents/update",
-        "rest-api/documents/search",
-        "rest-api/documents/get-one",
-        "rest-api/documents/get",
-        "rest-api/documents/delete-one",
-        "rest-api/documents/delete-many"
+        "rest-api-2/documents/indexing",
+        "rest-api-2/documents/bulk",
+        "rest-api-2/documents/update",
+        "rest-api-2/documents/search",
+        "rest-api-2/documents/get-one",
+        "rest-api-2/documents/get",
+        "rest-api-2/documents/delete-one",
+        "rest-api-2/documents/delete-many"
       ]
     },
     {
       "group": "🔗 Indexes",
       "pages": [
-        "rest-api/indexes/post",
-        "rest-api/indexes/get-one",
-        "rest-api/indexes/get",
-        "rest-api/indexes/delete"
+        "rest-api-2/indexes/post",
+        "rest-api-2/indexes/get-one",
+        "rest-api-2/indexes/get",
+        "rest-api-2/indexes/delete"
       ]
     },
     {
       "group": "🧠 Memory",
       "pages": [
-        "rest-api/memory/post-memory",
-        "rest-api/memory/get-memory",
-        "rest-api/memory/get-sessions",
-        "rest-api/memory/del-memory"
+        "rest-api-2/memory/post-memory",
+        "rest-api-2/memory/get-memory",
+        "rest-api-2/memory/get-sessions",
+        "rest-api-2/memory/del-memory"
       ]
     },
     {
       "group": "🎛️ Tunings",
       "pages": [
-        "rest-api/tunings/tune",
-        "rest-api/tunings/get-one",
-        "rest-api/tunings/get"
+        "rest-api-2/tunings/tune",
+        "rest-api-2/tunings/get-one",
+        "rest-api-2/tunings/get"
       ]
     },
     {
