@@ -99,7 +99,7 @@
       ]
     },
     {
-      "group": "🗄️Data Sources",
+      "group": "🗄️ Data Sources",
       "pages": [
         "rest-api/datasources/create",
         "rest-api/datasources/get-one",
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "group": "🧬Embedding Documents",
+      "group": "🧬 Embedding Documents",
       "pages": [
         "rest-api/documents/indexing",
         "rest-api/documents/bulk",
