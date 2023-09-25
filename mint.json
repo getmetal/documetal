@@ -42,7 +42,7 @@
   ],
   "navigation": [
     {
-      "group": "Documentation",
+      "group": "Getting Started",
       "pages": [
         "introduction",
         "getting-started"
@@ -178,14 +178,14 @@
       "group": "Platform",
       "pages": [
         "platform/analytics",
+        "examples/integrations",
         "platform/logs"
       ]
     },
     {
       "group": "Examples",
       "pages": [
-        "examples/examples",
-        "examples/integrations"
+        "examples/examples"
       ]
     }
   ],
