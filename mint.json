@@ -64,15 +64,15 @@
     },
     {
       "group": "Products",
-      "pages":  [
+      "pages": [
         "product/chatbot",
         "product/semantic-search",
         "product/attribute-extraction"
-        ]
+      ]
     },
     {
       "group": "API Reference",
-      "pages":  [
+      "pages": [
         "api-reference/node",
         "api-reference/python",
         "api-reference/rest-api"
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "group": "🗄️Datasources",
+      "group": "🗄️ Datasources",
       "pages": [
         "rest-api/datasources/create",
         "rest-api/datasources/get-one",
@@ -171,7 +171,6 @@
         "guides/misc-create-chatbot",
         "guides/misc-semantic-search",
         "guides/misc-run-attribute-extraction"
-
       ]
     },
     {
