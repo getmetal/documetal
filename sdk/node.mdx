@@ -49,7 +49,7 @@ const metal = new Metal("pk_123", "ci_123", "index-id");
 | ----------- | ------- | ------------------------------------------------------------------------------------- |
 | `model`     | string  | Identifier for the model being used, e.g., "text-embedding-ada-002".                  |
 | `name`      | string  | Name of the index.                                                                    |
-| `datasource`| string  | Unique identifier for the data source.                                                |
+| `datasource`| string  | Unique identifier for the Datasource.                                                |
 | `indexType` | string  | Type of index structure, e.g., "FLAT", "HNSW".                                               |
 | `dimensions`| number  | Number of dimensions for the index. e.g.1536                                                    |
 | `filters`   | array   | An array of filters specifying fields for advanced searching.                         |
@@ -223,7 +223,7 @@ const document = await metal.getOne("documentId-123");
 ```ts
 
 const documentIDs = ['document_id_123', 'document_id_456'];
-const result = await Metal.getManyDocuments(documentIDs);
+const result = await Metal.getMany(documentIDs);
 
 ```
 
@@ -310,17 +310,6 @@ const motorhead = new Motorhead({
 });
 ```
 
-
-## `getMemory()`
-
-| Param       | Type   | Description                                  |
-| ----------- | ------ | -------------------------------------------- |
-| `sessionId` | string | The ID of the session to retrieve memory for |
-
-```ts
-await motorhead.getMemory("session-id");
-```
-
 ## `addMemory()`
 
 ```ts
@@ -351,6 +340,18 @@ const memoryPayload = {
 await motorhead.addMemory("session-id", memoryPayload);
 ```
 
+
+## `getMemory()`
+
+| Param       | Type   | Description                                  |
+| ----------- | ------ | -------------------------------------------- |
+| `sessionId` | string | The ID of the session to retrieve memory for |
+
+```ts
+await motorhead.getMemory("session-id");
+```
+
+
 ## `deleteMemory()`
 
 
@@ -366,13 +367,13 @@ await motorhead.deleteMemory("session-id");
 
 ## `addDataSource()`
 
-Add a new Data Source to your Metal instance.
+Add a new Datasource to your Metal instance.
 
 #### Parameters
 
 | Name             | Type      | Description                                                  |
 | -----------------| --------- | ------------------------------------------------------------ |
-| `name`           | string    | Name of the Data Source.                                     |
+| `name`           | string    | Name of the Datasource.                                     |
 | `sourcetype`     | string    | Type of the source. It can either be 'File' or 'Text'.       |
 | `autoExtract`    | boolean   | Flag indicating whether auto-extraction is enabled.          |
 | `metadataFields` | array     | An array of fields specifying which attributes you wish to extract. Each object should have `name`, `type`, and `description` properties. |
@@ -410,8 +411,8 @@ const response = await metal.createDataSource(dataSourcePayload);
 
 | Name             | Type      | Description                                                  |
 | -----------------| --------- | ------------------------------------------------------------ |
-| `dataSourceId`   | string    | Identifier of the Data Source you want to update.            |
-| `name`           | string    | Updated name of the Data Source.                             |
+| `dataSourceId`   | string    | Identifier of the Datasource you want to update.            |
+| `name`           | string    | Updated name of the Datasource.                             |
 | `sourcetype`     | string    | Updated type of the source. Either 'File' or 'Text'.         |
 | `autoExtract`    | boolean   | Updated flag indicating whether auto-extraction is enabled.  |
 | `metadataFields` | array     | Updated fields specifying which attributes you wish to extract. |
@@ -442,7 +443,7 @@ const response = await Metal.updateDataSource("existing_dataSourceId", updatedDa
 
 | Name             | Type   | Description                                                           |
 | -----------------| ------ | --------------------------------------------------------------------- |
-| `dataSourceId`   | string | Identifier of the Data Source you want to retrieve information about. |
+| `dataSourceId`   | string | Identifier of the Datasource you want to retrieve information about. |
 
 ```ts
 const dataSourceId = "existing_dataSourceId";
@@ -455,7 +456,7 @@ const response = await Metal.getDataSource(dataSourceId);
 
 | Name   | Type     | Description                                                                                     |
 | ------ | -------- | ----------------------------------------------------------------------------------------------- |
-| `limit`| number   | (Optional) The maximum number of data sources to return. Default is 10, with a maximum of 100. |
+| `limit`| number   | (Optional) The maximum number of Datasources to return. Default is 10, with a maximum of 100. |
 | `page` | number   | (Optional) The page number for pagination. Should be a positive integer up to 100.             |
 
 
@@ -473,7 +474,7 @@ const response = await Metal.getAllDataSources({ limit, page });
 
 | Name             | Type    | Description                                      |
 | ---------------- | ------- | ------------------------------------------------ |
-| `dataSourceId`   | string  | The ID of the Data Source you want to delete.    |
+| `dataSourceId`   | string  | The ID of the Datasource you want to delete.    |
 
 ```ts
 const dataSourceId = 'your_data_source_id';

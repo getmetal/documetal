@@ -62,7 +62,14 @@
         }
       ]
     },
-
+    {
+      "group": "Products",
+      "pages":  [
+        "product/chatbot",
+        "product/semantic-search",
+        "product/attribute-extraction"
+        ]
+    },
     {
       "group": "API Reference",
       "pages":  [
@@ -100,7 +107,7 @@
       ]
     },
     {
-      "group": "🗄️Data Sources",
+      "group": "🗄️Datasources",
       "pages": [
         "REST-API/datasources/create",
         "REST-API/datasources/get-one",
@@ -157,11 +164,14 @@
       ]
     },
     {
-      "group": "Guides",
+      "group": "How-to Guides",
       "pages": [
         "guides/misc-get-keys",
         "guides/misc-create-index",
-        "guides/misc-create-datasource"
+        "guides/misc-create-chatbot",
+        "guides/misc-semantic-search",
+        "guides/misc-run-attribute-extraction"
+
       ]
     },
     {

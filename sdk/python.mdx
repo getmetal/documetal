@@ -41,7 +41,7 @@ metal = Metal("api_key", "client_id", "index_id")
 | ----------- | ------- | ------------------------------------------------------------------------------------- |
 | `model`     | string  | Identifier for the model being used, e.g., "text-embedding-ada-002".                  |
 | `name`      | string  | Name of the index.                                                                    |
-| `datasource`| string  | Unique identifier for the data source.                                                |
+| `datasource`| string  | Unique identifier for the Datasource.                                                |
 | `indexType` | string  | Type of index structure, e.g., "FLAT", "HNSW".                                               |
 | `dimensions`| number  | Number of dimensions for the index. e.g.1536                                                    |
 | `filters`   | array   | An array of filters specifying fields for advanced searching.                         |
@@ -258,18 +258,6 @@ motorhead = Motorhead({ "api_key": "api_key", "client_id": "client-id" })
 motorhead = Motorhead({ "base_url": "https://motorhead.yourdomain.com" })
 ```
 
-
-
-## Get Memory
-
-| Param        | Type   | Description                                  |
-| ------------ | ------ | -------------------------------------------- |
-| `session_id` | string | The ID of the session to retrieve memory for |
-
-```python
-motorhead.get_memory("session-id")
-```
-
 ## Create Memory
 
 ```python
@@ -301,6 +289,16 @@ memory_payload = {
 motorhead.add_memory("session-id", memory_payload)
 ```
 
+## Get Memory
+
+| Param        | Type   | Description                                  |
+| ------------ | ------ | -------------------------------------------- |
+| `session_id` | string | The ID of the session to retrieve memory for |
+
+```python
+motorhead.get_memory("session-id")
+```
+
 ## Delete Memory
 
 | Param        | Type   | Description                                |
@@ -311,13 +309,13 @@ motorhead.add_memory("session-id", memory_payload)
 motorhead.delete_memory("session-id")
 ```
 
-# Data Sources
+# Datasources
 
-## Add a Data Source
+## Add a Datasource
 
 | Param           | Type    | Description                                                              |
 | --------------- | ------- | ------------------------------------------------------------------------ |
-| `name`          | string  | Name of the Data Source.                                                 |
+| `name`          | string  | Name of the Datasource.                                                 |
 | `sourcetype`    | string  | Type of the source. It can either be 'File' or 'Text'.                   |
 | `autoExtract`   | boolean | Flag indicating whether auto-extraction is enabled.                      |
 | `metadataFields`| array   | An array of fields specifying which attributes you wish to extract. Each object should have `name`, `type`, and `description` properties.|
@@ -348,14 +346,14 @@ payload = {
 
 metal.create_datasource(payload)
 ```
-## Update Data Source
+## Update Datasource
 
 ### Parameters
 
 | Param             | Type    | Description                                                         |
 | ----------------- | ------- | ------------------------------------------------------------------- |
-| `dataSourceId`    | string  | Identifier of the Data Source you want to update.                   |
-| `name`            | string  | Updated name of the Data Source.                                    |
+| `dataSourceId`    | string  | Identifier of the Datasource you want to update.                   |
+| `name`            | string  | Updated name of the Datasource.                                    |
 | `sourcetype`      | string  | Updated type of the source. Either 'File' or 'Text'.                |
 | `autoExtract`     | boolean | Updated flag indicating whether auto-extraction is enabled.         |
 | `metadataFields`  | array   | Updated fields specifying which attributes you wish to extract. |
@@ -379,47 +377,47 @@ payload = {
 metal.update_datasource("existing_datasourceId", payload)
 ```
 
-## Get Data Source
+## Get Datasource
 
 ### Parameters
 
 | Param             | Type    | Description                                                           |
 | ----------------- | ------- | --------------------------------------------------------------------- |
-| `dataSourceId`    | string  | Identifier of the Data Source you want to retrieve information about. |
+| `dataSourceId`    | string  | Identifier of the Datasource you want to retrieve information about. |
 
 ### Example
 
 ```python
 metal.get_datasource("existing_dataSourceId")
-print(response)  # This will display detailed information about the data source
+print(response)  # This will display detailed information about the Datasource
 ```
 
-## List Data Sources
+## List Datasources
 
 ### Parameters
 
 | Param  | Type  | Description                                                                   |
 | ------| ------| ------------------------------------------------------------------------------|
-| `limit` | int  | (Optional) The maximum number of data sources to return. Default is 10 and a maximum of 100. |
+| `limit` | int  | (Optional) The maximum number of Datasources to return. Default is 10 and a maximum of 100. |
 | `page` | int   | (Optional) The page number for pagination. Should be a positive integer up to 100. |
 
 ```python
 metal.get_all_datasources(page=1, limit=10)
 ```
 
-## Delete Data Source
+## Delete Datasource
 
 ### Parameters
 
 | Param          | Type   | Description                                      |
 | -------------- | ------ | ------------------------------------------------ |
-| `datasource_id`| string | The ID of the data source you want to delete.    |
+| `datasource_id`| string | The ID of the Datasource you want to delete.    |
 
 ### Example
 
 ```python
 response = metal.delete_data_source("datasourceID")
-print(response)  # Expected: "Data source successfully deleted."
+print(response)  # Expected: "Datasource successfully deleted."
 ```
 
 # Data Entities
