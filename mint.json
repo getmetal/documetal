@@ -79,14 +79,6 @@
       ]
     },
     {
-      "group": "API Reference",
-      "pages": [
-        "api-reference/node",
-        "api-reference/python",
-        "api-reference/rest-api"
-      ]
-    },
-    {
       "group": "Overview",
       "pages": [
         "rest-api/introduction"
@@ -172,11 +164,14 @@
       ]
     },
     {
-      "group": "How-to Guides",
+      "group": "Guides",
       "pages": [
         "guides/misc-get-keys",
         "guides/misc-create-index",
-        "guides/misc-create-datasource"
+        "guides/misc-create-chatbot",
+        "guides/misc-semantic-search",
+        "guides/misc-run-attribute-extraction"
+
       ]
     },
     {
