@@ -124,27 +124,27 @@
     {
       "group": "🔗 Indexes",
       "pages": [
-        "rest-api-2/indexes/post",
-        "rest-api-2/indexes/get-one",
-        "rest-api-2/indexes/get",
-        "rest-api-2/indexes/delete"
+        "rest-api/indexes/post",
+        "rest-api/indexes/get-one",
+        "rest-api/indexes/get",
+        "rest-api/indexes/delete"
       ]
     },
     {
       "group": "🧠 Memory",
       "pages": [
-        "rest-api-2/memory/post-memory",
-        "rest-api-2/memory/get-memory",
-        "rest-api-2/memory/get-sessions",
-        "rest-api-2/memory/del-memory"
+        "rest-api/memory/post-memory",
+        "rest-api/memory/get-memory",
+        "rest-api/memory/get-sessions",
+        "rest-api/memory/del-memory"
       ]
     },
     {
       "group": "🎛️ Tunings",
       "pages": [
-        "rest-api-2/tunings/tune",
-        "rest-api-2/tunings/get-one",
-        "rest-api-2/tunings/get"
+        "rest-api/tunings/tune",
+        "rest-api/tunings/get-one",
+        "rest-api/tunings/get"
       ]
     },
     {
