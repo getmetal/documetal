@@ -65,9 +65,9 @@
     {
       "group": "API Reference",
       "pages": [
-        "rest-api",
-        "sdk/node",
-        "sdk/python"
+        "api-reference/node",
+        "api-reference/python",
+        "api-reference/rest-api"
       ]
     },
     {
