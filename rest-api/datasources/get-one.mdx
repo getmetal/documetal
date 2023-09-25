@@ -1,7 +1,7 @@
 ---
-title: "Get Data Source"
+title: "Get Datasource"
 api: "GET https://api.getmetal.io/v1/datasources/{id}"
-description: "This endpoint retrieves the details of a specific data source by its ID."
+description: "This endpoint retrieves the details of a specific Datasource by its ID."
 ---
 
 ### Auth Headers
@@ -18,20 +18,20 @@ description: "This endpoint retrieves the details of a specific data source by i
 ### Params
 
 <ParamField required path="id" type="string">
-  The unique identifier of the data source you wish to retrieve.
+  The unique identifier of the Datasource you wish to retrieve.
 </ParamField>
 
 ### Response
 
-<ResponseField name="data" type="Data Source Object">
+<ResponseField name="data" type="Datasource Object">
   <Expandable title="properties">
 
     <ResponseField name="id" type="string">
-      The unique identifier of the data source.
+      The unique identifier of the Datasource.
     </ResponseField>
 
     <ResponseField name="name" type="string">
-      Name of the data source.
+      Name of the Datasource.
     </ResponseField>
 
     <ResponseField name="metadataFields" type="array">
@@ -39,7 +39,7 @@ description: "This endpoint retrieves the details of a specific data source by i
     </ResponseField>
 
     <ResponseField name="sourcetype" type="string">
-      Type of the data source.
+      Type of the Datasource.
     </ResponseField>
 
     <ResponseField name="autoExtract" type="boolean">
@@ -47,11 +47,11 @@ description: "This endpoint retrieves the details of a specific data source by i
     </ResponseField>
 
     <ResponseField name="createdAt" type="string">
-      Timestamp indicating when the data source was created.
+      Timestamp indicating when the Datasource was created.
     </ResponseField>
 
     <ResponseField name="createdBy" type="string">
-      ID of the user or key that created the data source.
+      ID of the user or key that created the Datasource.
     </ResponseField>
 
   </Expandable>

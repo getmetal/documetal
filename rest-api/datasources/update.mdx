@@ -1,7 +1,7 @@
 ---
-title: "Update Data Source"
+title: "Update Datasource"
 api: "PUT https://api.getmetal.io/v1/datasources/{id}"
-description: "This endpoint updates the details of an existing data source by its ID."
+description: "This endpoint updates the details of an existing Datasource by its ID."
 ---
 
 ### Auth Headers
@@ -18,13 +18,13 @@ description: "This endpoint updates the details of an existing data source by it
 ### Params
 
 <ParamField required path="id" type="string">
-  The unique identifier of the data source you wish to update.
+  The unique identifier of the Datasource you wish to update.
 </ParamField>
 
 ### Body
 
 <ParamField body="name" type="string">
-  Updated name of the data source.
+  Updated name of the Datasource.
 </ParamField>
 
 <ParamField body="metadataFields" type="array">
@@ -32,7 +32,7 @@ description: "This endpoint updates the details of an existing data source by it
 </ParamField>
 
 <ParamField body="sourcetype" type="string">
-  Updated type of the data source.
+  Updated type of the Datasource.
 </ParamField>
 
 <ParamField body="autoExtract" type="boolean">
