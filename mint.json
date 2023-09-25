@@ -42,7 +42,7 @@
   ],
   "navigation": [
     {
-      "group": "Documentation",
+      "group": "Getting Started",
       "pages": [
         "introduction",
         "getting-started"
@@ -158,23 +158,23 @@
     {
       "group": "Guides",
       "pages": [
-        "guides/misc-get-keys",
+        "guides/misc-create-datasource",
         "guides/misc-create-index",
-        "guides/misc-create-datasource"
+        "guides/misc-get-keys"
       ]
     },
     {
       "group": "Platform",
       "pages": [
         "platform/analytics",
+        "platform/integrations",
         "platform/logs"
       ]
     },
     {
       "group": "Examples",
       "pages": [
-        "examples/examples",
-        "examples/integrations"
+        "examples/examples"
       ]
     }
   ],
