@@ -24,7 +24,7 @@
   },
   "topbarLinks": [
     {
-      "name": "⛺️ Contact",
+      "name": "Contact",
       "url": "https://discord.gg/GHY3Y8tU3J"
     }
   ],
@@ -65,9 +65,9 @@
     {
       "group": "Products",
       "pages": [
+        "product/attribute-extraction",
         "product/chatbot",
-        "product/semantic-search",
-        "product/attribute-extraction"
+        "product/semantic-search"
       ]
     },
     {
@@ -164,22 +164,28 @@
       ]
     },
     {
-      "group": "Guides",
-      "pages": [
-        "guides/misc-get-keys",
-        "guides/misc-create-index",
-        "guides/misc-create-chatbot",
-        "guides/misc-semantic-search",
-        "guides/misc-run-attribute-extraction"
-      ]
-    },
-    {
       "group": "Platform",
       "pages": [
         "platform/analytics",
         "platform/integrations",
         "platform/limits",
         "platform/logs"
+      ]
+    },
+    {
+      "group": "Tools",
+      "pages": [
+        "tools/chatbot-starter-kit"
+      ]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "guides/misc-create-index",
+        "guides/misc-create-chatbot",
+        "guides/misc-semantic-search",
+        "guides/misc-get-keys",
+        "guides/misc-run-attribute-extraction"
       ]
     },
     {
