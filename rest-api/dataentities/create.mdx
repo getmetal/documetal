@@ -7,11 +7,11 @@ description: "This endpoint creates a new Data Entity."
 ### Two-step process
 
 This endpoint is a two-step process. First, you create the data entity's URL, and then you upload the file to the signed URL.
+
 - Step 1: `POST https://api.getmetal.io/v1/data-entities`
 - Step 2: `PUT` to the signed URL
 
 ## Step 1: Request URL for the File
-
 
 ### Auth Headers
 
@@ -23,10 +23,14 @@ This endpoint is a two-step process. First, you create the data entity's URL, an
   A Client ID for your org.
 </ParamField>
 
-
 ### Body
 
-<ParamField required body="datasource" type="ObjectID" placeholder="DataSource ObjectID">
+<ParamField
+  required
+  body="datasource"
+  type="ObjectID"
+  placeholder="DataSource ObjectID"
+>
   The datasource ID.
 </ParamField>
 
@@ -41,11 +45,6 @@ This endpoint is a two-step process. First, you create the data entity's URL, an
 <ParamField required body="sourceType" type="string" placeholder="Source Type">
   The type of the source (e.g., "PDF", "Text").
 </ParamField>
-
-<ParamField optional body="status" type="string" placeholder="Status">
-  The status of the data entity.
-</ParamField>
-
 
 ### Response
 
@@ -68,7 +67,6 @@ This endpoint is a two-step process. First, you create the data entity's URL, an
       Timestamp indicating when the data entity was created.
     </ResponseField>
 
-
   </Expandable>
 </ResponseField>
 
@@ -83,43 +81,44 @@ curl -X POST "https://api.getmetal.io/v1/data-entities" \
 --data '{
   "datasource": "datasourceID",
   "name": "Song Lyrics",
-  "sourceType": "file",
-  "status": "active"
+  "sourceType": "file"
 }'
 ```
+
 </RequestExample>
 
 <ResponseExample>
 
-  ```json
+```json
 {
-	"data": {
-		"id": "dataEntityID",
-		"datasource": "datasourceID",
-		"name": "Song Lyrics",
-		"extractedMetadata": [
+  "data": {
+    "id": "dataEntityID",
+    "datasource": "datasourceID",
+    "name": "Song Lyrics",
+    "extractedMetadata": [
       {
         "name": "band",
         "value": "Iron Maiden",
         "description": "String"
       }
     ],
-		"sourcetype": "file",
-		"status": "active",
-		"createdAt": "2023-08-29T17:00:55.002Z",
-		"updatedAt": "1970-01-01T00:00:00Z",
-		"metadataFields": [
-			{
+    "sourcetype": "file",
+    "status": "active",
+    "createdAt": "2023-08-29T17:00:55.002Z",
+    "updatedAt": "1970-01-01T00:00:00Z",
+    "metadataFields": [
+      {
         "name": "band",
         "type": "String",
         "description": "Which heavy metal band is represented by the iconic mascot Eddie?"
-			}
-		],
-		"url": "signed_upload_url",
-		"createdBy": "userID"
-	}
+      }
+    ],
+    "url": "signed_upload_url",
+    "createdBy": "userID"
+  }
 }
-  ```
+```
+
 </ResponseExample>
 
 ## Step 2: Upload the File to the Signed URL
@@ -129,3 +128,4 @@ curl -X POST "https://api.getmetal.io/v1/data-entities" \
 curl --location --request PUT '<preSignedUrl>' \
 --header 'Content-Type: application/pdf' \
 --upload-file '/path/to/your/example.pdf'
+```
