@@ -1,0 +1,46 @@
+---
+title: "Limits & Plans"
+description: "Plan and request limits"
+---
+
+## Product Limits
+Metal has usage limits in place at each payment plan. These limits are applied on a per-org basis. If you exceed the usage limit, you'll receive a `422` response with the following body:
+
+```json
+{
+  "statusCode": 422,
+  "message": "<feature> limit reached"
+}
+```
+
+### Product Limits by Plan
+
+| Limit | Hobbyist | Developer | Enterprise |
+| :--- | :--- | :--- | :--- |
+| Embeddings | 100k | 1M | custom |
+| Files | 100 | 500 | custom |
+| Indexes | 2 | 10 | custom |
+| Jobs | 10 | 100 | custom |
+| Memories | 1k | 1k | custom |
+| Users | 1 | 3 | custom |
+
+
+
+## Rate Limits
+Metal has rate limits in place to ensure the stability of the API. These limits are applied on a per-minute basis. If you exceed the rate limit, you'll receive a `429 Too Many Requests` response with the following body:
+
+```json
+{
+  "statusCode": 429,
+  "error": "Too Many Requests",
+  "message": "Rate limit exceeded, retry in 1 minute"
+}
+```
+
+### Rate Limits by Plan
+
+| Plan | Limit |
+| :--- | :--- |
+| Hobbyist | 300 RPM |
+| Developer | 1,000 RPM |
+| Enterprise | 1k+ RPM |
