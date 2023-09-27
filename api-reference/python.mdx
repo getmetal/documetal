@@ -432,11 +432,12 @@ print(response)  # Expected: "Datasource successfully deleted."
 | ------------- | ------- | ------------------------------------------------ |
 | `datasourceId`| string  | The ID of the datasource where the file belongs. |
 | `file_path`   | string  | The local file path of the file to upload.      |
+| `metadata`    | object  | Additional Metadata that isn't extracted.      |
 
 ## Example
 
 ```python
-results = metal.add_data_entity("datasource_id", "./file_path.csv")
+results = metal.add_data_entity("datasource_id", "./file_path.csv", metadata=metadata)
 ```
 
 ## Get Data Entity
