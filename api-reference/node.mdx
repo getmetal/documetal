@@ -385,6 +385,7 @@ Add a new Datasource to your Metal instance.
 | `name`       | string   | Name of the attribute you wish to extract.      |
 | `type`       | string   | Type of the attribute (e.g., "String", "Number").|
 | `description`| string   | Brief description or example of the attribute. |
+| `autoExtract`| boolean  | Determines if attribute will be auto extracted from content or not. |
 
 
 ```ts
@@ -396,7 +397,8 @@ const dataSourcePayload = {
       {
         name: "band",
         type: "String",
-        description: "Which heavy metal band is represented by the iconic mascot Eddie?"
+        description: "Which heavy metal band is represented by the iconic mascot Eddie?",
+        autoExtract: true,
       }
     ]
 };
@@ -490,7 +492,8 @@ const response = await Metal.deleteDataSource(dataSourceId);
 | Name          | Type    | Description                                      |
 | ------------- | ------- | ------------------------------------------------ |
 | `datasourceId`| string  | The ID of the datasource where the file belongs. |
-| `file_path`   | string  | The local file path of the file to upload.      |
+| `filepath`   | string  | The local file path of the file to upload.      |
+| `metadata`    | object  | Additional Metadata that isn't extracted.      |
 
 ### Example
 
@@ -499,7 +502,14 @@ const response = await Metal.deleteDataSource(dataSourceId);
 const dataSourceId = 'your_datasource_id';
 const filePath = './file_path.csv';
 
-const results = await metal.addDataEntity(dataSourceId, filePath);
+const results = await metal.addDataEntity({
+  datasource: dataSourceId,
+  filepath,
+  metadata: {
+    band: 'Iron Maiden',
+    song: 'The Trooper',
+  },
+});
 
 ```
 
