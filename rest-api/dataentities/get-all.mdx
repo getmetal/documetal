@@ -14,7 +14,6 @@ description: "This endpoint retrieves a list of all data entities."
   A Client ID for your org.
 </ParamField>
 
-
 ### Query
 
 <ParamField optional query="limit" type="integer">
@@ -24,8 +23,6 @@ description: "This endpoint retrieves a list of all data entities."
 <ParamField optional query="page" type="integer">
   The starting position for the query. Useful for pagination.
 </ParamField>
-
-
 
 ### Response
 
@@ -67,16 +64,15 @@ description: "This endpoint retrieves a list of all data entities."
   </Expandable>
 </ResponseField>
 
-
-
 <RequestExample>
 
 ```bash
 # Example Request
-curl -X GET "https://api.getmetal.io/datasources/{datasourceID}/data-entities" \
+curl -X GET "https://api.getmetal.io/v1/datasources/{datasourceID}/data-entities" \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>'
 ```
+
 </RequestExample>
 
 <ResponseExample>
@@ -105,7 +101,7 @@ curl -X GET "https://api.getmetal.io/datasources/{datasourceID}/data-entities" \
           "type": "String",
           "description": "Which band is this record deal for?"
         }
-			],
+      ],
       "createdBy": "userID"
     },
     {
@@ -129,10 +125,11 @@ curl -X GET "https://api.getmetal.io/datasources/{datasourceID}/data-entities" \
           "type": "String",
           "description": "Where is the next concert at?"
         }
-        ],
+      ],
       "createdBy": "userID"
-		}
-	]
+    }
+  ]
 }
 ```
+
 </ResponseExample>
