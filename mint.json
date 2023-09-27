@@ -20,7 +20,7 @@
   },
   "topbarCtaButton": {
     "type": "github",
-    "url": "https://github.com/getmetal/motorhead"
+    "url": "https://github.com/getmetal/Metal"
   },
   "topbarLinks": [
     {
@@ -43,10 +43,7 @@
   "navigation": [
     {
       "group": "Getting Started",
-      "pages": [
-        "introduction",
-        "getting-started"
-      ]
+      "pages": ["introduction", "getting-started"]
     },
     {
       "group": "Concepts",
@@ -54,11 +51,7 @@
         "learn-introduction",
         {
           "group": "How Metal Works",
-          "pages": [
-            "learn-retrieval",
-            "learn-memory",
-            "learn-extraction"
-          ]
+          "pages": ["learn-retrieval", "learn-memory", "learn-extraction"]
         }
       ]
     },
@@ -80,22 +73,15 @@
     },
     {
       "group": "Overview",
-      "pages": [
-        "rest-api/introduction"
-      ]
+      "pages": ["rest-api/introduction"]
     },
     {
       "group": "🔑 Account",
-      "pages": [
-        "rest-api/account/get-current",
-        "rest-api/account/get-org"
-      ]
+      "pages": ["rest-api/account/get-current", "rest-api/account/get-org"]
     },
     {
       "group": "📈 Analytics",
-      "pages": [
-        "rest-api/analytics/get-queries"
-      ]
+      "pages": ["rest-api/analytics/get-queries"]
     },
     {
       "group": "📄 Data Entities",
@@ -174,9 +160,7 @@
     },
     {
       "group": "Tools",
-      "pages": [
-        "tools/chatbot-starter-kit"
-      ]
+      "pages": ["tools/chatbot-starter-kit"]
     },
     {
       "group": "Guides",
@@ -190,14 +174,12 @@
     },
     {
       "group": "Overview",
-      "pages": [
-        "examples/overview"
-      ]
+      "pages": ["examples/overview"]
     }
   ],
   "footerSocials": {
     "discord": "https://discord.gg/GHY3Y8tU3J",
-    "github": "https://www.github.com/getmetal/metal/",
+    "github": "https://github.com/getmetal/Metal",
     "twitter": "https://twitter.com/Metal_io",
     "linkedin": "https://www.linkedin.com/company/getmetal/about/"
   }
