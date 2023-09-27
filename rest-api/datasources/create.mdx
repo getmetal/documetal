@@ -20,17 +20,18 @@ description: "This endpoint creates and stores a Datasource with the provided de
   Name of the Datasource.
 </ParamField>
 
-
 <ParamField body="sourcetype" type="string" placeholder="Source Type" required>
   Type of the source. File or Text.
 </ParamField>
 
 <ParamField body="autoExtract" type="boolean" required>
-  Flag indicating whether auto-extraction is enabled.
+  Flag indicating whether auto-extraction is enabled. If disabled, it will
+  short-cirtuit to bypass extraction.
 </ParamField>
 
 <ParamField body="metadataFields" type="array">
-  An array containing metadata fields. Each object should have `name`, `type`, and `description` properties.
+  An array containing metadata fields. Each object should have `name`, `type`,
+  `description`, and `autoExtract` properties.
 </ParamField>
 
 <RequestExample>
@@ -46,34 +47,50 @@ curl -X POST "https://api.getmetal.io/v1/datasources" \
       {
         "name": "band",
         "type": "String",
-        "description": "Which heavy metal band is represented by the iconic mascot Eddie?"
+        "description": "The band that the uploaded file is about.",
+        "autoExtract": true
+      },
+      {
+        "name": "author",
+        "type": "String",
+        "autoExtract": false
       }
     ],
     "sourcetype": "File",
     "autoExtract": true
 }'
 ```
+
 </RequestExample>
 
 <ResponseExample>
 
 ```json Response
-  {
-    "data": {
-      "id": "datasourceID",
-      "createdAt": "2023-08-29T10:51:04.246Z",
-      "createdBy": "userId",
-      "name": "my_datasource",
-      "metadataFields": [
-        {
-          "name": "band",
-          "type": "String",
-          "description": "Which heavy metal band is represented by the iconic mascot Eddie?"
-        }
-      ],
-      "sourcetype": "File",
-      "autoExtract": true,
-    }
+{
+  "data": {
+    "id": "datasourceID",
+    "createdAt": "2023-08-29T10:51:04.246Z",
+    "createdBy": "userId",
+    "name": "my_datasource",
+    "metadataFields": [
+      // Extracted field, which we will detect on upload
+      {
+        "name": "band",
+        "type": "String",
+        "description": "Which heavy metal band is represented by the iconic mascot Eddie?",
+        "autoExtract": true
+      },
+      // Normal field, which needs to be manually set on upload
+      {
+        "name": "author",
+        "type": "String",
+        "autoExtract": false
+      }
+    ],
+    "sourcetype": "File",
+    "autoExtract": true
   }
-  ```
+}
+```
+
 </ResponseExample>
