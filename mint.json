@@ -174,7 +174,7 @@
     },
     {
       "group": "Overview",
-      "pages": ["examples/overview"]
+      "pages": ["examples/overview","examples/node","examples/python"]
     }
   ],
   "footerSocials": {
