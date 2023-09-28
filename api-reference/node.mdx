@@ -403,7 +403,7 @@ const dataSourcePayload = {
     ]
 };
 
-const response = await metal.createDataSource(dataSourcePayload);
+const response = await metal.addDatasource(dataSourcePayload);
 ```
 
 
@@ -435,7 +435,7 @@ const updatedDataSourcePayload = {
     ]
 };
 
-const response = await Metal.updateDataSource("existing_dataSourceId", updatedDataSourcePayload);
+const response = await Metal.updateDatasource("existing_dataSourceId", updatedDataSourcePayload);
 
 ```
 
@@ -449,7 +449,7 @@ const response = await Metal.updateDataSource("existing_dataSourceId", updatedDa
 
 ```ts
 const dataSourceId = "existing_dataSourceId";
-const response = await Metal.getDataSource(dataSourceId);
+const response = await Metal.getDatasource(dataSourceId);
 ```
 
 ## `getAllDatasources()`
@@ -467,7 +467,7 @@ const response = await Metal.getDataSource(dataSourceId);
 const limit = 10;
 const page = 2;
 
-const response = await Metal.getAllDataSources({ limit, page });
+const response = await Metal.getAllDatasources({ limit, page });
 ```
 
 ## `deleteDatasource()`
@@ -480,7 +480,7 @@ const response = await Metal.getAllDataSources({ limit, page });
 
 ```ts
 const dataSourceId = 'your_data_source_id';
-const response = await Metal.deleteDataSource(dataSourceId);
+const response = await Metal.deleteDatasource(dataSourceId);
 ```
 
 # Data Entities
