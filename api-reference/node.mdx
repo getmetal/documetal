@@ -365,7 +365,7 @@ await motorhead.deleteMemory("session-id");
 
 # Datasources
 
-## `addDataSource()`
+## `addDatasource()`
 
 Add a new Datasource to your Metal instance.
 
@@ -403,7 +403,7 @@ const dataSourcePayload = {
     ]
 };
 
-const response = await metal.addDatasource(dataSourcePayload);
+const response = await metal.addDatasource(datasourcePayload);
 ```
 
 
@@ -413,7 +413,7 @@ const response = await metal.addDatasource(dataSourcePayload);
 
 | Name             | Type      | Description                                                  |
 | -----------------| --------- | ------------------------------------------------------------ |
-| `dataSourceId`   | string    | Identifier of the Datasource you want to update.            |
+| `datasourceId`   | string    | Identifier of the Datasource you want to update.            |
 | `name`           | string    | Updated name of the Datasource.                             |
 | `sourcetype`     | string    | Updated type of the source. Either 'File' or 'Text'.         |
 | `autoExtract`    | boolean   | Updated flag indicating whether auto-extraction is enabled.  |
@@ -422,7 +422,7 @@ const response = await metal.addDatasource(dataSourcePayload);
 
 ```ts
 
-const updatedDataSourcePayload = {
+const updatedDatasourcePayload = {
     name: "updated_datasource",
     sourcetype: "Text",
     autoExtract: false,
@@ -448,8 +448,8 @@ const response = await Metal.updateDatasource("existing_dataSourceId", updatedDa
 | `dataSourceId`   | string | Identifier of the Datasource you want to retrieve information about. |
 
 ```ts
-const dataSourceId = "existing_dataSourceId";
-const response = await Metal.getDatasource(dataSourceId);
+const datasourceId = "existing_datasourceId";
+const response = await Metal.getDatasource(datasourceId);
 ```
 
 ## `getAllDatasources()`
@@ -476,11 +476,11 @@ const response = await Metal.getAllDatasources({ limit, page });
 
 | Name             | Type    | Description                                      |
 | ---------------- | ------- | ------------------------------------------------ |
-| `dataSourceId`   | string  | The ID of the Datasource you want to delete.    |
+| `datasourceId`   | string  | The ID of the Datasource you want to delete.    |
 
 ```ts
-const dataSourceId = 'your_data_source_id';
-const response = await Metal.deleteDatasource(dataSourceId);
+const datasourceId = 'your_data_source_id';
+const response = await Metal.deleteDatasource(datasourceId);
 ```
 
 # Data Entities
@@ -499,11 +499,11 @@ const response = await Metal.deleteDatasource(dataSourceId);
 
 ```ts
 
-const dataSourceId = 'your_datasource_id';
+const datasourceId = 'your_datasource_id';
 const filePath = './file_path.csv';
 
 const results = await metal.addDataEntity({
-  datasource: dataSourceId,
+  datasource: datasourceId,
   filepath,
   metadata: {
     band: 'Iron Maiden',

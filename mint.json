@@ -42,18 +42,19 @@
   ],
   "navigation": [
     {
-      "group": "Getting Started",
-      "pages": ["introduction", "getting-started"]
-    },
-    {
-      "group": "Concepts",
+      "group": "Introduction",
       "pages": [
+        "introduction",
         "learn-introduction",
         {
           "group": "How Metal Works",
           "pages": ["learn-retrieval", "learn-memory", "learn-extraction"]
         }
       ]
+    },
+    {
+      "group": "Getting Started",
+      "pages": ["get-started-intro"]
     },
     {
       "group": "Products",
