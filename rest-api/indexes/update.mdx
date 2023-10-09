@@ -1,0 +1,104 @@
+---
+title: "Update Index"
+api: "PUT https://api.getmetal.io/v1/indexes/{indexId}"
+description: "This endpoint updates an index."
+---
+
+### Auth Headers
+
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+### Params
+
+<ParamField required path="indexId" type="string">
+  The Index ID to update
+</ParamField>
+
+### Body
+
+<ParamField
+  body="status"
+  type="string"
+  placeholder="status of the index"
+  required
+>
+  Status to update the index. Can only be `DEACTIVATING` to start the archiving process
+</ParamField>
+
+
+### Response
+
+<ResponseField name="data" type="Index Object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the index
+    </ResponseField>
+
+    <ResponseField name="status" type="string">
+      Status of the index
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Name of the index
+    </ResponseField>
+
+    <ResponseField name="model" type="string">
+      Model used to generate the embeddings
+    </ResponseField>
+
+    <ResponseField name="dimensions" type="number">
+      Dimensions of the embeddings
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request PUT 'https://api.getmetal.io/v1/indexes/test-index-id' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+--data-raw '{
+    "status": "DEACTIVATING"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "data": {
+    "id": "1",
+    "createdAt": "2023-08-23T22:13:31.539Z",
+    "status": "DEACTIVATING",
+    "name": "Ozzy Osbourne",
+    "model": "text-embedding-ada-002",
+    "dimensions": 1536,
+    "filters": [
+      {
+        "field": "name",
+        "type": "string"
+      },
+      {
+        "field": "age",
+        "type": "number"
+      }
+    ],
+    "counts": {
+      "docs": 0,
+    }
+  }
+}
+```
+
+</ResponseExample>

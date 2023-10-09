@@ -14,11 +14,6 @@ description: "This endpoint creates an index for an app."
   A Client ID for your org.
 </ParamField>
 
-### Params
-
-<ParamField required path="appId" type="string">
-  The App ID
-</ParamField>
 
 ### Body
 
@@ -81,8 +76,8 @@ description: "This endpoint creates an index for an app."
       Id of the index
     </ResponseField>
 
-    <ResponseField name="app" type="string">
-      Id of the app of the index
+    <ResponseField name="status" type="string">
+      Status of the index
     </ResponseField>
 
     <ResponseField name="name" type="string">
@@ -133,7 +128,7 @@ curl --location --request POST 'https://api.getmetal.io/v1/indexes' \
 	"data": {
 		"id": "1",
 		"createdAt": "2023-08-23T22:13:31.539Z",
-		"app": "<APP_ID>",
+		"status": "LIVE",
 		"name": "Ozzy Osbourne",
 		"model": "text-embedding-ada-002",
 		"dimensions": 1536,
