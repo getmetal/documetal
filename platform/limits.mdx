@@ -44,3 +44,8 @@ Metal has rate limits in place to ensure the stability of the API. These limits 
 | Hobbyist | 300 RPM |
 | Developer | 1,000 RPM |
 | Enterprise | 1k+ RPM |
+
+
+## Index Archiving
+
+After 30 days of inactivity in an index, the index will be automatically `ARCHIVED`. Archived indexes aren't able to be searched, in order to reactivate them they need to be updated using the Index Update API with `status: "UNARCHIVED"`.
