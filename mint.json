@@ -169,6 +169,7 @@
         "guides/misc-create-index",
         "guides/misc-create-chatbot",
         "guides/misc-semantic-search",
+        "guides/misc-chunking-config",
         "guides/misc-get-keys",
         "guides/misc-run-attribute-extraction"
       ]

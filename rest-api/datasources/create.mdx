@@ -46,17 +46,17 @@ curl -X POST "https://api.getmetal.io/v1/datasources" \
     "metadataFields": [
       {
         "name": "band",
-        "type": "String",
+        "type": "string",
         "description": "The band that the uploaded file is about.",
         "autoExtract": true
       },
       {
         "name": "author",
-        "type": "String",
+        "type": "string",
         "autoExtract": false
       }
     ],
-    "sourcetype": "File",
+    "sourcetype": "file",
     "autoExtract": true
 }'
 ```
@@ -76,14 +76,14 @@ curl -X POST "https://api.getmetal.io/v1/datasources" \
       // Extracted field, which we will detect on upload
       {
         "name": "band",
-        "type": "String",
+        "type": "string",
         "description": "Which heavy metal band is represented by the iconic mascot Eddie?",
         "autoExtract": true
       },
       // Normal field, which needs to be manually set on upload
       {
         "name": "author",
-        "type": "String",
+        "type": "string",
         "autoExtract": false
       }
     ],
