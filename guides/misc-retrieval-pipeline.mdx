@@ -3,6 +3,13 @@ title: Create a Retrieval Pipeline
 description: Build a LLM retrieval pipeline with Metal (RAG)
 ---
 
+## What is RAG (Retrieval-Augmented Generation)?
+
+RAG combines LLMs with external collections of data, like the Datasources we'll create next. It works in two steps:
+
+- Retrieval: The model taps into an external source (a Datasource) to find relevant data based on a query.
+- Augmented Generation: With the data it found, the model crafts a more informed response.
+
 ## 1. Create a Datasource
 
 A Datasource is the collection of files that need to be preprocessed to feed our application.
