@@ -1,0 +1,27 @@
+---
+title: Build a Retrieval Pipeline
+description: Build a LLM retrieval pipeline with Metal (RAG)
+---
+
+## 1. Create a Datasource
+
+A Datasource is the collection of files that need to be preprocessed to feed our application.
+To start, go to your organization [Dashboard](https://app.getmetal.io), navigate to the Datasources tab, and click on the `Add Datasource` button to create a new Datasource.
+![rag-1](/images/rag-01.png)
+
+## 2. Add an Index and Connect it to a Datasource
+
+Indexes are where your preprocessed data will be transformed and made queryable for your application.
+To set up an Index, go to the Indexes tab, and click on the `Add Index` button to create a new Index.
+You can then connect your Index to the existing Datasource.
+
+![rag-2](/images/rag-02.png)
+
+## 3. Add Files to your Datasource
+
+Go to the Datasource tab, and click on the `Upload File` button to upload your files.
+Accepted file formats are PDF, DOC, DOCX, XLSX, and CSV. This will now become `Data Entities`.
+
+After you've added a file, Metal preprocess the data, create the chunks and generate the embeddings that will be used for retrieval.
+
+![rag-3](/images/rag-03.png)
