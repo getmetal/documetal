@@ -34,8 +34,8 @@ yarn add @getmetal/metal-sdk
 | Param       | Type   | Description                                                                     |
 | ----------- | ------ | ------------------------------------------------------------------------------- |
 | `api_key`   | string | The API Key for your Org. [Learn more.](/misc-get-keys)                         |
-| `client_id` | string | The Client ID for your Org. [Learn more.](/misc-get-keys)                       |
-| `index_id`  | string | The ID of the index you want to connect with. [Learn more.](/misc-create-index) |
+| `clientId` | string | The Client ID for your Org. [Learn more.](/misc-get-keys)                       |
+| `indexId`  | string | The ID of the index you want to connect with. [Learn more.](/misc-create-index) |
 
 ```ts
 import { Metal } from "@getmetal/metal-sdk";
@@ -218,13 +218,25 @@ const document = await metal.getOne("documentId-123");
 | Name       | Type           | Description                                                                                                   |
 | ---------- | -------------- | ------------------------------------------------------------------------------------------------------------- |
 | `ids`      | Array of str   | An array of document IDs to retrieve.                                                                         |
-| `index_id` | str, optional  | The ID of the index from which to retrieve documents. If not provided, the default index ID will be used.   |
+| `indexId` | str, optional  | The ID of the index from which to retrieve documents. If not provided, the default index ID will be used.   |
 
 ```ts
 
 const documentIDs = ['document_id_123', 'document_id_456'];
 const result = await Metal.getMany(documentIDs);
 
+```
+
+## `getQueries()`
+
+#### Parameters
+
+| Name       | Type           | Description                                                                                                   |
+| ---------- | -------------- | ------------------------------------------------------------------------------------------------------------- |
+| `indexId` | str            | The ID of the index from which to retrieve documents.
+
+```typescript
+const queries = await metal.getQueries("index-id");
 ```
 
 
