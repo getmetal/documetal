@@ -20,10 +20,10 @@ description: "This endpoint creates an index for an app."
 <ParamField
   body="model"
   type="string"
-  placeholder="model used for generating embeddings"
+  placeholder="Embedding model used on your data."
   required
 >
-  Model used to generate the embeddings
+  The Embedding Model to use. Can be either "text-embedding-ada-002", "clip", or "custom".
 </ParamField>
 
 <ParamField body="name" type="string" placeholder="name of the index" required>
@@ -31,6 +31,7 @@ description: "This endpoint creates an index for an app."
 </ParamField>
 
 <ParamField
+  optional
   body="datasource"
   type="string"
   placeholder="datasource id"
@@ -39,6 +40,8 @@ description: "This endpoint creates an index for an app."
 </ParamField>
 
 <ParamField
+  optional
+  default="HNSW"
   body="indexType"
   type="string"
   placeholder="FLAT or HNSW"
@@ -47,15 +50,16 @@ description: "This endpoint creates an index for an app."
 </ParamField>
 
 <ParamField
+  optional
   body="dimensions"
   type="integer"
   min="3"
   placeholder="number of dimensions that the embeddings will have"
 >
-  Number of dimensions for the stored vectors
+  This is only required if you are using a "custom" model.
 </ParamField>
 
-<ParamField body="filters" type="object[]" placeholder="Metadata filters that the index can support for /search.">
+<ParamField optional body="filters" type="object[]" placeholder="Metadata filters that the index can support for /search.">
 <Expandable title="properties">
     <ParamField body="field" type="string">
       The name of the filtereable field
@@ -65,6 +69,18 @@ description: "This endpoint creates an index for an app."
       The field type. Enum: `string` or `number`.
     </ParamField>
 
+  </Expandable>
+</ParamField>
+
+<ParamField optional body="chunkConfig" type="object" placeholder="Chunking configuration for data entity uploads.">
+<Expandable title="properties">
+    <ParamField body="size" type="number" default={500}>
+      The token size of each chunk.
+    </ParamField>
+
+    <ParamField body="overlap" type="number" default={20}>
+      The token amount of overlap between chunks.
+    </ParamField>
   </Expandable>
 </ParamField>
 
@@ -103,9 +119,8 @@ curl --location --request POST 'https://api.getmetal.io/v1/indexes' \
 --header 'x-metal-api-key: <api-key>' \
 --header 'x-metal-client-id: <client-id>' \
 --data-raw '{
-    "model": "custom",
+    "model": "text-embedding-ada-002",
     "name": "Ozzy Osbourne",
-    "dimensions": 666,
     "filters": [
       {
         "field": "name",
