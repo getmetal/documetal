@@ -200,6 +200,16 @@ document = metal.get_one("document_id_123")
 document = metal.get_many("[document_id_123, document_id_456]")
 ```
 
+## Get Queries
+
+| Param   | Type             | Description                                                      |
+| ------- | ---------------- | ---------------------------------------------------------------- |
+| `index_id`   | string           | The ID of the Index to retrieve. |
+
+```python
+queries = metal.get_queries("index_id")
+```
+
 ## Tuning
 
 | Param   | Type             | Description                                                      |
