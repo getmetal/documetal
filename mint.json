@@ -172,6 +172,7 @@
         "guides/misc-retrieval-pipeline",
         "guides/misc-chunking-config",
         "guides/misc-get-keys",
+        "guides/misc-get-queries",
         "guides/misc-run-attribute-extraction"
       ]
     },
