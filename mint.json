@@ -167,12 +167,12 @@
       "group": "Guides",
       "pages": [
         "guides/misc-create-index",
+        "guides/misc-get-queries",
         "guides/misc-create-chatbot",
         "guides/misc-semantic-search",
         "guides/misc-retrieval-pipeline",
         "guides/misc-chunking-config",
         "guides/misc-get-keys",
-        "guides/misc-get-queries",
         "guides/misc-run-attribute-extraction"
       ]
     },
