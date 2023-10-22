@@ -1,0 +1,58 @@
+---
+title: "Get an App"
+api: "GET https://api.getmetal.io/v1/{app_id}"
+description: "This endpoint retrieves the details of an app by its ID."
+---
+
+## Auth Headers
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+## Path Parameters
+<ParamField required path="app_id" type="string">
+  The unique ID of the app you want to retrieve.
+</ParamField>
+
+## Response
+
+<ResponseField name="data" type="App Object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the app.
+    </ResponseField>
+    <ResponseField name="name" type="string">
+  Name of the app.
+</ResponseField>
+
+<ResponseField name="indexes" type="array">
+  An array indicating the connected indexes for the app. Empty if there are no connected indexes.
+</ResponseField>
+</Expandable>
+</ResponseField>
+
+<RequestExample>
+```bash
+curl --location --request GET 'https://api.getmetal.io/v1/apps/6535126922af1b89d6d22ffa' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>'
+```
+</RequestExample>
+
+<ResponseExample>
+```json
+{
+    "data": {
+        "id": "6535126922af1b89d6d22ffa",
+        "name": "My App",
+        "indexes": [
+            "6525639932cbb1afa1bee7e9"
+        ]
+    }
+}
+```
+</ResponseExample>

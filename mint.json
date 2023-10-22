@@ -85,6 +85,14 @@
       "pages": ["rest-api/analytics/get-queries"]
     },
     {
+      "group": "🚀 Apps",
+      "pages": [
+        "rest-api/apps/add-app",
+        "rest-api/apps/get-app",
+        "rest-api/apps/get-apps"
+    ]
+    },
+    {
       "group": "📄 Data Entities",
       "pages": [
         "rest-api/dataentities/create",
