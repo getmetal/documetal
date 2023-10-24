@@ -33,6 +33,31 @@ from metal_sdk.metal import Metal
 
 metal = Metal("api_key", "client_id", "index_id")
 ```
+
+## Adding an App
+
+| Param       | Type   | Description                                             |
+| ----------- | ------ | ------------------------------------------------------- |
+| `name`      | string | Name of the App.                                        |
+
+```python
+metal.add_app({"name": "My App"})
+```
+## Get One App
+| Param       | Type   | Description                                             |
+| ----------- | ------ | ------------------------------------------------------- |
+| `app_id`    | string | ID of the App.                                          |
+
+```python
+metal.get_app("app_id")
+```
+
+## Get All Apps
+
+  ```python
+  metal.get_apps()
+  ```
+
 ## Adding an Index
 
 ### Payload

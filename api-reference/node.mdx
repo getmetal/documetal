@@ -42,6 +42,34 @@ import { Metal } from "@getmetal/metal-sdk";
 const metal = new Metal("pk_123", "ci_123", "index-id");
 ```
 
+## `addApp()`
+
+#### Parameters
+| Param       | Type    | Description                                                                           |
+| ----------- | ------- | ------------------------------------------------------------------------------------- |
+| `name`      | string  | Name of the app.                                                                      |
+
+```ts
+const app = await metal.addApp({ name:"my app" });
+```
+
+## `getApp()`
+
+#### Parameters
+| Param       | Type    | Description                                                                           |
+| ----------- | ------- | ------------------------------------------------------------------------------------- |
+| `appId`     | string  | Identifier for the app.                                                               |
+
+```ts
+const app = await metal.getApp("app-id");
+```
+
+## `getApps()`
+
+```ts
+const apps = await metal.getApps();
+```
+
 ## `addIndex()`
 
 #### Parameters
