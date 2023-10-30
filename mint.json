@@ -128,6 +128,7 @@
       "group": "🔗 Indexes",
       "pages": [
         "rest-api/indexes/post",
+        "rest-api/indexes/update",
         "rest-api/indexes/get-one",
         "rest-api/indexes/get",
         "rest-api/indexes/delete"

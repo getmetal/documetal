@@ -73,13 +73,21 @@ description: "This endpoint creates an index for an app."
 </ParamField>
 
 <ParamField optional body="chunkConfig" type="object" placeholder="Chunking configuration for data entity uploads.">
-<Expandable title="properties">
+  <Expandable title="properties">
     <ParamField body="size" type="number" default={500}>
       The token size of each chunk.
     </ParamField>
 
     <ParamField body="overlap" type="number" default={20}>
       The token amount of overlap between chunks.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField optional body="tableChunkConfig" type="object" placeholder="Chunking configuration for data entity uploads that contain tables.">
+  <Expandable title="properties">
+    <ParamField body="size" type="number" default={4000}>
+      The token size of each table chunk.
     </ParamField>
   </Expandable>
 </ParamField>
@@ -106,6 +114,26 @@ description: "This endpoint creates an index for an app."
 
     <ResponseField name="dimensions" type="number">
       Dimensions of the embeddings
+    </ResponseField>
+
+    <ResponseField name="chunkConfig" type="object" placeholder="Chunking configuration for data entity uploads.">
+      <Expandable title="properties">
+        <ResponseField name="size" type="number" default={500}>
+          The token size of each chunk.
+        </ResponseField>
+
+        <ResponseField name="overlap" type="number" default={20}>
+          The token amount of overlap between chunks.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="tableChunkConfig" type="object" placeholder="Chunking configuration for data entity uploads that contain tables.">
+      <Expandable title="properties">
+        <ResponseField name="size" type="number" default={4000}>
+          The token size of each chunk.
+        </ResponseField>
+      </Expandable>
     </ResponseField>
 
   </Expandable>
@@ -157,6 +185,13 @@ curl --location --request POST 'https://api.getmetal.io/v1/indexes' \
 				"type": "number"
 			}
 		],
+    "chunkConfig": {
+      "size": 500,
+      "overlap": 20
+    },
+    "tableChunkConfig": {
+      "size": 4000
+    },
 		"counts": {
 			"docs": 0,
 		}
