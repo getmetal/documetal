@@ -40,6 +40,10 @@ description: "This endpoint gets a list of indexes for an app."
       Model used to generate the embeddings
     </ResponseField>
 
+    <ResponseField name="datasource" type="string">
+      The datasource id, if one is connected.
+    </ResponseField>
+
     <ResponseField name="dimensions" type="number">
       Dimensions of the embeddings
     </ResponseField>
@@ -71,20 +75,20 @@ curl --location --request GET 'https://api.getmetal.io/v1/indexes' \
       "model": "text-embedding-ada-002",
       "dimensions": 1536,
       "lastActivityAt": "2023-09-14T13:18:52.547Z",
-		  "lastSearchAt": "2023-09-14T13:18:52.547Z",
+      "lastSearchAt": "2023-09-14T13:18:52.547Z",
       "filters": [
-				{
-					"field": "name",
-					"type": "string"
-				},
-				{
-					"field": "age",
-					"type": "number"
-				}
-			],
-			"chunkConfig": {
-				"size": 24000
-			}
+        {
+          "field": "name",
+          "type": "string"
+        },
+        {
+          "field": "age",
+          "type": "number"
+        }
+      ],
+      "chunkConfig": {
+        "size": 24000
+      }
     },
     {
       "id": "2",
@@ -94,18 +98,18 @@ curl --location --request GET 'https://api.getmetal.io/v1/indexes' \
       "model": "clip",
       "dimensions": 512,
       "filters": [
-				{
-					"field": "name",
-					"type": "string"
-				},
-				{
-					"field": "age",
-					"type": "number"
-				}
-			],
-			"chunkConfig": {
-				"size": 24000
-			}
+        {
+          "field": "name",
+          "type": "string"
+        },
+        {
+          "field": "age",
+          "type": "number"
+        }
+      ],
+      "chunkConfig": {
+        "size": 24000
+      }
     }
   ]
 }

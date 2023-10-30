@@ -40,6 +40,10 @@ description: "This endpoint gets a single index."
       Model used to generate the embeddings
     </ResponseField>
 
+    	<ResponseField name="datasource" type="string">
+      The datasource id, if one is connected.
+    </ResponseField>
+
     <ResponseField name="dimensions" type="number">
       Dimensions of the embeddings
     </ResponseField>
@@ -62,33 +66,33 @@ curl --location --request GET 'https://api.getmetal.io/v1/indexes/{indexId}' \
 
 ```json Response
 {
-	"data": {
-		"id": "1",
-		"createdAt": "2023-07-03T14:25:22.104Z",
-		"app": "<APP_ID>",
-		"name": "Danzig's Index",
-		"model": "clip",
-		"dimensions": 512,
+  "data": {
+    "id": "1",
+    "createdAt": "2023-07-03T14:25:22.104Z",
+    "app": "<APP_ID>",
+    "name": "Danzig's Index",
+    "model": "clip",
+    "dimensions": 512,
     "lastActivityAt": "2023-09-14T13:18:52.547Z",
-		"lastSearchAt": "2023-09-14T13:18:52.547Z",
-		"filters": [
-			{
-				"field": "name",
-				"type": "string"
-			},
-			{
-				"field": "age",
-				"type": "number"
-			}
-		],
-		"counts": {
-			"docs": 42,
-			"searches": 666
-		},
-		"chunkConfig": {
-			"size": 999
-		}
-	}
+    "lastSearchAt": "2023-09-14T13:18:52.547Z",
+    "filters": [
+      {
+        "field": "name",
+        "type": "string"
+      },
+      {
+        "field": "age",
+        "type": "number"
+      }
+    ],
+    "counts": {
+      "docs": 42,
+      "searches": 666
+    },
+    "chunkConfig": {
+      "size": 999
+    }
+  }
 }
 ```
 
