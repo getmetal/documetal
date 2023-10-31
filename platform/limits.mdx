@@ -49,3 +49,15 @@ Metal has rate limits in place to ensure the stability of the API. These limits 
 ## Index Archiving
 
 After 30 days of inactivity in an index, the index will be automatically `ARCHIVED`. Archived indexes aren't able to be searched, in order to reactivate them they need to be updated using the Index Update API with `status: "UNARCHIVED"`.
+
+### Index Statuses
+
+`LIVE` : Index is ready to use
+
+`ARCHIVED`: Archived 30 days of inactivity (no search, no indexing)
+
+`UNARCHIVED`: Ready to reindex and migrate to Live
+
+`REINDEXING` : In the process of reindexing
+
+`DEACTIVATING`: In the process of archiving

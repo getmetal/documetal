@@ -1,0 +1,39 @@
+---
+title: Index Archiving
+description: How to archive and unarchive indexes in Metal
+---
+
+Index archiving allows you to manage how much data you store in Metal by temporarily shutting down indexes that are not in use. This allows you to optimize the usage of your apps, helping you save costs and make the most of your resources.
+
+### Using the API
+
+To archive an index using the API, call the [update index endpoint](https://docs.getmetal.io/rest-api/apps/update-app) and set the status to `DEACTIVATING`.
+
+<CodeGroup>
+```python Python SDK
+metal.update_index('index_id', {'status': 'DEACTIVATING'})
+```
+```ts Node SDK
+metal.updateIndex('index_id', {status: 'DEACTIVATING'})
+```
+</CodeGroup>
+
+To unarchive an index, set the status parameter to 'UNARCHIVED'.
+
+<CodeGroup>
+```python Python SDK
+metal.update_index('index_id', {'status': 'UNARCHIVED'})
+```
+```ts Node SDK
+metal.updateIndex('index_id', {status: 'UNARCHIVED'})
+```
+</CodeGroup>
+
+
+### Using the UI
+
+1. Go to the Metal dashboard and select the index you want to archive.
+2. Click on the Settings tab and scroll down to the Archive section.
+3. Click on the Archive button and confirm your action.
+
+![ui-flow](/images/index-archiving.gif)
