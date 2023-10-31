@@ -89,7 +89,8 @@
       "pages": [
         "rest-api/apps/add-app",
         "rest-api/apps/get-app",
-        "rest-api/apps/get-apps"
+        "rest-api/apps/get-apps",
+        "rest-api/apps/update-app"
     ]
     },
     {
