@@ -39,9 +39,10 @@ metal = Metal("api_key", "client_id", "index_id")
 | Param       | Type   | Description                                             |
 | ----------- | ------ | ------------------------------------------------------- |
 | `name`      | string | Name of the App.                                        |
+| `indexes`   | array  | An array of the index connected to the app.             |
 
 ```python
-metal.add_app({"name": "My App"})
+metal.add_app({"name": "My App", "indexes": ["index1"]})
 ```
 ## Get One App
 | Param       | Type   | Description                                             |
