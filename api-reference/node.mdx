@@ -50,7 +50,10 @@ const metal = new Metal("pk_123", "ci_123", "index-id");
 | `name`      | string  | Name of the app.                                                                      |
 
 ```ts
-const app = await metal.addApp({ name:"my app" });
+const app = await metal.addApp({
+    name: "My App",
+    indexes: ["index-id"]
+});
 ```
 
 ## `getApp()`
@@ -68,6 +71,19 @@ const app = await metal.getApp("app-id");
 
 ```ts
 const apps = await metal.getApps();
+```
+
+## `updateApp()`
+
+#### Parameters
+| Param       | Type    | Description                                                                           |
+| ----------- | ------- | ------------------------------------------------------------------------------------- |
+| `appId`     | string | The unique identifier of the app you want to update.    |                                      |
+| `name`      | string (optional)| The updated name for the App.                           |
+| `indexes`   | array (optional)| An updated array of the index connected to the app.   |
+
+```ts
+const app = await metal.updateApp("app-id", { name: "updated name", indexes: ["index-id"] });
 ```
 
 ## `addIndex()`
@@ -111,6 +127,17 @@ const payload = {
 
 const newIndex = await metal.addIndex(payload);
 
+```
+
+## `getIndex()`
+
+#### Parameters
+| Param       | Type    | Description                                                                           |
+| ----------- | ------- | ------------------------------------------------------------------------------------- |
+| `indexId`   | string  | Identifier for the index.                                                             |
+
+```ts
+const index = await metal.getIndex("index-id");
 ```
 
 

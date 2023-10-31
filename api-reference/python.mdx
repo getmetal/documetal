@@ -39,9 +39,10 @@ metal = Metal("api_key", "client_id", "index_id")
 | Param       | Type   | Description                                             |
 | ----------- | ------ | ------------------------------------------------------- |
 | `name`      | string | Name of the App.                                        |
+| `indexes`   | array  | An array of the index connected to the app.             |
 
 ```python
-metal.add_app({"name": "My App"})
+metal.add_app({"name": "My App", "indexes": ["index1"]})
 ```
 ## Get One App
 | Param       | Type   | Description                                             |
@@ -57,6 +58,21 @@ metal.get_app("app_id")
   ```python
   metal.get_apps()
   ```
+
+## Updating an App
+
+| Param       | Type   | Description                                             |
+| ----------- | ------ | ------------------------------------------------------- |
+| `app_id`    | string | The unique identifier of the app you want to update.    |                                      |
+| `name`      | string (optional)| The updated name for the App.                           |
+| `indexes`   | array (optional)| An updated array of the index connected to the app.   |                                   |
+
+```python
+
+metal.update_app("app_id", {"name": "Updated Metal App", "indexes": ["index1"]})
+
+```
+
 
 ## Adding an Index
 
@@ -102,6 +118,17 @@ payload = {
 
 metal.add_index(payload)
 ```
+
+## Get One Index
+
+| Param       | Type   | Description                                             |
+| ----------- | ------ | ------------------------------------------------------- |
+| `index_id`  | string | The unique identifier of the index you want to retrieve. |
+
+```python
+metal.get_index("index_id")
+```
+
 
 
 ## Indexing a Document

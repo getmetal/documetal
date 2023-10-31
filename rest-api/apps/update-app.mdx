@@ -1,0 +1,67 @@
+---
+title: "Update an App"
+api: "PUT https://api.getmetal.io/v1/apps/{appId}"
+description: "This endpoint updates an existing app based on the provided App ID."
+---
+
+## Auth Headers
+<ParamField required header="x-metal-api-key" type="string">
+  An API key for your org.
+</ParamField>
+<ParamField required header="x-metal-client-id" type="string">
+  A Client ID for your org.
+</ParamField>
+
+## Path Parameters
+<ParamField path="appId" type="string" required>
+  The unique identifier of the app you want to update.
+</ParamField>
+
+## Body
+
+<ParamField body="name" type="string" placeholder="updated name of the app">
+  The updated name for the App.
+</ParamField>
+<ParamField body="indexes" type="array" placeholder="['indexID']">
+  An updated array of an index connected to the app.
+</ParamField>
+
+## Response
+
+<ResponseField name="data" type="App Object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      Id of the updated app.
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Updated name of the app.
+    </ResponseField>
+    <ResponseField name="indexes" type="array">
+      An array indicating the connected index for the updated app. Empty if there is no connected index.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+<RequestExample>
+```bash
+curl --location --request PUT 'https://api.getmetal.io/v1/apps/6535126922af1b89d6d22ffa' \
+--header 'Content-Type: application/json' \
+--header 'x-metal-api-key: <api-key>' \
+--header 'x-metal-client-id: <client-id>' \
+--data-raw '{
+    "name": "Updated Metal App",
+    "indexes": ["index1"]
+}'
+```
+</RequestExample>
+<ResponseExample>
+```json
+{
+    "data": {
+        "id": "6535126922af1b89d6d22ffa",
+        "name": "Updated Metal App",
+        "indexes": ["index1"]
+    }
+}
+```
+</ResponseExample>
+Feel free to adjust as per the exact requirements and specifics of the API endpoint.
