@@ -44,17 +44,21 @@
     {
       "group": "Introduction",
       "pages": [
-        "introduction",
-        "learn-introduction",
+        "introduction/introduction",
+        "introduction/learn-introduction",
         {
           "group": "How Metal Works",
-          "pages": ["learn-retrieval", "learn-memory", "learn-extraction"]
+          "pages": [
+            "introduction/learn-retrieval",
+            "introduction/learn-memory",
+            "introduction/learn-extraction"
+            ]
         }
       ]
     },
     {
       "group": "Getting Started",
-      "pages": ["get-started-intro"]
+      "pages": ["getting-started/quickstart"]
     },
     {
       "group": "Products",
