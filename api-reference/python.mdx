@@ -430,7 +430,7 @@ payload = {
     "metadataFields": [
         {
             "name": "song",
-            "type": "String",
+            "type": "string",
             "description": "Which was Iron Maiden's first single?"
         }
     ]
@@ -478,7 +478,7 @@ metal.get_all_datasources(page=1, limit=10)
 ### Example
 
 ```python
-response = metal.delete_data_source("datasourceID")
+response = metal.delete_datasource("datasourceID")
 print(response)  # Expected: "Datasource successfully deleted."
 ```
 
@@ -511,7 +511,7 @@ results = metal.add_data_entity("datasource_id", "./file_path.csv", metadata=met
 | `id`  | string | The ID of the data entity you want to retrieve.   |
 
 ```python
-metal.get_dataentity("dataentity_id")
+metal.get_data_entity("data_entity_id")
 ```
 
 ## List Data Entities
@@ -525,7 +525,7 @@ metal.get_dataentity("dataentity_id")
 | `page`         | int    | (Optional) The page number for pagination. Should be a positive integer up to 100. |
 
 ```python
-metal.get_all_dataentities("datasource_id", page=1, limit=10)
+metal.get_all_data_entities("datasource_id", page=1, limit=10)
 ```
 
 ## Delete Data Entity
@@ -537,5 +537,5 @@ metal.get_all_dataentities("datasource_id", page=1, limit=10)
 | `id`  | string | The ID of the data entity you want to delete.     |
 
 ```python
-metal.delete_dataentity("dataentity_id")
+metal.delete_data_entity("data_entity_id")
 ```
