@@ -294,37 +294,6 @@ const result = await Metal.getMany(documentIDs);
 const queries = await metal.getQueries("index-id");
 ```
 
-
-## `uploadFile()`
-
-Only `.csv`, `.docx` and `.pdf` are accepted.
-
-#### Parameters
-
-| Param  | Type           | Description                                  |
-| ------ | -------------- | -------------------------------------------- |
-| `file` | string \| File | File path (NodeJs) or File Object (Browser). |
-
-| `indexId` | string | Optional index id where record will get indexed. |
-
-```typescript
-const results = await metal.uploadFile("./path/to/file.csv");
-```
-
-## `tune()`
-
-#### Parameters
-| Param | Type | Description |
-| --------- | ---------------- | --------------------------------------------------------------- |
-| `idA` | string | The ID of the first embedding.. |
-| `idB` | string | The ID of the second embedding. |
-| `label` | number[-1, 0, 1] | The "closeness score" of the two items. Either `-1`, `0` or `1` |
-| `indexId` | string | Optional index id where tuning pair will get recorded. |
-
-```typescript
-await metal.tune({ idA, idB, label, indexId: "indexId" });
-```
-
 ## `deleteOne()`
 
 Delete a single embedding document.

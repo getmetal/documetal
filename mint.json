@@ -52,7 +52,7 @@
             "introduction/learn-retrieval",
             "introduction/learn-memory",
             "introduction/learn-extraction"
-            ]
+          ]
         }
       ]
     },
@@ -95,7 +95,7 @@
         "rest-api/apps/get-app",
         "rest-api/apps/get-apps",
         "rest-api/apps/update-app"
-    ]
+      ]
     },
     {
       "group": "📄 Data Entities",
@@ -140,31 +140,6 @@
       ]
     },
     {
-      "group": "🧠 Memory",
-      "pages": [
-        "rest-api/memory/post-memory",
-        "rest-api/memory/get-memory",
-        "rest-api/memory/get-sessions",
-        "rest-api/memory/del-memory"
-      ]
-    },
-    {
-      "group": "🎛️ Tunings",
-      "pages": [
-        "rest-api/tunings/tune",
-        "rest-api/tunings/get-one",
-        "rest-api/tunings/get"
-      ]
-    },
-    {
-      "group": "📁 Upload Files",
-      "pages": [
-        "rest-api/files/post",
-        "rest-api/files/get-one",
-        "rest-api/files/get-all"
-      ]
-    },
-    {
       "group": "Platform",
       "pages": [
         "platform/analytics",
@@ -193,7 +168,7 @@
     },
     {
       "group": "Overview",
-      "pages": ["examples/overview","examples/node","examples/python"]
+      "pages": ["examples/overview", "examples/node", "examples/python"]
     }
   ],
   "footerSocials": {

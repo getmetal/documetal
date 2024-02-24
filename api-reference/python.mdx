@@ -215,20 +215,6 @@ metal.index_many([{ "text": "blacksabbath", "index": "index-id" }, { "text": "ir
 results = metal.search({ "text": "term-to-search", "filters": { "and": [{"field": "band", "value": "Black Sabbath", "operator":"eq"}]} }, index_id="indexID", limit=10)
 ```
 
-## Uploading File
-
-Only `.csv`, `.docx` and `.pdf` are accepted.
-
-| Param      | Type    | Description                                          |
-| ---------- | ------- | ---------------------------------------------------- |
-| `index_id` | string  | Id of index to search.                               |
-| `file_path`| string  | file path to upload. |
-
-
-```python
-results = metal.upload_file("./file_path.csv","indexID")
-```
-
 ## Get One Document
 
 | Param   | Type             | Description                                                      |
@@ -261,19 +247,6 @@ document = metal.get_many("[document_id_123, document_id_456]")
 ```python
 queries = metal.get_queries("index_id")
 ```
-
-## Tuning
-
-| Param   | Type             | Description                                                      |
-| ------- | ---------------- | ---------------------------------------------------------------- |
-| `idA`   | string           | The ID of the first embedding                                    |
-| `idB`   | string           | The ID of the second embedding                                   |
-| `label` | number[-1, 0, 1] | The "closeness score" of the two items. Either `-1`, `0`, or `1` |
-
-```python
-metal.tune({ "idA": "embedding-id-1", "idB": "embedding-id-2", "label": 1 })
-```
-
 
 ## Delete One
 
